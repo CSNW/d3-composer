@@ -2,7 +2,7 @@ import { xy, seriesKey, toStyle } from '@d3-composer/utils';
 import { line as d3_line } from 'd3-shape';
 
 export default function lines(selection, props = {}) {
-  const { curve, style, class: className, transition } = props;
+  const { curve, style, class: className, transition, interpolate } = props;
   const { data, x, y, yScale } = xy(props);
 
   const y0_line = d3_line()
@@ -18,7 +18,7 @@ export default function lines(selection, props = {}) {
   lines
     .exit()
     .transition(transition)
-    .attr('d', d => y0_line(d.values))
+    .call(path, y0_line)
     .remove();
 
   lines
@@ -27,9 +27,22 @@ export default function lines(selection, props = {}) {
     .attr('d', d => y0_line(d.values))
     .merge(lines)
     .transition(transition)
-    .attr('d', d => line(d.values))
+    .call(path, line)
     .attr('style', toStyle(style))
     .attr('class', className);
+
+  function path(selection, line) {
+    if (interpolate) {
+      selection.attrTween('d', function(d) {
+        const previous = this.getAttribute('d');
+        const next = line(d.values);
+
+        return interpolate(previous, next);
+      });
+    } else {
+      selection.attr('d', d => line(d.values));
+    }
+  }
 
   return selection;
 }
