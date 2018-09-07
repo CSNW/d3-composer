@@ -1,5 +1,8 @@
-import { select, scaleLinear } from 'd3';
+import { range, randomUniform, select, scaleLinear } from 'd3';
 import { lines } from '@d3-composer/svg';
+
+draw();
+select('#update').on('click', () => draw());
 
 function linesChart(selection, props) {
   let { data, xScale, yScale, width = 600, height = 400 } = props;
@@ -15,11 +18,28 @@ function linesChart(selection, props) {
   xScale = xScale.range([0, width]);
   yScale = yScale.range([height, 0]);
 
-  lines(layer, { data, xScale, yScale, style: 'stroke: blue' });
+  lines(layer, {
+    data,
+    xScale,
+    yScale,
+    style: { stroke: 'blue', fill: 'none' }
+  });
 }
 
-linesChart(select('#chart'), {
-  data: [{ x: 0, y: 0 }, { x: 100, y: 100 }],
-  xScale: scaleLinear().domain([0, 100]),
-  yScale: scaleLinear().domain([0, 100])
-});
+function draw() {
+  linesChart(select('#chart'), {
+    data: random(),
+    xScale: scaleLinear().domain([0, 100]),
+    yScale: scaleLinear().domain([0, 100])
+  });
+}
+
+function random() {
+  const x_values = range(0, 110, 10);
+  const y_values = randomUniform(0, 100);
+
+  return [
+    { values: x_values.map(x => ({ x, y: y_values() })) },
+    { values: x_values.map(x => ({ x, y: y_values() })) }
+  ];
+}
