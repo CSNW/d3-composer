@@ -24,6 +24,11 @@ const grid = template(`
 
 ## API
 
-<a href="#template" name="template">#</a> <b>template</b>(<i>spec</i>, <i>size</i>)
+<a href="#template" name="template">#</a> <b>template</b>(<i>spec</i>, <i>options</i>)
 
-Create grid from `grid-template` specification and size.
+Create grid calculation from `grid-template` specification. `spec` should follow the `grid-template` format (see [A Complete Guide To Grid](https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-15) or [MDN grid-template](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template)), although it is a simplified approach with the following rules:
+
+- Helpers like `repeat` and `minmax` are not current supported
+- Fixed values should not include a unit (e.g. `20` instead of `20px`)
+
+`width` and `height` are required options and row/column gaps and outer margins are planned.

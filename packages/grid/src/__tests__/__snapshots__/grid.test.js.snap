@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should create grid from spec and size 1`] = `
+Object {
+  "chart": Object {
+    "bottom": 350,
+    "height": 300,
+    "left": 50,
+    "right": 600,
+    "top": 50,
+    "width": 550,
+  },
+  "title": Object {
+    "bottom": 50,
+    "height": 50,
+    "left": 0,
+    "right": 600,
+    "top": 0,
+    "width": 600,
+  },
+  "x_axis": Object {
+    "bottom": 400,
+    "height": 50,
+    "left": 50,
+    "right": 600,
+    "top": 350,
+    "width": 550,
+  },
+  "y_axis": Object {
+    "bottom": 350,
+    "height": 300,
+    "left": 0,
+    "right": 50,
+    "top": 50,
+    "width": 50,
+  },
+}
+`;
