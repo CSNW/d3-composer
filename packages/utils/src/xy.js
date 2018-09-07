@@ -16,6 +16,11 @@ export default function xy(options = {}) {
 
   return {
     data,
+    xScale,
+    yScale,
+    xValue,
+    yValue,
+
     x(d, i, j) {
       const value = xValue.call(this, d, i, j);
       return xScale(value);

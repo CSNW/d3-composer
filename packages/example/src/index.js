@@ -1,11 +1,18 @@
-import { range, randomUniform, select, scaleLinear } from 'd3';
+import { range, select, scaleLinear, transition as d3_transition } from 'd3';
 import { lines } from '@d3-composer/svg';
 
 draw();
 select('#update').on('click', () => draw());
 
 function linesChart(selection, props) {
-  let { data, xScale, yScale, width = 600, height = 400 } = props;
+  let {
+    data,
+    xScale,
+    yScale,
+    width = 600,
+    height = 400,
+    transition = d3_transition().duration(500)
+  } = props;
 
   const svg = selection.selectAll('svg').data([null]);
   const layer = svg
@@ -22,7 +29,8 @@ function linesChart(selection, props) {
     data,
     xScale,
     yScale,
-    style: { stroke: 'blue', fill: 'none' }
+    style: { stroke: 'blue', fill: 'none' },
+    transition
   });
 }
 
@@ -36,10 +44,12 @@ function draw() {
 
 function random() {
   const x_values = range(0, 110, 10);
-  const y_values = randomUniform(0, 100);
 
-  return [
-    { values: x_values.map(x => ({ x, y: y_values() })) },
-    { values: x_values.map(x => ({ x, y: y_values() })) }
-  ];
+  return range(0, inRange(1, 4)).map(() => {
+    return { values: x_values.map(x => ({ x, y: inRange(0, 100) })) };
+  });
+}
+
+function inRange(min, max) {
+  return Math.round(min + Math.random() * (max - min));
 }
