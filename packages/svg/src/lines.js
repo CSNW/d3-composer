@@ -20,4 +20,6 @@ export default function lines(selection, props = {}) {
     .merge(lines)
     .attr('d', d => line(d.values))
     .attr('style', style);
+
+  return selection;
 }

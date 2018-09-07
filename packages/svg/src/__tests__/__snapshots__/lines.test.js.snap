@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render simple line 1`] = `
+<g>
+  <path
+    d="M0,100L100,0"
+  />
+</g>
+`;
