@@ -7,3 +7,18 @@ exports[`should render simple line 1`] = `
   />
 </g>
 `;
+
+exports[`should use style and class 1`] = `
+<g>
+  <path
+    class="a"
+    d="M0,100L100,0"
+    style="stroke: blue;"
+  />
+  <path
+    class="b"
+    d="M0,0L100,100"
+    style="stroke: red;"
+  />
+</g>
+`;

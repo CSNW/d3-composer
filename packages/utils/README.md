@@ -14,6 +14,18 @@ Options:
 - `xValue` - `(d, i) => x-value`
 - `yValue` - `(d, i) => y-value`
 
+<a href="#isSeries" name="isSeries">#</a> <b>isSeries</b>(<i>value</i>)
+
+Check if value is series data (has a `values` array)
+
+<a href="#toSeries" name="toSeries">#</a> <b>toSeries</b>(<i>data</i>)
+
+Convert data to series form (if needed)
+
 <a href="#seriesKey" name="seriesKey">#</a> <b>seriesKey</b>(<i>d</i>, <i>i</i>)
 
 Get series key for series.
+
+<a href="#toStyle" name="toStyle">#</a> <b>toStyle</b>(<i>value</i>)
+
+Convert object or function returning object to style string

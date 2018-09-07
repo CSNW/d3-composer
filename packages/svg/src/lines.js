@@ -1,8 +1,8 @@
-import { xy, seriesKey } from '@d3-composer/utils';
+import { xy, seriesKey, toStyle } from '@d3-composer/utils';
 import { line as d3_line } from 'd3-shape';
 
 export default function lines(selection, props = {}) {
-  const { curve, style } = props;
+  const { curve, style, class: className } = props;
   const { data, x, y } = xy(props);
 
   const line = d3_line()
@@ -19,7 +19,8 @@ export default function lines(selection, props = {}) {
     .append('path')
     .merge(lines)
     .attr('d', d => line(d.values))
-    .attr('style', style);
+    .attr('style', toStyle(style))
+    .attr('class', className);
 
   return selection;
 }
