@@ -1,0 +1,14 @@
+{
+  "name": "@d3-composer/utils",
+  "version": "0.0.0",
+  "description": "Shared utilities for d3-composer",
+  "author": "Tim Hall <tim.hall.engr@gmail.com>",
+  "license": "MIT",
+  "main": "dist/d3-composer-utils.umd.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "exit 0",
+    "build": "rollup -c"
+  },
+  "dependencies": {}
+}

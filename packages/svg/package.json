@@ -10,5 +10,8 @@
     "test": "exit 0",
     "build": "rollup -c"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@d3-composer/utils": "^0.0.0",
+    "d3-shape": "^1.2.2"
+  }
 }
