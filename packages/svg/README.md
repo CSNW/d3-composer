@@ -31,7 +31,33 @@ Create named `g` layer
 
 <a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>[, <i>props</i>])
 
-Lines chart
+Options:
+
+- `data` - x-y series data
+- `xScale`
+- `yScale`
+- `curve` - See [d3-shape](https://github.com/d3/d3-shape#curves)
+- `style` - Style string, object, or function for line
+- `class` - Class string or function for line
+- `transition` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
+- `interpolate` - An interpolation function for `update` and `exit`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path)
+
+```js
+// curve
+lines(selection, { curve: d3.curveCardinal() });
+
+// style
+lines(selection, { style: d => { stroke: d.color } });
+
+// class
+lines(selection, { class: d => d.class });
+
+// transition
+lines(selection, { transition: d3.transition().duration(1000) })
+
+// interpolate
+lines(selection, { interpolate: d3.interpolatePath })
+```
 
 <a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>[, <i>props</i>])
 

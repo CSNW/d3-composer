@@ -26,10 +26,10 @@ export default function lines(selection, props = {}) {
     .append('path')
     .attr('d', d => y0_line(d.values))
     .merge(lines)
-    .transition(transition)
-    .call(path, line)
     .attr('style', toStyle(style))
-    .attr('class', className);
+    .attr('class', className)
+    .transition(transition)
+    .call(path, line);
 
   function path(selection, line) {
     if (interpolate) {

@@ -5,14 +5,7 @@ draw();
 select('#update').on('click', () => draw());
 
 function linesChart(selection, props) {
-  let {
-    data,
-    xScale,
-    yScale,
-    width = 600,
-    height = 400,
-    transition = d3_transition().duration(500)
-  } = props;
+  let { data, xScale, yScale, width = 600, height = 400, transition } = props;
 
   const svg = selection.selectAll('svg').data([null]);
   const layer = svg

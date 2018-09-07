@@ -1,5 +1,6 @@
-import { scaleLinear } from 'd3';
+import { scaleLinear, transition as d3_transition } from 'd3';
 import { svg } from '../__helpers__/svg';
+import { end } from '../__helpers__/transition';
 import lines from '../lines';
 
 const layer = svg();
@@ -7,7 +8,8 @@ const layer = svg();
 beforeAll(layer.setup);
 afterAll(layer.teardown);
 
-test('should render simple line', () => {
+test('should render simple line', async () => {
+  const transition = d3_transition().duration(0);
   const selection = lines(layer(), {
     data: [{ x: 0, y: 0 }, { x: 100, y: 100 }],
     xScale: scaleLinear()
@@ -15,13 +17,17 @@ test('should render simple line', () => {
       .range([0, 100]),
     yScale: scaleLinear()
       .domain([0, 100])
-      .range([100, 0])
+      .range([100, 0]),
+    transition
   });
+
+  await end(transition);
 
   expect(selection.node()).toMatchSnapshot();
 });
 
-test('should use style and class', () => {
+test('should use style and class', async () => {
+  const transition = d3_transition().duration(0);
   const selection = lines(layer(), {
     data: [
       { class: 'a', values: [{ x: 0, y: 0 }, { x: 100, y: 100 }] },
@@ -35,12 +41,15 @@ test('should use style and class', () => {
     yScale: scaleLinear()
       .domain([0, 100])
       .range([100, 0]),
+    transition,
 
     style: (_, i) => ({
       stroke: i % 2 === 0 ? 'blue' : 'red'
     }),
     class: d => d.class
   });
+
+  await end(transition);
 
   expect(selection.node()).toMatchSnapshot();
 });
