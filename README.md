@@ -75,11 +75,11 @@ linesChart(select('#chart'), { /* ... */ });
 
 ## API
 
-## @d3-composer/grid
+### @d3-composer/grid
 
 - [template](https://github.com/CSNW/d3-composer/blob/master/packages/grid/README.md#template) - Create grid from template
 
-## @d3-composer/svg
+### @d3-composer/svg
 
 - [chart](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#chart) - SVG chart wrapper with sizing and responsive options
 - [layout](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#layout) - Create `g` layers from grid
@@ -94,3 +94,9 @@ linesChart(select('#chart'), { /* ... */ });
 - [annotation](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#annotation) - Annotation component
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
 - [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
+
+## Development
+
+- Install: `yarn` or `yarn install` (d3-composer uses yarn workspaces)
+- Test: `yarn test`
+- Build: In package subdirectory: `yarn build`
