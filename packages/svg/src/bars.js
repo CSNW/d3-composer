@@ -17,11 +17,6 @@ export default function bars(selection, props) {
         ? xScale(d.x1)
         : x0.call(this, d, i, j) + xScale.bandwidth();
     };
-  const width =
-    props.width ||
-    function(d, i, j) {
-      return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));
-    };
 
   const y0 =
     props.y0 ||
@@ -33,11 +28,13 @@ export default function bars(selection, props) {
     function(d, i, j) {
       return d && d.y1 != null ? yScale(d.y1) : y.call(this, d, i, j);
     };
-  const height =
-    props.height ||
-    function(d, i, j) {
-      return Math.abs(y1.call(this, d, i, j) - y0.call(this, d, i, j));
-    };
+
+  function width(d, i, j) {
+    return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));
+  }
+  function height(d, i, j) {
+    return Math.abs(y1.call(this, d, i, j) - y0.call(this, d, i, j));
+  }
 
   const layers = seriesLayers(selection, props);
   const bars = layers.selectAll('rect').data(d => d.values, key);

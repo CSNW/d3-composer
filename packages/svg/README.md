@@ -77,8 +77,6 @@ Options:
 - `[x1]` - accessor for x1-value (default is x1-position or `x0 + xScale.bandwidth()`)
 - `[y0]` - accessor for y0-value (default is y0-position or `yScale(0)`)
 - `[y1]` - accessor for y1-value (default is y1-position or y-position)
-- `[width]` - accessor for width (default is `x1 - x0`)
-- `[height]` - accessor for height (default is `y1 - y0`)
 - `[key]` - Bar key for identifying bars (default is `d => d.key or x-value`)
 - `[style]` - Style string, object, or function for bar
 - `[class]` - Class string or function for bar
