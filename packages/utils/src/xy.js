@@ -17,7 +17,7 @@ export default function xy(options = {}) {
   key =
     key ||
     function(d) {
-      d && d.key != null ? d.key : xValue.apply(this, arguments);
+      return d && d.key != null ? d.key : xValue.apply(this, arguments);
     };
 
   return {

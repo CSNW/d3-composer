@@ -9,14 +9,13 @@ export function seriesLayers(selection, props) {
 
   const layers = selection.selectAll('[data-series]').data(data, seriesKey);
   layers.exit().remove();
-  layers
+
+  return layers
     .enter()
     .append('g')
-    .attr('data-series', key)
+    .attr('data-series', seriesKey)
     .property(Series, d => d)
     .merge(layers)
     .attr('class', seriesClass)
     .attr('style', toStyle(seriesStyle));
-
-  return layers;
 }
