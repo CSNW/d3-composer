@@ -12,8 +12,6 @@ export function toStyle(value) {
   }
 
   return Object.keys(value)
-    .map(key => {
-      return `${key}: ${value[key]};`;
-    })
+    .map(key => `${key}: ${value[key]};`)
     .join(' ');
 }

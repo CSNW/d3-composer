@@ -10,4 +10,4 @@ export { default as text } from './text';
 export { default as legend } from './legend';
 export { default as annotation } from './annotation';
 export { default as gridlines } from './gridlines';
-export { size } from './utils';
+export { size, seriesLayers } from './utils';

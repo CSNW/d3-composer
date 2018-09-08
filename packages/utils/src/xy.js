@@ -9,10 +9,16 @@ export default function xy(options = {}) {
     xScale,
     yScale,
     xValue = defaultXValue,
-    yValue = defaultYValue
+    yValue = defaultYValue,
+    key
   } = options;
 
   data = toSeries(data);
+  key =
+    key ||
+    function(d) {
+      d && d.key != null ? d.key : xValue.apply(this, arguments);
+    };
 
   return {
     data,
@@ -20,6 +26,7 @@ export default function xy(options = {}) {
     yScale,
     xValue,
     yValue,
+    key,
 
     x(d, i, j) {
       const value = xValue.call(this, d, i, j);
