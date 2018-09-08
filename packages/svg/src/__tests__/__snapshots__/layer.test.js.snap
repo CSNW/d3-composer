@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should add layer 1`] = `
+<g>
+  <g
+    data-layer="id"
+  />
+</g>
+`;
+
+exports[`should add layer 2`] = `
+<g
+  data-layer="id"
+/>
+`;
+
+exports[`should select layer 1`] = `
+<g>
+  <g
+    data-layer="id"
+  />
+</g>
+`;
+
+exports[`should select layer 2`] = `
+<g
+  data-layer="id"
+/>
+`;

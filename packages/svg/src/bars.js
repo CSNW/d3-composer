@@ -60,4 +60,6 @@ export default function bars(selection, props) {
     .attr('y', y)
     .attr('height', height)
     .attr('width', width);
+
+  return selection;
 }

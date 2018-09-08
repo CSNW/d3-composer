@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render simple bars 1`] = `
+<g>
+  <g
+    data-series="0"
+  >
+    <rect
+      height="25"
+      width="25"
+      x="0"
+      y="75"
+    />
+    <rect
+      height="50"
+      width="25"
+      x="25"
+      y="50"
+    />
+    <rect
+      height="75"
+      width="25"
+      x="50"
+      y="25"
+    />
+    <rect
+      height="100"
+      width="25"
+      x="75"
+      y="0"
+    />
+  </g>
+</g>
+`;
+
+exports[`should use style and class 1`] = `
+<g>
+  <g
+    class="series-0"
+    data-series="0"
+    style="fill: blue;"
+  >
+    <rect
+      height="25"
+      style="stroke: white;"
+      width="25"
+      x="0"
+      y="75"
+    />
+    <rect
+      height="50"
+      style="stroke: red;"
+      width="25"
+      x="25"
+      y="50"
+    />
+    <rect
+      class="is-highlighted"
+      height="75"
+      style="stroke: white;"
+      width="25"
+      x="50"
+      y="25"
+    />
+    <rect
+      height="100"
+      style="stroke: white;"
+      width="25"
+      x="75"
+      y="0"
+    />
+  </g>
+</g>
+`;

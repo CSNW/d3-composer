@@ -3,14 +3,14 @@ import { svg } from '../__helpers__/svg';
 import { end } from '../__helpers__/transition';
 import lines from '../lines';
 
-const layer = svg();
+const fixture = svg();
 
-beforeAll(layer.setup);
-afterAll(layer.teardown);
+beforeAll(fixture.setup);
+afterAll(fixture.teardown);
 
 test('should render simple line', async () => {
   const transition = d3_transition().duration(0);
-  const selection = lines(layer(), {
+  const selection = lines(fixture(), {
     data: [{ x: 0, y: 0 }, { x: 100, y: 100 }],
     xScale: scaleLinear()
       .domain([0, 100])
@@ -28,7 +28,7 @@ test('should render simple line', async () => {
 
 test('should use style and class', async () => {
   const transition = d3_transition().duration(0);
-  const selection = lines(layer(), {
+  const selection = lines(fixture(), {
     data: [
       { class: 'a', values: [{ x: 0, y: 0 }, { x: 100, y: 100 }] },
       { class: 'b', values: [{ x: 0, y: 100 }, { x: 100, y: 0 }] }
