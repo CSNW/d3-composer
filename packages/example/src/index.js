@@ -51,7 +51,7 @@ function barsChart(selection, props) {
     data,
     xScale,
     yScale,
-    style: { fill: 'green' },
+    seriesStyle: { fill: 'green' },
     transition
   });
 }

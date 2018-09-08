@@ -5,33 +5,54 @@ export default function bars(selection, props) {
   const { style, class: className, transition } = props;
   const { x, y, key, xScale, yScale } = xy(props);
 
-  const layers = seriesLayers(selection, props);
-  const bars = layers.selectAll('rect').data(d => d.values, key);
-
   const x0 =
     props.x0 ||
-    function(d) {
-      return d && d.x0 != null ? xScale(d.x0) : x.apply(this, arguments);
+    function(d, i, j) {
+      return d && d.x0 != null ? xScale(d.x0) : x.call(this, d, i, j);
+    };
+  const x1 =
+    props.x1 ||
+    function(d, i, j) {
+      return d && d.x1 != null
+        ? xScale(d.x1)
+        : x0.call(this, d, i, j) + xScale.bandwidth();
     };
   const width =
     props.width ||
-    function(d) {
-      return d && d.x0 != null && d.x1 != null
-        ? Math.max(0, xScale(d.x1) - xScale(d.x0))
-        : xScale.bandwidth();
+    function(d, i, j) {
+      return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));
     };
+
+  const y0 =
+    props.y0 ||
+    function(d) {
+      return d && d.y0 != null ? yScale(d.y0) : yScale(0);
+    };
+  const y1 =
+    props.y1 ||
+    function(d, i, j) {
+      return d && d.y1 != null ? yScale(d.y1) : y.call(this, d, i, j);
+    };
+  const height =
+    props.height ||
+    function(d, i, j) {
+      return Math.abs(y1.call(this, d, i, j) - y0.call(this, d, i, j));
+    };
+
+  const layers = seriesLayers(selection, props);
+  const bars = layers.selectAll('rect').data(d => d.values, key);
 
   bars
     .exit()
     .transition(transition)
-    .attr('y', yScale(0))
+    .attr('y', y0)
     .attr('height', 0)
     .remove();
   bars
     .enter()
     .append('rect')
     .attr('x', x0)
-    .attr('y', yScale(0))
+    .attr('y', y0)
     .attr('height', 0)
     .attr('width', width)
     .merge(bars)
@@ -40,8 +61,6 @@ export default function bars(selection, props) {
     .transition(transition)
     .attr('x', x0)
     .attr('y', y)
-    .attr('height', function() {
-      return Math.abs(y.apply(this, arguments) - yScale(0));
-    })
+    .attr('height', height)
     .attr('width', width);
 }

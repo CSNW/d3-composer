@@ -5,7 +5,8 @@ export function size(selection) {
 }
 
 export function seriesLayers(selection, props) {
-  const { data, seriesKey, seriesClass, seriesStyle } = series(props);
+  const { seriesClass, seriesStyle } = props;
+  const { data, seriesKey } = series(props);
 
   const layers = selection.selectAll('[data-series]').data(data, seriesKey);
   layers.exit().remove();

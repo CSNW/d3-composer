@@ -33,16 +33,21 @@ Create named `g` layer
 
 Options:
 
-- `data` - x-y series data
-- `xScale`
-- `yScale`
-- `curve` - See [d3-shape](https://github.com/d3/d3-shape#curves)
-- `style` - Style string, object, or function for line
-- `class` - Class string or function for line
-- `transition` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
-- `interpolate` - An interpolation function for `update` and `exit`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path)
+- `data` - {x,y} series data
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
+- `yScale` - d3-scale for y-value
+- `[xValue]` - accessor for x-value (default = `d => d.x`)
+- `[yValue]` - accessor for y-value (default = `d => d.y`)
+- `[curve]` - See [d3-shape](https://github.com/d3/d3-shape#curves)
+- `[style]` - Style string, object, or function for line
+- `[class]` - Class string or function for line
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
+- `[interpolate]` - An interpolation function for `update` and `exit`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path)
 
 ```js
+// scale
+lines(selection, { xScale: d3.scaleLog().domain([1, 10000]) })
+
 // curve
 lines(selection, { curve: d3.curveCardinal() });
 
@@ -61,7 +66,40 @@ lines(selection, { interpolate: d3.interpolatePath })
 
 <a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>[, <i>props</i>])
 
-Bars chart
+Options:
+
+- `data` - {x,y} or {x0,x1,y} or {x0,x1,y0,y1} series data
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value (`d3.scaleBand()` is the typical choice)
+- `yScale` - d3-scale for y-value
+- `[xValue]` - accessor for x-value (default = `d => d.x`)
+- `[yValue]` - accessor for y-value (default = `d => d.y`)
+- `[x0]` - accessor for x0-value (default is x0-position or x-position)
+- `[x1]` - accessor for x1-value (default is x1-position or `x0 + xScale.bandwidth()`)
+- `[y0]` - accessor for y0-value (default is y0-position or `yScale(0)`)
+- `[y1]` - accessor for y1-value (default is y1-position or y-position)
+- `[width]` - accessor for width (default is `x1 - x0`)
+- `[height]` - accessor for height (default is `y1 - y0`)
+- `[key]` - Bar key for identifying bars (default is `d => d.key or x-value`)
+- `[style]` - Style string, object, or function for bar
+- `[class]` - Class string or function for bar
+- `[seriesKey]` - Series key for identifying series (default is `(series, i) => series.key || i`)
+- `[seriesStyle]` - Style string, object, or function for series group
+- `[seriesClass]` - Class string or function for series group
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
+
+```js
+// scale
+bars(selection, { xScale: d3.scaleLog().domain([1, 10000]) })
+
+// style
+bars(selection, { style: d => { fill: d.color } });
+
+// class
+bars(selection, { class: d => d.class });
+
+// transition
+bars(selection, { transition: d3.transition().duration(1000) })
+```
 
 <a href="#scatter" name="scatter">#</a> <b>scatter</b>(<i>selection</i>[, <i>props</i>])
 
