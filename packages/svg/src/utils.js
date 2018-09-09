@@ -2,9 +2,21 @@ import { Area, Series, series, toStyle } from '@d3-composer/utils';
 
 export function size(selection) {
   const node = selection.node();
-  const area = Area.get(node);
 
-  // TODO much more robust
+  if (node.tagName === 'svg') {
+    const viewBox = node.getAttribute('viewBox');
+    if (viewBox) {
+      const [_1, _2, width, height] = viewBox.split(' ');
+      return { width, height };
+    }
+
+    const width = node.getAttribute('width');
+    const height = node.getAttribute('height');
+
+    return { width, height };
+  }
+
+  const area = Area.get(node);
   return area || { width: 0, height: 0 };
 }
 

@@ -6,28 +6,42 @@ import {
   transition as d3_transition
 } from 'd3';
 import { template } from '@d3-composer/grid';
-import { chart, layout, lines, bars, text } from '@d3-composer/svg';
+import {
+  chart,
+  layout,
+  lines,
+  bars,
+  text,
+  axisLeft,
+  axisBottom,
+  axisTop,
+  axisRight,
+  size
+} from '@d3-composer/svg';
 
 draw();
 select('#update').on('click', () => draw());
 
 function linesChart(selection, props) {
-  let { data, xScale, yScale, width = 600, height = 400, transition } = props;
-
-  const svg = chart(selection, { width, height, responsive: true });
+  let { data, xScale, yScale, transition } = props;
 
   const grid = template(
     `
-    "title" 75  
-    "chart" auto / auto`,
-    { width, height }
+    "title title" 60  
+    "y_axis chart" auto 
+    ". x_axis" 40
+    / 40 auto`,
+    size(selection)
   );
-  const layers = layout(svg, grid);
+  const layers = layout(selection, grid);
 
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
-  text(layers.title(), { text: 'Title', justify: 'center', align: 'center' });
+  text(layers.title(), { text: 'Lines', justify: 'center', align: 'center' });
+  axisLeft(layers.y_axis(), { yScale });
+  axisBottom(layers.x_axis(), { xScale });
+
   lines(layers.chart(), {
     data,
     xScale,
@@ -38,14 +52,26 @@ function linesChart(selection, props) {
 }
 
 function barsChart(selection, props) {
-  let { data, xScale, yScale, width = 600, height = 400, transition } = props;
+  let { data, xScale, yScale, transition } = props;
 
-  const svg = chart(selection, { width, height });
+  const grid = template(
+    `
+    "title title" 40
+    "x_axis ." 20
+    "chart y_axis" auto 
+    / auto 40`,
+    size(selection)
+  );
+  const layers = layout(selection, grid);
 
-  xScale = xScale.range([0, width]);
-  yScale = yScale.range([height, 0]);
+  xScale = xScale.range([0, grid.chart.width]);
+  yScale = yScale.range([grid.chart.height, 0]);
 
-  bars(svg, {
+  text(layers.title(), { text: 'Bars', justify: 'center', align: 'center' });
+  axisTop(layers.x_axis(), { xScale });
+  axisRight(layers.y_axis(), { yScale });
+
+  bars(layers.chart(), {
     data,
     xScale,
     yScale,
@@ -55,7 +81,13 @@ function barsChart(selection, props) {
 }
 
 function draw() {
-  linesChart(select('#lines'), {
+  const lines = chart(select('#lines'), {
+    width: 600,
+    height: 400,
+    responsive: true
+  });
+
+  linesChart(lines, {
     data: random(),
     xScale: scaleLinear().domain([0, 100]),
     yScale: scaleLinear().domain([0, 100]),
@@ -63,7 +95,9 @@ function draw() {
   });
 
   const domain = range(0, 11);
-  barsChart(select('#bars'), {
+  const bars = chart(select('#bars'), { width: 600, height: 400 });
+
+  barsChart(bars, {
     data: [{ values: domain.map(x => ({ x, y: inRange(0, 100) })) }],
     xScale: scaleBand()
       .domain(domain)

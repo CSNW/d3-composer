@@ -5,7 +5,7 @@ export { default as lines } from './lines';
 export { default as bars } from './bars';
 export { default as scatter } from './scatter';
 export { default as labels } from './labels';
-export { default as axis } from './axis';
+export { axisLeft, axisRight, axisBottom, axisTop } from './axis';
 export { default as text } from './text';
 export { default as legend } from './legend';
 export { default as gridlines } from './gridlines';

@@ -143,9 +143,26 @@ TODO Scatter chart
 
 TODO Labels component
 
-<a href="#axis" name="axis">#</a> <b>axis</b>(<i>selection</i>[, <i>props</i>])
+<a href="#axisTop" name="axisTop">#</a> <b>axisTop</b>(<i>selection</i>[, <i>props</i>])
 
-TODO Axis component
+A simple top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis)
+
+Options (see [d3-axis](https://github.com/d3/d3-axis) for details)
+
+- `[ticks]` - tick count or interval. To set _specifier_, use `tickArguments` 
+- `[tickArguments]`, `[tickValues]`, `[tickFormat]`, `[tickSize]`, `[tickSizeInner]`, `[tickSizeOuter]`, `[tickPadding]`
+
+<a href="#axisRight" name="axisRight">#</a> <b>axisRight</b>(<i>selection</i>[, <i>props</i>])
+
+Right-oriented axis (see [#axisTop](axisTop) for options)
+
+<a href="#axisBottom" name="axisBottom">#</a> <b>axisBottom</b>(<i>selection</i>[, <i>props</i>])
+
+Bottom-oriented axis (see [#axisTop](axisTop) for options)
+
+<a href="#axisLeft" name="axisLeft">#</a> <b>axisLeft</b>(<i>selection</i>[, <i>props</i>])
+
+Left-oriented axis (see [#axisTop](axisTop) for options)
 
 <a href="#text" name="text">#</a> <b>text</b>(<i>selection</i>[, <i>props</i>])
 

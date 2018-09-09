@@ -97,7 +97,10 @@ linesChart(svg, { /* ... */ });
 - [bars](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#bars) - Bars chart
 - [scatter](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#scatter) - Scatter chart
 - [labels](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#labels) - Labels component
-- [axis](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axis) - Axis component
+- [axisTop](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisTop) - Top-oriented axis component
+- [axisRight](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisRight) - Right-oriented axis component
+- [axisBottom](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisBottom) - Bottom-oriented axis component
+- [axisLeft](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisLeft) - Left-oriented axis component
 - [text](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#text) - Text component
 - [legend](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#legend) - Legend component
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
