@@ -1,4 +1,5 @@
 import { size } from './utils';
+import { toStyle } from '@d3-composer/utils';
 
 export default function text(selection, props) {
   // anchor = origin-x = 'start' | 'middle' | 'end'
@@ -10,7 +11,15 @@ export default function text(selection, props) {
   // align = container-y = 'start' | 'center' | 'end'
   //   (https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-31)
 
-  let { text, anchor, baseline, justify = 'start', align = 'start' } = props;
+  let {
+    text,
+    anchor,
+    baseline,
+    justify = 'start',
+    align = 'start',
+    class: className,
+    style
+  } = props;
 
   anchor =
     anchor != null
@@ -59,5 +68,7 @@ export default function text(selection, props) {
     .attr('dominant-baseline', baseline)
     .attr('text-anchor', anchor)
     .attr('transform', transform)
+    .attr('class', className)
+    .attr('style', toStyle(style))
     .text(text);
 }

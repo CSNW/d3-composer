@@ -1,4 +1,7 @@
 export function toStyle(value) {
+  if (!value) {
+    return;
+  }
   if (typeof value === 'function') {
     return function() {
       return toStyle(value.apply(this, arguments));
@@ -6,9 +9,6 @@ export function toStyle(value) {
   }
   if (typeof value === 'string') {
     return value;
-  }
-  if (!value) {
-    return;
   }
 
   return Object.keys(value)
