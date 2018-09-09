@@ -16,6 +16,7 @@ import {
   scatter,
   labels,
   text,
+  legend,
   axisLeft,
   axisBottom,
   axisTop,
@@ -31,10 +32,10 @@ function linesChart(selection, props) {
 
   const grid = template(
     `
-    "title title title" 60  
-    "y_axis_title y_axis chart" auto 
-    ". . x_axis" 40
-    / 20 40 auto`,
+    "title title title title" 60  
+    "y_axis_title y_axis chart legend" auto 
+    ". . x_axis ." 40
+    / 20 40 auto 100`,
     size(selection)
   );
   const layers = layout(selection, grid);
@@ -78,6 +79,10 @@ function linesChart(selection, props) {
     baseline: 'baseline',
     transform: `translate(0, -10)`,
     transition
+  });
+
+  legend(layers.legend(), {
+    data: ['A', 'B', 'C']
   });
 }
 

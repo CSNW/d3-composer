@@ -182,7 +182,7 @@ Options:
 
 A simple top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis)
 
-Options (see [d3-axis](https://github.com/d3/d3-axis) for details)
+Options (see [d3-axis](https://github.com/d3/d3-axis) for details):
 
 - `[ticks]` - tick count or interval. To set _specifier_, use `tickArguments` 
 - `[tickArguments]`, `[tickValues]`, `[tickFormat]`, `[tickSize]`, `[tickSizeInner]`, `[tickSizeOuter]`, `[tickPadding]`
@@ -203,7 +203,7 @@ Left-oriented axis (see [#axisTop](axisTop) for options)
 
 A simple text component for adding and laying out text.
 
-Options
+Options:
 
 - `text` - Text value
 - `[anchor]` - x-value of origin (`'start'`, `'middle'`, or `'end'`)
@@ -217,11 +217,26 @@ Options
 
 <a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>[, <i>props</i>])
 
-Legend component
+A simple legend component with paths and labels
+
+Options:
+
+- `path` - `d` string or function to pass to `path`
+- `data` - legend data for labels and other functions
+- `[text]` - string or function for legend text (default is `d => d`)
+- `[size = 50]` - Set width and height of legend based on symbol sizing 
+- `[width]` - Width of path area
+- `[height]` -  Height of legend group
+- `[groupStyle]` - Style string, object, or function for item group 
+- `[groupClass]` - Class string or function for item group
+- `[pathStyle]` - Style string, object, or function for item path
+- `[pathClass]` - Class string or function for item path
+- `[labelStyle]` - Style string, object, or function for item label
+- `[labelClass]` - Class string or function for item label
 
 <a href="#gridlines" name="gridlines">#</a> <b>gridlines</b>(<i>selection</i>[, <i>props</i>])
 
-Gridlines component
+TODO Gridlines component
 
 <a href="#size" name="size">#</a> <b>size</b>(<i>selection<i>)
 
