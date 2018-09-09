@@ -13,5 +13,6 @@
   "dependencies": {
     "d3-array": "^1.2.4",
     "d3-selection": "^1.3.2"
-  }
+  },
+  "files": ["dist", "src", "!src/__tests__", "README.md"]
 }
