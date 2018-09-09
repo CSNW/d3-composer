@@ -1,3 +1,6 @@
+import resolve from 'rollup-plugin-node-resolve';
+import filesize from 'rollup-plugin-filesize';
+
 export default {
   input: 'src/index.js',
   output: {
@@ -9,5 +12,6 @@ export default {
       'd3-selection': 'd3'
     }
   },
-  external: ['d3-array', 'd3-selection']
+  external: ['d3-array', 'd3-selection'],
+  plugins: [resolve(), filesize()]
 };
