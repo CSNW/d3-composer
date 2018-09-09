@@ -5,7 +5,8 @@ import {
   scaleBand,
   transition as d3_transition
 } from 'd3';
-import { lines, bars } from '@d3-composer/svg';
+import { template } from '@d3-composer/grid';
+import { chart, layout, lines, bars } from '@d3-composer/svg';
 
 draw();
 select('#update').on('click', () => draw());
@@ -13,18 +14,15 @@ select('#update').on('click', () => draw());
 function linesChart(selection, props) {
   let { data, xScale, yScale, width = 600, height = 400, transition } = props;
 
-  const svg = selection.selectAll('svg').data([null]);
-  const layer = svg
-    .enter()
-    .append('svg')
-    .merge(svg)
-    .attr('width', width)
-    .attr('height', height);
+  const svg = chart(selection, { width, height });
 
-  xScale = xScale.range([0, width]);
-  yScale = yScale.range([height, 0]);
+  const grid = template(`"chart" auto / auto`, { width, height });
+  const layers = layout(svg, grid);
 
-  lines(layer, {
+  xScale = xScale.range([0, grid.chart.width]);
+  yScale = yScale.range([grid.chart.height, 0]);
+
+  lines(layers.chart(), {
     data,
     xScale,
     yScale,
@@ -36,18 +34,12 @@ function linesChart(selection, props) {
 function barsChart(selection, props) {
   let { data, xScale, yScale, width = 600, height = 400, transition } = props;
 
-  const svg = selection.selectAll('svg').data([null]);
-  const layer = svg
-    .enter()
-    .append('svg')
-    .merge(svg)
-    .attr('width', width)
-    .attr('height', height);
+  const svg = chart(selection, { width, height, responsive: false });
 
   xScale = xScale.range([0, width]);
   yScale = yScale.range([height, 0]);
 
-  bars(layer, {
+  bars(svg, {
     data,
     xScale,
     yScale,

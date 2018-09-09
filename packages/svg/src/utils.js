@@ -8,7 +8,10 @@ export function seriesLayers(selection, props) {
   const { seriesClass, seriesStyle } = props;
   const { data, seriesKey } = series(props);
 
-  const layers = selection.selectAll('[data-series]').data(data, seriesKey);
+  const layers = selection
+    .selectAll(descendants)
+    .filter('[data-series]')
+    .data(data, seriesKey);
   layers.exit().remove();
 
   return layers
@@ -19,4 +22,8 @@ export function seriesLayers(selection, props) {
     .merge(layers)
     .attr('class', seriesClass)
     .attr('style', toStyle(seriesStyle));
+}
+
+export function descendants() {
+  return this.childNodes;
 }
