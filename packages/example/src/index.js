@@ -14,6 +14,7 @@ import {
   lines,
   bars,
   scatter,
+  labels,
   text,
   axisLeft,
   axisBottom,
@@ -66,6 +67,16 @@ function linesChart(selection, props) {
       .size(50)
       .type(symbolCircle),
     style: { stroke: 'blue', fill: 'rgba(255, 255, 255, 0.5)' },
+    transition
+  });
+  labels(layers.chart('labels'), {
+    data,
+    xScale,
+    yScale,
+    text: d => d.y,
+    anchor: 'middle',
+    baseline: 'baseline',
+    transform: `translate(0, -10)`,
     transition
   });
 }

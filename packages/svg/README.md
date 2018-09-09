@@ -157,7 +157,26 @@ Options:
 
 <a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>[, <i>props</i>])
 
-TODO Labels component
+Labels chart for placing `text` labels at x,y positions.
+
+Options:
+
+- `text` - String or function for setting text value
+- `data` - {x,y} series data
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
+- `yScale` - d3-scale for y-value
+- `[transform]` - Transform string or function to apply to each label relative to x,y point
+- `[anchor = 'start']` - x-value of text origin (`'start'`, `'middle'`, or `'end'`)
+- `[baseline = 'hanging']` - y-value of text origin (`'hanging'`, `'middle'`, or `'baseline'`), see [dominant-baseline](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
+- `[xValue]` - accessor for x-value (default = `d => d.x`)
+- `[yValue]` - accessor for y-value (default = `d => d.y`)
+- `[key]` - Path key. Note: By default, `d => d.key or x-value` is used, so for data with multiple points at a single x-value, a `key` will need to be set on `d` or a custom `key` prop provided 
+- `[style]` - Style string, object, or function for path
+- `[class]` - Class string or function for path
+- `[seriesKey]` - Series key for identifying series (default is `(series, i) => series.key || i`)
+- `[seriesStyle]` - Style string, object, or function for series group
+- `[seriesClass]` - Class string or function for series group
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
 <a href="#axisTop" name="axisTop">#</a> <b>axisTop</b>(<i>selection</i>[, <i>props</i>])
 

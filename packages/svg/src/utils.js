@@ -56,3 +56,21 @@ export function interpolatePath(selection, path, interpolate) {
     selection.attr('d', path);
   }
 }
+
+export function translateXY({ x: _x, y: _y }) {
+  return function(d, i, j) {
+    const x = _x.call(this, d, i, j);
+    const y = _y.call(this, d, i, j);
+
+    return `translate(${x}, ${y})`;
+  };
+}
+
+export function translateXY0({ x: _x, yScale }) {
+  return function(d, i, j) {
+    const x = _x.call(this, d, i, j);
+    const y = yScale(d && d.y0 != null ? d.y0 : 0);
+
+    return `translate(${x}, ${y})`;
+  };
+}
