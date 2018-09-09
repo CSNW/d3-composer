@@ -23,7 +23,6 @@ d3-composer uses a `grid-template` approach (see: [A Complete Guide to Grid](htt
 
 ```js
 import { template } from '@d3-composer/grid';
-import { size } from '@d3-composer/svg';
 
 const grid = template(`
   "title title" 50
@@ -61,8 +60,8 @@ function linesChart(selection, props = {}) {
   `, { width, height });
   const layers = layout(svg, grid);
 
-  const xScale = props.xScale.domain([0, grid.chart.width]);
-  const yScale = props.yScale.domain([grid.chart.height, 0]);
+  const xScale = props.xScale.range([0, grid.chart.width]);
+  const yScale = props.yScale.range([grid.chart.height, 0]);
 
   axis(layers.x_axis(), { scale: xScale });
   axis(layers.y_axis(), { scale: yScale });
