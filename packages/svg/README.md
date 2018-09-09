@@ -63,7 +63,7 @@ Create or select an existing `g` layer for the given id.
 
 <a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>[, <i>props</i>])
 
-A simple lines chart for drawing x,y lines
+A lines chart for drawing x,y lines
 
 Options:
 
@@ -100,7 +100,7 @@ lines(selection, { interpolate: d3.interpolatePath })
 
 <a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>[, <i>props</i>])
 
-A flexible, lightweight bars chart component that can be used to create ordinal, histogram, horizontal, and stacked bars charts.
+A flexible bars chart component that can be used to create ordinal, histogram, horizontal, and stacked bars charts.
 
 Options:
 
@@ -170,7 +170,7 @@ Options:
 - `[baseline = 'hanging']` - y-value of text origin (`'hanging'`, `'middle'`, or `'baseline'`), see [dominant-baseline](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
 - `[xValue]` - accessor for x-value (default = `d => d.x`)
 - `[yValue]` - accessor for y-value (default = `d => d.y`)
-- `[key]` - Path key. Note: By default, `d => d.key or x-value` is used, so for data with multiple points at a single x-value, a `key` will need to be set on `d` or a custom `key` prop provided 
+- `[key]` - Path key. Note: By default, `d => d.key or x-value` is used, so for data with multiple points at a single x-value, a `key` will need to be set on `d` or a custom `key` prop provided
 - `[style]` - Style string, object, or function for path
 - `[class]` - Class string or function for path
 - `[seriesKey]` - Series key for identifying series (default is `(series, i) => series.key || i`)
@@ -180,7 +180,7 @@ Options:
 
 <a href="#axisTop" name="axisTop">#</a> <b>axisTop</b>(<i>selection</i>[, <i>props</i>])
 
-A simple top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis)
+A top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis)
 
 Options (see [d3-axis](https://github.com/d3/d3-axis) for details):
 
@@ -201,7 +201,7 @@ Left-oriented axis (see [#axisTop](axisTop) for options)
 
 <a href="#text" name="text">#</a> <b>text</b>(<i>selection</i>[, <i>props</i>])
 
-A simple text component for adding and laying out text.
+A text component for adding and laying out text.
 
 Options:
 
@@ -217,7 +217,7 @@ Options:
 
 <a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>[, <i>props</i>])
 
-A simple legend component with paths and labels
+A legend component with paths and labels
 
 Options:
 
@@ -236,7 +236,15 @@ Options:
 
 <a href="#gridlines" name="gridlines">#</a> <b>gridlines</b>(<i>selection</i>[, <i>props</i>])
 
-TODO Gridlines component
+Gridlines component
+
+Options:
+
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
+- `yScale` - d3-scale for y-value
+- `[style]` - Style string, object, or function for line
+- `[class]` - Class string or function for line
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
 <a href="#symbolLine" name="symbolLine">#</a> <b>symbolLine<b>
 

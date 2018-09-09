@@ -15,6 +15,7 @@ import {
   bars,
   scatter,
   labels,
+  gridlines,
   text,
   legend,
   axisLeft,
@@ -51,6 +52,13 @@ function linesChart(selection, props) {
     justify: 'center',
     rotation: -90
   });
+
+  gridlines(layers.chart('gridlines'), {
+    xScale,
+    yScale,
+    style: { stroke: '#ccc' }
+  });
+
   axisLeft(layers.y_axis(), { yScale });
   axisBottom(layers.x_axis(), { xScale });
 
