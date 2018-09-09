@@ -6,7 +6,7 @@ import {
   transition as d3_transition
 } from 'd3';
 import { template } from '@d3-composer/grid';
-import { chart, layout, lines, bars } from '@d3-composer/svg';
+import { chart, layout, lines, bars, text } from '@d3-composer/svg';
 
 draw();
 select('#update').on('click', () => draw());
@@ -16,12 +16,18 @@ function linesChart(selection, props) {
 
   const svg = chart(selection, { width, height });
 
-  const grid = template(`"chart" auto / auto`, { width, height });
+  const grid = template(
+    `
+    "title" 75  
+    "chart" auto / auto`,
+    { width, height }
+  );
   const layers = layout(svg, grid);
 
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
+  text(layers.title(), { text: 'Title', justify: 'center', align: 'center' });
   lines(layers.chart(), {
     data,
     xScale,

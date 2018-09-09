@@ -1,3 +1,63 @@
+import { size } from './utils';
+
 export default function text(selection, props) {
-  // ...
+  // anchor = origin-x = 'start' | 'middle' | 'end'
+  //   (https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
+  // baseline = origin-y = 'hanging' | 'middle' | 'baseline'
+  //   (https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
+  // justify = container-x = 'start' | 'center' | 'end'
+  //   (https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-30)
+  // align = container-y = 'start' | 'center' | 'end'
+  //   (https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-31)
+
+  let { text, anchor, baseline, justify = 'start', align = 'start' } = props;
+
+  anchor =
+    anchor != null
+      ? anchor
+      : justify === 'center'
+        ? 'middle'
+        : justify === 'end'
+          ? 'end'
+          : 'start';
+
+  baseline =
+    baseline != null
+      ? baseline
+      : align === 'center'
+        ? 'middle'
+        : align === 'end'
+          ? 'baseline'
+          : 'hanging';
+
+  let transform = null;
+  if (justify !== 'start' || align !== 'start') {
+    const { width, height } = size(selection);
+    let x = 0;
+    let y = 0;
+
+    if (justify === 'center') {
+      x = width / 2;
+    } else if (justify === 'end') {
+      x = width;
+    }
+
+    if (align === 'center') {
+      y = height / 2;
+    } else if (align === 'end') {
+      y = height;
+    }
+
+    transform = `translate(${x}, ${y})`;
+  }
+
+  const instance = selection.selectAll('text').data([null]);
+  instance
+    .enter()
+    .append('text')
+    .merge(instance)
+    .attr('dominant-baseline', baseline)
+    .attr('text-anchor', anchor)
+    .attr('transform', transform)
+    .text(text);
 }

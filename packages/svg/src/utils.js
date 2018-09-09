@@ -1,7 +1,11 @@
-import { Series, series, toStyle } from '@d3-composer/utils';
+import { Area, Series, series, toStyle } from '@d3-composer/utils';
 
 export function size(selection) {
-  // ...
+  const node = selection.node();
+  const area = Area.get(node);
+
+  // TODO much more robust
+  return area || { width: 0, height: 0 };
 }
 
 export function seriesLayers(selection, props) {
