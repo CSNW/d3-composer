@@ -106,6 +106,18 @@ linesChart(svg, { /* ... */ });
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
 - [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
 - [seriesLayers](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#seriesLayers) - Helpers for series layers
+- [interpolatePath](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#interpolatePath) - Interpolate path `d`
+
+### @d3-composer/utils
+
+- [xy](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#xy) - xy helper
+- [series](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#series) - series helper
+- [Series](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Series-local) - series local
+- [isSeries](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#isSeries) - check if series
+- [toSeries](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toSeries) - convert to series
+- [seriesExtent](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#seriesExtent) - determine series extent
+- [toStyle](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toStyle) - convert to style string
+- [Area](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Area-local) - area local
 
 ## Development
 

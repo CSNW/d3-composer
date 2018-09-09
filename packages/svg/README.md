@@ -264,3 +264,7 @@ Size helper for determining selection size.
 <a href="#seriesLayers" name="seriesLayers">#</a> <b>seriesLayers</b>(<i>options<i>)
 
 Series layers helper for adding/removing layers for series data.
+
+<a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</a>(<i>selection<i>, <i>path</i>[, <i>interpolate</i>])
+
+Interpolate `d` for path with `attrTween`, if `interpolate` is provided, otherwise set `d` attr. `path` should be a `d` path string or function. `interpolate` is an interpolate function taking `(previous d, next d)`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path).
