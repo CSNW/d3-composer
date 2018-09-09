@@ -43,3 +43,16 @@ export function seriesLayers(selection, props) {
 export function childNodes() {
   return this.childNodes;
 }
+
+export function interpolatePath(selection, path, interpolate) {
+  if (interpolate) {
+    selection.attrTween('d', function(d, i, j) {
+      const next = typeof path === 'function' ? path.call(this, d, i, j) : path;
+      const previous = this.getAttribute('d');
+
+      return interpolate(previous, next);
+    });
+  } else {
+    selection.attr('d', path);
+  }
+}

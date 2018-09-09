@@ -3,7 +3,9 @@ import {
   select,
   scaleLinear,
   scaleBand,
-  transition as d3_transition
+  transition as d3_transition,
+  symbol,
+  symbolCircle
 } from 'd3';
 import { template } from '@d3-composer/grid';
 import {
@@ -11,6 +13,7 @@ import {
   layout,
   lines,
   bars,
+  scatter,
   text,
   axisLeft,
   axisBottom,
@@ -42,11 +45,21 @@ function linesChart(selection, props) {
   axisLeft(layers.y_axis(), { yScale });
   axisBottom(layers.x_axis(), { xScale });
 
-  lines(layers.chart(), {
+  lines(layers.chart('lines'), {
     data,
     xScale,
     yScale,
     style: { stroke: 'blue', fill: 'none' },
+    transition
+  });
+  scatter(layers.chart('scatter'), {
+    data,
+    xScale,
+    yScale,
+    path: symbol()
+      .size(50)
+      .type(symbolCircle),
+    style: { stroke: 'blue', fill: 'rgba(255, 255, 255, 0.5)' },
     transition
   });
 }

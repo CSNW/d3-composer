@@ -75,7 +75,7 @@ Options:
 - `[curve]` - See [d3-shape](https://github.com/d3/d3-shape#curves)
 - `[style]` - Style string, object, or function for line
 - `[class]` - Class string or function for line
-- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 - `[interpolate]` - An interpolation function for `update` and `exit`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path)
 
 ```js
@@ -119,7 +119,7 @@ Options:
 - `[seriesKey]` - Series key for identifying series (default is `(series, i) => series.key || i`)
 - `[seriesStyle]` - Style string, object, or function for series group
 - `[seriesClass]` - Class string or function for series group
-- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition)).
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
 ```js
 // scale
@@ -137,7 +137,23 @@ bars(selection, { transition: d3.transition().duration(1000) })
 
 <a href="#scatter" name="scatter">#</a> <b>scatter</b>(<i>selection</i>[, <i>props</i>])
 
-TODO Scatter chart
+Scatter chart for placing `path` at x,y positions.
+
+Options:
+
+- `path` - String or function that returns a `d` for `path`. (e.g. `d3.symbol().size(50).type(d3.symbolCircle)`)
+- `data` - {x,y} series data
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
+- `yScale` - d3-scale for y-value
+- `[xValue]` - accessor for x-value (default = `d => d.x`)
+- `[yValue]` - accessor for y-value (default = `d => d.y`)
+- `[key]` - Path key. Note: By default, `d => d.key or x-value` is used, so for data with multiple points at a single x-value, a `key` will need to be set on `d` or a custom `key` prop provided 
+- `[style]` - Style string, object, or function for path
+- `[class]` - Class string or function for path
+- `[seriesKey]` - Series key for identifying series (default is `(series, i) => series.key || i`)
+- `[seriesStyle]` - Style string, object, or function for series group
+- `[seriesClass]` - Class string or function for series group
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
 <a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>[, <i>props</i>])
 
@@ -188,7 +204,7 @@ Gridlines component
 
 <a href="#size" name="size">#</a> <b>size</b>(<i>selection<i>)
 
-Size helper
+Size helper for determining selection size.
 
 <a href="#seriesLayers" name="seriesLayers">#</a> <b>seriesLayers</b>(<i>options<i>)
 
