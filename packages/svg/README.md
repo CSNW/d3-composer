@@ -193,6 +193,8 @@ Options
 - `[align = 'start']` - y-value of container placement (`'start'`, `'center'`, `'end'`)
 - `[style]` -  Style string, object, or function for text
 - `[class]` - Class string or function for text
+- `[rotation]` - Rotate text by given angle (e.g. `90deg`)
+- `[transform]` - Manually transform text
 
 <a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>[, <i>props</i>])
 

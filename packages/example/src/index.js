@@ -30,10 +30,10 @@ function linesChart(selection, props) {
 
   const grid = template(
     `
-    "title title" 60  
-    "y_axis chart" auto 
-    ". x_axis" 40
-    / 40 auto`,
+    "title title title" 60  
+    "y_axis_title y_axis chart" auto 
+    ". . x_axis" 40
+    / 20 40 auto`,
     size(selection)
   );
   const layers = layout(selection, grid);
@@ -42,6 +42,12 @@ function linesChart(selection, props) {
   yScale = yScale.range([grid.chart.height, 0]);
 
   text(layers.title(), { text: 'Lines', justify: 'center', align: 'center' });
+  text(layers.y_axis_title(), {
+    text: 'y-axis title is really long',
+    align: 'center',
+    justify: 'center',
+    rotation: -90
+  });
   axisLeft(layers.y_axis(), { yScale });
   axisBottom(layers.x_axis(), { xScale });
 

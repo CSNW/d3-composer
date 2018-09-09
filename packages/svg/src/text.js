@@ -18,7 +18,9 @@ export default function text(selection, props) {
     justify = 'start',
     align = 'start',
     class: className,
-    style
+    style,
+    rotation,
+    transform
   } = props;
 
   anchor =
@@ -39,8 +41,7 @@ export default function text(selection, props) {
           ? 'baseline'
           : 'hanging';
 
-  let transform = null;
-  if (justify !== 'start' || align !== 'start') {
+  if (!transform && (justify !== 'start' || align !== 'start' || rotation)) {
     const { width, height } = size(selection);
     let x = 0;
     let y = 0;
@@ -57,7 +58,7 @@ export default function text(selection, props) {
       y = height;
     }
 
-    transform = `translate(${x}, ${y})`;
+    transform = `translate(${x}, ${y})rotate(${rotation || 0})`;
   }
 
   const instance = selection.selectAll('text').data([null]);
