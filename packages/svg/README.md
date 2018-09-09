@@ -3,33 +3,67 @@
 ## Example
 
 ```js
+import { select } from 'd3';
 import { chart, layer, lines, scatter } from '@d3-composer/svg';
 
+const svg = chart(
+  select('#chart'),
+  { width: 600, height: 400, responsive: true }
+);
+linesChart(svg, { /* ... */ });
+
 function linesChart(selection, props) {
-  const { width, height, data, xScale, yScale } = props;
+  const { data, xScale, yScale } = props;
 
-  const svg = chart(selection, { width, height, responsive: true });
-
-  lines(layer(svg, 'lines'), { data, xScale, yScale });
-  scatter(layer(svg, 'scatter'), { data, xScale, yScale });
+  lines(layer(selection, 'lines'), { data, xScale, yScale });
+  scatter(layer(selection, 'scatter'), { data, xScale, yScale });
 }
 ```
 
 ## API
 
-<a href="#chart" name="chart">#</a> <b>chart</b>(<i>selection</i>[, <i>props</i>])
+<a href="#chart" name="chart">#</a> <b>chart</b>(<i>selection</i>[, <i>options</i>])
 
-SVG chart wrapper with sizing and responsive options
+SVG chart wrapper with sizing and responsive options.
+
+Options:
+
+- `width` - svg width or "design" width for `responsive`
+- `height` - svg height or "design" height for `responsive`
+- `[responsive]` - Use responsive container and viewBox
+
+```js
+const svg = chart(select('svg'), { width: 400, height: 300 });
+
+const responsive = chart(
+  select('div'), 
+  { width: 400, height: 300, responsive: true }
+); 
+```
 
 <a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>[, <i>grid</i>])
 
-Create `g` layers from grid
+Create layer functions that are laid out for each area of the grid.
+
+```js
+import { template } from '@d3-composer/grid';
+import { layout } from '@d3-composer/svg';
+
+const grid = template(`"title" 50 "chart" auto / auto`);
+const layers = layout(selection, grid);
+
+const title = layers.title();
+const chart_a = layers.chart('a');
+const chart_b = layers.chart('b');
+```
 
 <a href="#layer" name="layer">#</a> <b>layer</b>(<i>selection</i>[, <i>id</i>])
 
-Create named `g` layer
+Create or select an existing `g` layer for the given id.
 
 <a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>[, <i>props</i>])
+
+A simple lines chart for drawing x,y lines
 
 Options:
 
@@ -66,6 +100,8 @@ lines(selection, { interpolate: d3.interpolatePath })
 
 <a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>[, <i>props</i>])
 
+A flexible, lightweight bars chart component that can be used to create ordinal, histogram, horizontal, and stacked bars charts.
+
 Options:
 
 - `data` - {x,y} or {x0,x1,y} or {x0,x1,y0,y1} series data
@@ -101,27 +137,33 @@ bars(selection, { transition: d3.transition().duration(1000) })
 
 <a href="#scatter" name="scatter">#</a> <b>scatter</b>(<i>selection</i>[, <i>props</i>])
 
-Scatter chart
+TODO Scatter chart
 
 <a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>[, <i>props</i>])
 
-Labels component
+TODO Labels component
 
 <a href="#axis" name="axis">#</a> <b>axis</b>(<i>selection</i>[, <i>props</i>])
 
-Axis component
+TODO Axis component
 
 <a href="#text" name="text">#</a> <b>text</b>(<i>selection</i>[, <i>props</i>])
 
-Text component
+A simple text component for adding and laying out text.
+
+Options
+
+- `text` - Text value
+- `[anchor]` - x-value of origin (`'start'`, `'middle'`, or `'end'`)
+- `[baseline]` - y-value of origin (`'hanging'`, `'middle'`, or `'baseline'`), see [dominant-baseline](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/dominant-baseline)
+- `[justify = 'start']` - x-value of container placement (`'start'`, `'center'`, `'end'`) 
+- `[align = 'start']` - y-value of container placement (`'start'`, `'center'`, `'end'`)
+- `[style]` -  Style string, object, or function for text
+- `[class]` - Class string or function for text
 
 <a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>[, <i>props</i>])
 
 Legend component
-
-<a href="#annotation" name="annotation">#</a> <b>annotation</b>(<i>selection</i>[, <i>props</i>])
-
-Annotation component
 
 <a href="#gridlines" name="gridlines">#</a> <b>gridlines</b>(<i>selection</i>[, <i>props</i>])
 
@@ -130,3 +172,7 @@ Gridlines component
 <a href="#size" name="size">#</a> <b>size</b>(<i>selection<i>)
 
 Size helper
+
+<a href="#seriesLayers" name="seriesLayers">#</a> <b>seriesLayers</b>(<i>options<i>)
+
+Series layers helper for adding/removing layers for series data.

@@ -8,6 +8,5 @@ export { default as labels } from './labels';
 export { default as axis } from './axis';
 export { default as text } from './text';
 export { default as legend } from './legend';
-export { default as annotation } from './annotation';
 export { default as gridlines } from './gridlines';
 export { size, seriesLayers } from './utils';

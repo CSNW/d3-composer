@@ -4,7 +4,7 @@ d3-composer consists of two primary concepts: functional chart components and a 
 
 __Functional chart components__
 
-A functional chart component approach is used throughout d3-composer and allows complex charts to be composed out of simple, reusable chart components.
+A functional chart component approach is used throughout d3-composer and allows complex charts to be composed out of simple, reusable chart components. These match closely to built-in d3 components and can be used with the standard approach of `selection.call(...)`.
 
 ```js
 function lines(selection, props) {
@@ -15,6 +15,12 @@ function composed(selection, props) {
   lines(selection, props);
   // ...
 }
+
+composed(select('...'), { /* ... */ })
+
+// or 
+
+select('...').call(composed, { /* ... */ });
 ```
 
 __Grid system__
@@ -46,22 +52,21 @@ const grid = template(`
 ```js
 import { select } from 'd3';
 import { template } from '@d3-composer/grid';
-import { chart, layout, lines, axis, text } from '@d3-composer/svg';
+import { chart, layout, lines, axis, text, size } from '@d3-composer/svg';
 
 function linesChart(selection, props = {}) {
-  const { data = [], width = 600, height = 400 } = props;
-  const svg = chart(selection, { width, height, responsive: true });
+  const { data = [], xScale, yScale  } = props;
 
   const grid = template(`
     "title title" 50
     "y_axis chart" auto
     ". x_axis" 50
     / 50 auto
-  `, { width, height });
-  const layers = layout(svg, grid);
+  `, size(selection));
+  const layers = layout(selection, grid);
 
-  const xScale = props.xScale.range([0, grid.chart.width]);
-  const yScale = props.yScale.range([grid.chart.height, 0]);
+  xScale.range([0, grid.chart.width]);
+  yScale.range([grid.chart.height, 0]);
 
   axis(layers.x_axis(), { scale: xScale });
   axis(layers.y_axis(), { scale: yScale });
@@ -69,7 +74,12 @@ function linesChart(selection, props = {}) {
   text(layers.title(), { text: 'Line Chart' });
 }
 
-linesChart(select('#chart'), { /* ... */ });
+const svg = chart(
+  select('#chart'),
+  { width: 600, height: 400, responsive: true }
+);
+
+linesChart(svg, { /* ... */ });
 ```
 
 ## API
@@ -90,9 +100,9 @@ linesChart(select('#chart'), { /* ... */ });
 - [axis](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axis) - Axis component
 - [text](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#text) - Text component
 - [legend](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#legend) - Legend component
-- [annotation](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#annotation) - Annotation component
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
 - [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
+- [seriesLayers](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#seriesLayers) - Helpers for series layers
 
 ## Development
 
