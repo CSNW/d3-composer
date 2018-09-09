@@ -1,16 +1,19 @@
-import { toStyle } from '@d3-composer/utils';
-import { descendants } from './utils';
+import { childNodes } from './utils';
 
 export default function chart(selection, props) {
-  const { width, height, responsive = true } = props;
+  const { width, height, responsive } = props;
 
   let svg;
   if (selection.node().tagName === 'svg') {
     svg = selection;
   } else {
-    svg = svgLayer(containerLayer(selection, { width, height, responsive }), {
-      responsive
-    });
+    const ratio = (height / width) * 100;
+    const style = responsive
+      ? `position: relative; width: 100%; height: 0; padding-top: ${ratio}%;`
+      : null;
+
+    selection.attr('data-container', '').attr('style', style);
+    svg = svgLayer(selection, { responsive });
   }
 
   return svg
@@ -20,38 +23,13 @@ export default function chart(selection, props) {
     .attr('height', responsive ? null : height);
 }
 
-function containerLayer(selection, props) {
-  const { width, height, responsive } = props;
-  const ratio = height / width;
-
-  const container = selection
-    .selectAll(descendants)
-    .filter('[data-container]')
-    .data([null]);
-
-  return container
-    .enter()
-    .append('div')
-    .attr('data-container', '')
-    .merge(container)
-    .attr(
-      'style',
-      responsive
-        ? toStyle({
-            position: 'relative',
-            width: '100%',
-            height: 0,
-            'padding-top': `${ratio * 100}%`
-          })
-        : null
-    );
-}
-
 function svgLayer(selection, props) {
   const { responsive } = props;
 
+  const style = responsive ? 'position: absolute; top: 0; left: 0;' : null;
+
   const svg = selection
-    .selectAll(descendants)
+    .selectAll(childNodes)
     .filter('svg')
     .data([null]);
 
@@ -59,14 +37,5 @@ function svgLayer(selection, props) {
     .enter()
     .append('svg')
     .merge(svg)
-    .attr(
-      'style',
-      responsive
-        ? toStyle({
-            position: 'absolute',
-            top: 0,
-            left: 0
-          })
-        : null
-    );
+    .attr('style', style);
 }

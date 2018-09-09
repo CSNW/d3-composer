@@ -14,7 +14,7 @@ select('#update').on('click', () => draw());
 function linesChart(selection, props) {
   let { data, xScale, yScale, width = 600, height = 400, transition } = props;
 
-  const svg = chart(selection, { width, height });
+  const svg = chart(selection, { width, height, responsive: true });
 
   const grid = template(
     `
@@ -40,7 +40,7 @@ function linesChart(selection, props) {
 function barsChart(selection, props) {
   let { data, xScale, yScale, width = 600, height = 400, transition } = props;
 
-  const svg = chart(selection, { width, height, responsive: false });
+  const svg = chart(selection, { width, height });
 
   xScale = xScale.range([0, width]);
   yScale = yScale.range([height, 0]);

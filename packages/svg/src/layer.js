@@ -1,9 +1,9 @@
-import { descendants } from './utils';
+import { childNodes } from './utils';
 
 export default function layer(selection, id, options = {}) {
   const { element = 'g' } = options;
   const instance = selection
-    .selectAll(descendants)
+    .selectAll(childNodes)
     .filter(`[data-layer="${id}"]`)
     .data([null]);
 
