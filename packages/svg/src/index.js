@@ -9,4 +9,5 @@ export { axisLeft, axisRight, axisBottom, axisTop } from './axis';
 export { default as text } from './text';
 export { default as legend } from './legend';
 export { default as gridlines } from './gridlines';
+export { symbolLine } from './symbols';
 export { size, seriesLayers } from './utils';

@@ -21,7 +21,8 @@ import {
   axisBottom,
   axisTop,
   axisRight,
-  size
+  size,
+  symbolLine
 } from '@d3-composer/svg';
 
 draw();
@@ -82,7 +83,10 @@ function linesChart(selection, props) {
   });
 
   legend(layers.legend(), {
-    data: ['A', 'B', 'C']
+    data: ['A', 'B', 'C'],
+    path: symbol()
+      .size(50)
+      .type(symbolLine)
   });
 }
 

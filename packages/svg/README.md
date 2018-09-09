@@ -238,6 +238,17 @@ Options:
 
 TODO Gridlines component
 
+<a href="#symbolLine" name="symbolLine">#</a> <b>symbolLine<b>
+
+Symbol type for line symbol.
+
+```js
+import { symbol } from 'd3';
+import { symbolLine } from '@d3-composer/svg';
+
+symbol().size(50).type(symbolLine);
+```
+
 <a href="#size" name="size">#</a> <b>size</b>(<i>selection<i>)
 
 Size helper for determining selection size.
