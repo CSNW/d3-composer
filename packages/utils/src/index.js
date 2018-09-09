@@ -7,3 +7,4 @@ export {
 } from './series';
 export { default as xy } from './xy';
 export { toStyle } from './style';
+export { Area } from './grid';

@@ -30,7 +30,7 @@ const grid = template(`
   "y_axis chart" auto
   ". x_axis" 50
   / 50 auto
-`, size(svg));
+`, { width: 600, height: 400 });
 
 // For size = { width: 600, height: 400 }:
 //
@@ -47,7 +47,7 @@ const grid = template(`
 ```js
 import { select } from 'd3';
 import { template } from '@d3-composer/grid';
-import { chart, layout, lines, axis, text, size } from '@d3-composer/svg';
+import { chart, layout, lines, axis, text } from '@d3-composer/svg';
 
 function linesChart(selection, props = {}) {
   const { data = [], width = 600, height = 400 } = props;
@@ -58,16 +58,16 @@ function linesChart(selection, props = {}) {
     "y_axis chart" auto
     ". x_axis" 50
     / 50 auto
-  `, size(svg));
+  `, { width, height });
   const layers = layout(svg, grid);
 
   const xScale = props.xScale.domain([0, grid.chart.width]);
   const yScale = props.yScale.domain([grid.chart.height, 0]);
 
-  axis(layers.x_axis, { scale: xScale });
-  axis(layers.y_axis, { scale: yScale });
-  lines(layers.chart, { data, xScale, yScale });
-  text(layers.title, { text: 'Line Chart' });
+  axis(layers.x_axis(), { scale: xScale });
+  axis(layers.y_axis(), { scale: yScale });
+  lines(layers.chart(), { data, xScale, yScale });
+  text(layers.title(), { text: 'Line Chart' });
 }
 
 linesChart(select('#chart'), { /* ... */ });

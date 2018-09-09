@@ -149,12 +149,14 @@ export function layout(areas, x, y) {
     const area = areas[name];
 
     result[name] = {
+      x: x[area.left],
+      y: y[area.top],
+      width: x[area.right] - x[area.left],
+      height: y[area.bottom] - y[area.top],
       top: y[area.top],
       right: x[area.right],
       bottom: y[area.bottom],
-      left: x[area.left],
-      width: x[area.right] - x[area.left],
-      height: y[area.bottom] - y[area.top]
+      left: x[area.left]
     };
   }
 
