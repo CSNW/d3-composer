@@ -7,7 +7,15 @@ const index = (_, i) => i;
 // Look into how that does tick lines (or maybe just use it here)
 
 export default function gridlines(selection, props) {
-  const { xScale, yScale, style, class: className, transition } = props;
+  const {
+    xGrid = true,
+    yGrid = true,
+    xScale,
+    yScale,
+    style,
+    class: className,
+    transition
+  } = props;
 
   const x = d => xScale(d);
   const y = d => yScale(d);
@@ -16,7 +24,7 @@ export default function gridlines(selection, props) {
 
   const x_lines = layer(selection, 'x')
     .selectAll('line')
-    .data(xScale.ticks(), index);
+    .data(xGrid ? xScale.ticks() : [], index);
 
   x_lines.exit().remove();
   x_lines
@@ -35,7 +43,7 @@ export default function gridlines(selection, props) {
 
   const y_lines = layer(selection, 'y')
     .selectAll('line')
-    .data(yScale.ticks(), index);
+    .data(yGrid ? yScale.ticks() : [], index);
 
   y_lines.exit().remove();
   y_lines

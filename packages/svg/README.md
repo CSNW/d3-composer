@@ -279,6 +279,8 @@ Options:
 
 - `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
 - `yScale` - d3-scale for y-value
+- `[xGrid = true]` - Show x gridlines (vertical)
+- `[yGrid = true]` - Show y gridlines (horizontal)
 - `[style]` - Style string, object, or function for line
 - `[class]` - Class string or function for line
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
