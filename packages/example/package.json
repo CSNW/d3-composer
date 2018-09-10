@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/example",
-  "version": "0.2.0-beta",
+  "version": "0.2.0",
   "description": "Example for d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -10,8 +10,8 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "@d3-composer/grid": "^0.2.0-beta",
-    "@d3-composer/svg": "^0.2.0-beta",
+    "@d3-composer/grid": "^0.2.0",
+    "@d3-composer/svg": "^0.2.0",
     "d3": "^5.7.0"
   },
   "devDependencies": {
