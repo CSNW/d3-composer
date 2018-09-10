@@ -16,26 +16,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@d3-composer/grid@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@d3-composer/grid/-/grid-0.2.0.tgz#dbbfe5c905ac0d1dc18898a521e6c3ef172529d2"
-
-"@d3-composer/svg@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@d3-composer/svg/-/svg-0.2.0.tgz#4dece1f590c7352e786befb661b67cc7006e0658"
-  dependencies:
-    "@d3-composer/utils" "^0.2.0"
-    d3-axis "^1.0.12"
-    d3-selection "^1.3.2"
-    d3-shape "^1.2.2"
-
-"@d3-composer/utils@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@d3-composer/utils/-/utils-0.2.0.tgz#b48146902875502e788cd8578c7efe4a85274b23"
-  dependencies:
-    d3-array "^1"
-    d3-selection "^1"
-
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
@@ -1038,7 +1018,7 @@ d3-array@1, d3-array@^1, d3-array@^1.1.1, d3-array@^1.2.0:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/d3-array/-/d3-array-1.2.4.tgz#635ce4d5eea759f6f605863dbcfc30edc737f71f"
 
-d3-axis@1, d3-axis@^1, d3-axis@^1.0.12:
+d3-axis@1, d3-axis@^1:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/d3-axis/-/d3-axis-1.0.12.tgz#cdf20ba210cfbb43795af33756886fb3638daac9"
 
@@ -1165,11 +1145,11 @@ d3-scale@2:
     d3-time "1"
     d3-time-format "2"
 
-d3-selection@1, d3-selection@^1, d3-selection@^1.1.0, d3-selection@^1.3.2:
+d3-selection@1, d3-selection@^1, d3-selection@^1.1.0:
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/d3-selection/-/d3-selection-1.3.2.tgz#6e70a9df60801c8af28ac24d10072d82cbfdf652"
 
-d3-shape@1, d3-shape@^1, d3-shape@^1.2.2:
+d3-shape@1, d3-shape@^1:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/d3-shape/-/d3-shape-1.2.2.tgz#f9dba3777a5825f9a8ce8bc928da08c17679e9a7"
   dependencies:
