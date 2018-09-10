@@ -184,6 +184,12 @@ A top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis
 
 Options (see [d3-axis](https://github.com/d3/d3-axis) for details):
 
+- `[style]` - Style string, object, or function for axis
+- `[domainStyle]` - Style string, object, or function for axis domain path
+- `[tickStyle]` - Style string, object, or function for axis ticks
+- `[textStyle]` - Style string, object, or function for axis labels
+- `[class]` - Class string or function for axis
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 - `[ticks]` - tick count or interval. To set _specifier_, use `tickArguments` 
 - `[tickArguments]`, `[tickValues]`, `[tickFormat]`, `[tickSize]`, `[tickSizeInner]`, `[tickSizeOuter]`, `[tickPadding]`
 

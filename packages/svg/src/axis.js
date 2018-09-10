@@ -4,40 +4,90 @@ import {
   axisBottom as d3_axisBottom,
   axisLeft as d3_axisLeft
 } from 'd3-axis';
-import { Area } from '@d3-composer/utils';
+import { Area, toStyle } from '@d3-composer/utils';
 import layer from './layer';
 
 export function axisTop(selection, props) {
-  const { scale, xScale } = props;
+  const {
+    scale,
+    xScale,
+    style,
+    domainStyle,
+    tickStyle,
+    textStyle,
+    class: className,
+    transition
+  } = props;
   const axis = prepare(d3_axisTop(scale || xScale), props);
   const area = Area.get(selection.node());
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(0, ${area.height})`)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
+    .attr('class', className)
+    .transition(transition)
     .call(axis);
 }
 
 export function axisRight(selection, props) {
-  const { scale, yScale } = props;
+  const {
+    scale,
+    yScale,
+    style,
+    domainStyle,
+    tickStyle,
+    textStyle,
+    class: className,
+    transition
+  } = props;
   const axis = prepare(d3_axisRight(scale || yScale), props);
 
-  selection.call(axis);
+  selection
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
+    .attr('class', className)
+    .transition(transition)
+    .call(axis);
 }
 
 export function axisBottom(selection, props) {
-  const { scale, xScale } = props;
+  const {
+    scale,
+    xScale,
+    style,
+    domainStyle,
+    tickStyle,
+    textStyle,
+    class: className,
+    transition
+  } = props;
   const axis = prepare(d3_axisBottom(scale || xScale), props);
 
-  selection.call(axis);
+  selection
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
+    .attr('class', className)
+    .transition(transition)
+    .call(axis);
 }
 
 export function axisLeft(selection, props) {
-  const { scale, yScale } = props;
+  const {
+    scale,
+    yScale,
+    style,
+    domainStyle,
+    tickStyle,
+    textStyle,
+    class: className,
+    transition
+  } = props;
   const axis = prepare(d3_axisLeft(scale || yScale), props);
   const area = Area.get(selection.node());
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(${area.width}, 0)`)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
+    .attr('class', className)
+    .transition(transition)
     .call(axis);
 }
 
@@ -62,5 +112,17 @@ function prepare(axis, props) {
   if (tickSizeOuter) axis.tickSizeOuter(tickSizeOuter);
   if (tickPadding) axis.tickPadding(tickPadding);
 
-  return axis;
+  return function(selection) {
+    axis.call(this, selection);
+
+    // Reset hard-coded text values
+    selection.attr('font-size', null).attr('font-family', null);
+  };
+}
+
+function styleAxis(selection, style, domainStyle, tickStyle, textStyle) {
+  selection.attr('style', toStyle(style));
+  selection.select('.domain').attr('style', toStyle(domainStyle));
+  selection.select('.tick line').attr('style', toStyle(tickStyle));
+  selection.select('.tick text').attr('style', toStyle(textStyle));
 }
