@@ -5,6 +5,7 @@
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
   "main": "dist/d3-composer-utils.umd.js",
+  "unpkg": "dist/d3-composer-utils.umd.js",
   "module": "src/index.js",
   "scripts": {
     "test": "exit 0",

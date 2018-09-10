@@ -6,7 +6,8 @@ export default {
   output: {
     format: 'umd',
     file: 'dist/d3-composer-grid.umd.js',
-    name: 'd3.composer.grid'
+    name: 'd3c',
+    extend: true
   },
   plugins: [resolve(), filesize()]
 };
