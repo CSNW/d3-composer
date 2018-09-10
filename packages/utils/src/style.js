@@ -1,6 +1,6 @@
-export function toStyle(value) {
+export function toStyle(value, defaults) {
   if (!value) {
-    return;
+    return defaults ? toStyle(defaults) : null;
   }
   if (typeof value === 'function') {
     return function() {
@@ -11,7 +11,26 @@ export function toStyle(value) {
     return value;
   }
 
-  return Object.keys(value)
-    .map(key => `${key}: ${value[key]};`)
-    .join(' ');
+  const { fixed, dynamic } = Object.keys(value).reduce(
+    (memo, key) => {
+      if (typeof value[key] !== 'function') {
+        memo.fixed.push(`${key}: ${value[key]};`);
+      } else {
+        memo.dynamic.push(function(d, i, j) {
+          return `${key}: ${value[key].call(this, d, i, j)};`);
+        });
+      }
+
+      return memo;
+    },
+    { fixed: [], dynamic: [] }
+  );
+
+  if (!dynamic.length) {
+    return fixed.join(' ');
+  }
+
+  return function(d, i, j) {
+    return fixed.concat(dynamic.map(fn => fn.call(this, d, i, j))).join(' ');
+  };
 }
