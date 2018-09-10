@@ -294,19 +294,19 @@ import { symbolLine } from '@d3-composer/svg';
 symbol().size(50).type(symbolLine);
 ```
 
-<a href="#size" name="size">#</a> <b>size</b>(<i>selection<i>)
+<a href="#size" name="size">#</a> <b>size</b>(<i>selection</i>)
 
 Size helper for determining selection size.
 
-<a href="#seriesLayers" name="seriesLayers">#</a> <b>seriesLayers</b>(<i>options<i>)
+<a href="#seriesLayers" name="seriesLayers">#</a> <b>seriesLayers</b>(<i>options</i>)
 
 Series layers helper for adding/removing layers for series data.
 
-<a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</b>(<i>selection<i>, <i>path</i>[, <i>interpolate</i>])
+<a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</b>(<i>selection</i>, <i>path</i>[, <i>interpolate</i>])
 
 Interpolate `d` for path with `attrTween`, if `interpolate` is provided, otherwise set `d` attr. `path` should be a `d` path string or function. `interpolate` is an interpolate function taking `(previous d, next d)`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path).
 
-<a href="#translateXY" name="translateXY">#</a> <b>translateXY</b>(<i>x<i>, <i>y<i>)
+<a href="#translateXY" name="translateXY">#</a> <b>translateXY</b>(<i>x</i>, <i>y</i>)
 
 Create translate function for given x and y accessors
 
