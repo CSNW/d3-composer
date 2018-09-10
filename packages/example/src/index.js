@@ -131,7 +131,7 @@ function barsChart(selection, props) {
       data,
       xScale,
       yScale,
-      seriesStyle: { fill: 'green' },
+      seriesStyle: { color: 'green' },
       transition
     });
   });
