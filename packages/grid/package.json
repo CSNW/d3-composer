@@ -1,11 +1,27 @@
 {
   "name": "@d3-composer/grid",
   "version": "0.1.0",
-  "description": "grid components for d3-composer",
+  "description": "CSS grid layout for SVG and Canvas",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
-  "main": "dist/d3-composer-grid.umd.js",
-  "unpkg": "dist/d3-composer-grid.umd.js",
+  "repository": "https://github.com/CSNW/d3-composer.git",
+  "contributors": [
+    "CSNW"
+  ],
+  "bugs": {
+    "url": "https://github.com/CSNW/d3-composer/issues"
+  },
+  "homepage": "https://github.com/CSNW/d3-composer",
+  "keywords": [
+    "d3",
+    "d3-composer",
+    "grid",
+    "css",
+    "svg",
+    "canvas"
+  ],
+  "main": "dist/d3-composer-grid.js",
+  "unpkg": "dist/d3-composer-grid.min.js",
   "module": "src/index.js",
   "scripts": {
     "test": "exit 0",

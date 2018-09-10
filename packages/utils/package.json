@@ -1,19 +1,34 @@
 {
   "name": "@d3-composer/utils",
   "version": "0.1.0",
-  "description": "Shared utilities for d3-composer",
+  "description": "Utilities for xy, series, and other common visualization tasks, part of d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
-  "main": "dist/d3-composer-utils.umd.js",
-  "unpkg": "dist/d3-composer-utils.umd.js",
+  "repository": "https://github.com/CSNW/d3-composer.git",
+  "contributors": [
+    "CSNW"
+  ],
+  "bugs": {
+    "url": "https://github.com/CSNW/d3-composer/issues"
+  },
+  "homepage": "https://github.com/CSNW/d3-composer",
+  "keywords": [
+    "d3",
+    "d3-composer",
+    "utils",
+    "xy",
+    "series"
+  ],
+  "main": "dist/d3-composer-utils.js",
+  "unpkg": "dist/d3-composer-utils.min.js",
   "module": "src/index.js",
   "scripts": {
     "test": "exit 0",
     "build": "rollup -c"
   },
   "dependencies": {
-    "d3-array": "^1.2.4",
-    "d3-selection": "^1.3.2"
+    "d3-array": "^1",
+    "d3-selection": "^1"
   },
   "files": ["dist", "src", "!src/__tests__", "README.md"]
 }

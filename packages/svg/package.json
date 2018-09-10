@@ -4,21 +4,36 @@
   "description": "svg components for d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
-  "main": "dist/d3-composer-svg.umd.js",
-  "unpkg": "dist/d3-composer-svg.umd.js",
+  "repository": "https://github.com/CSNW/d3-composer.git",
+  "contributors": [
+    "CSNW"
+  ],
+  "bugs": {
+    "url": "https://github.com/CSNW/d3-composer/issues"
+  },
+  "homepage": "https://github.com/CSNW/d3-composer",
+  "keyword": [
+    "d3",
+    "d3-composer",
+    "svg",
+    "chart",
+    "visualization"
+  ],
+  "main": "dist/d3-composer-svg.js",
+  "unpkg": "dist/d3-composer-svg.min.js",
   "module": "src/index.js",
   "scripts": {
     "test": "exit 0",
     "build": "rollup -c"
   },
   "dependencies": {
-    "@d3-composer/utils": "^0.0.0",
+    "@d3-composer/utils": "^0.1.0",
     "d3-axis": "^1.0.12",
     "d3-selection": "^1.3.2",
     "d3-shape": "^1.2.2"
   },
   "devDependencies": {
-    "@d3-composer/grid": "^0.0.0"
+    "@d3-composer/grid": "^0.1.0"
   },
   "files": ["dist", "src", "!src/__tests__", "!src/__helpers__", "README.md"]
 }
