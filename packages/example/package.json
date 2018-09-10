@@ -10,9 +10,8 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "@d3-composer/grid": "^0.3.0",
-    "@d3-composer/svg": "^0.3.0",
-    "d3": "^5.7.0"
+    "d3": "^5",
+    "d3-composer": "^0.3.0"
   },
   "devDependencies": {
     "serve": "^10.0.0"

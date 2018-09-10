@@ -7,8 +7,8 @@ import {
   symbol,
   symbolCircle
 } from 'd3';
-import { template } from '@d3-composer/grid';
 import {
+  template,
   chart,
   layout,
   lines,
@@ -25,7 +25,7 @@ import {
   axisRight,
   size,
   symbolLine
-} from '@d3-composer/svg';
+} from 'd3-composer';
 
 draw();
 select('#update').on('click', () => draw());
@@ -57,7 +57,8 @@ function linesChart(selection, props) {
     gridlines(layers.chart('gridlines'), {
       xScale,
       yScale,
-      style: { stroke: '#ccc' }
+      style: { stroke: '#ccc' },
+      xGrid: false
     });
 
     axisLeft(layers.y_axis(), { yScale });
