@@ -41,7 +41,7 @@ const responsive = chart(
 ); 
 ```
 
-<a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>, <i>grid</i>)
+<a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>, <i>grid</i>, <i>callback</i>)
 
 Create layer functions that are laid out for each area of the grid.
 
@@ -50,11 +50,12 @@ import { template } from '@d3-composer/grid';
 import { layout } from '@d3-composer/svg';
 
 const grid = template(`"title" 50 "chart" auto / auto`);
-const layers = layout(selection, grid);
 
-const title = layers.title();
-const chart_a = layers.chart('a');
-const chart_b = layers.chart('b');
+layout(selection, grid, layers => {
+  const title_layer = layers.title();
+  const chart_a_layer = layers.chart('a');
+  const chart_b_layer = layers.chart('b');
+});
 ```
 
 <a href="#layer" name="layer">#</a> <b>layer</b>(<i>selection</i>, <i>id</i>)

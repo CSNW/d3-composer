@@ -19,13 +19,13 @@ test('it should layout grid layers', () => {
   );
 
   const selection = fixture();
-  const layers = layout(selection, grid);
-
-  expect(layers.title().node()).toMatchSnapshot();
-  expect(layers.y_axis().node()).toMatchSnapshot();
-  expect(layers.x_axis().node()).toMatchSnapshot();
-  expect(layers.chart('lines').node()).toMatchSnapshot();
-  expect(layers.chart('bars').node()).toMatchSnapshot();
+  layout(selection, grid, layers => {
+    expect(layers.title().node()).toMatchSnapshot();
+    expect(layers.y_axis().node()).toMatchSnapshot();
+    expect(layers.x_axis().node()).toMatchSnapshot();
+    expect(layers.chart('lines').node()).toMatchSnapshot();
+    expect(layers.chart('bars').node()).toMatchSnapshot();
+  });
 
   expect(selection.node()).toMatchSnapshot();
 });

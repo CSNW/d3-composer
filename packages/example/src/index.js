@@ -41,68 +41,69 @@ function linesChart(selection, props) {
     / 20 40 auto 100`,
     size(selection)
   );
-  const layers = layout(selection, grid);
 
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
-  text(layers.title(), { text: 'Lines', justify: 'center', align: 'center' });
-  text(layers.y_axis_title(), {
-    text: 'y-axis title is really long',
-    align: 'center',
-    justify: 'center',
-    rotation: -90
-  });
+  layout(selection, grid, layers => {
+    text(layers.title(), { text: 'Lines', justify: 'center', align: 'center' });
+    text(layers.y_axis_title(), {
+      text: 'y-axis title is really long',
+      align: 'center',
+      justify: 'center',
+      rotation: -90
+    });
 
-  gridlines(layers.chart('gridlines'), {
-    xScale,
-    yScale,
-    style: { stroke: '#ccc' }
-  });
+    gridlines(layers.chart('gridlines'), {
+      xScale,
+      yScale,
+      style: { stroke: '#ccc' }
+    });
 
-  axisLeft(layers.y_axis(), { yScale });
-  axisBottom(layers.x_axis(), { xScale });
+    axisLeft(layers.y_axis(), { yScale });
+    axisBottom(layers.x_axis(), { xScale });
 
-  area(layers.chart('area'), {
-    data,
-    xScale,
-    yScale,
-    style: { fill: 'blue', opacity: 0.05 },
-    transition
-  });
-  lines(layers.chart('lines'), {
-    data,
-    xScale,
-    yScale,
-    style: { stroke: 'blue', fill: 'none' },
-    transition
-  });
-  scatter(layers.chart('scatter'), {
-    data,
-    xScale,
-    yScale,
-    path: symbol()
-      .size(50)
-      .type(symbolCircle),
-    style: { stroke: 'blue', fill: 'rgba(255, 255, 255, 0.5)' },
-    transition
-  });
-  labels(layers.chart('labels'), {
-    data,
-    xScale,
-    yScale,
-    text: d => d.y,
-    anchor: 'middle',
-    baseline: 'baseline',
-    transform: `translate(0, -10)`,
-    transition
-  });
+    area(layers.chart('area'), {
+      data,
+      xScale,
+      yScale,
+      style: { fill: 'blue', opacity: 0.05 },
+      transition
+    });
+    lines(layers.chart('lines'), {
+      data,
+      xScale,
+      yScale,
+      style: { stroke: 'blue', fill: 'none' },
+      transition
+    });
+    scatter(layers.chart('scatter'), {
+      data,
+      xScale,
+      yScale,
+      path: symbol()
+        .size(50)
+        .type(symbolCircle),
+      style: { stroke: 'blue', fill: 'rgba(255, 255, 255, 0.5)' },
+      transition
+    });
+    labels(layers.chart('labels'), {
+      data,
+      xScale,
+      yScale,
+      text: d => d.y,
+      anchor: 'middle',
+      baseline: 'baseline',
+      transform: `translate(0, -10)`,
+      transition
+    });
 
-  legend(layers.legend(), {
-    data: ['A', 'B', 'C'],
-    path: symbol()
-      .size(50)
-      .type(symbolLine)
+    legend(layers.legend(), {
+      data: ['A', 'B', 'C'],
+      path: symbol()
+        .size(50)
+        .type(symbolLine)
+    });
   });
 }
 
@@ -117,21 +118,22 @@ function barsChart(selection, props) {
     / auto 40`,
     size(selection)
   );
-  const layers = layout(selection, grid);
 
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
-  text(layers.title(), { text: 'Bars', justify: 'center', align: 'center' });
-  axisTop(layers.x_axis(), { xScale });
-  axisRight(layers.y_axis(), { yScale });
+  layout(selection, grid, layers => {
+    text(layers.title(), { text: 'Bars', justify: 'center', align: 'center' });
+    axisTop(layers.x_axis(), { xScale });
+    axisRight(layers.y_axis(), { yScale });
 
-  bars(layers.chart(), {
-    data,
-    xScale,
-    yScale,
-    seriesStyle: { fill: 'green' },
-    transition
+    bars(layers.chart(), {
+      data,
+      xScale,
+      yScale,
+      seriesStyle: { fill: 'green' },
+      transition
+    });
   });
 }
 

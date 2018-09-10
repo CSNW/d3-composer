@@ -63,15 +63,16 @@ function linesChart(selection, props = {}) {
     ". x_axis" 50
     / 50 auto
   `, size(selection));
-  const layers = layout(selection, grid);
 
   xScale.range([0, grid.chart.width]);
   yScale.range([grid.chart.height, 0]);
 
-  axis(layers.x_axis(), { scale: xScale });
-  axis(layers.y_axis(), { scale: yScale });
-  lines(layers.chart(), { data, xScale, yScale });
-  text(layers.title(), { text: 'Line Chart' });
+  layout(selection, grid, layers => {
+    axis(layers.x_axis(), { scale: xScale });
+    axis(layers.y_axis(), { scale: yScale });
+    lines(layers.chart(), { data, xScale, yScale });
+    text(layers.title(), { text: 'Line Chart' });
+  });
 }
 
 const svg = chart(
@@ -96,6 +97,7 @@ linesChart(svg, { /* ... */ });
 - [lines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#lines) - Lines chart
 - [bars](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#bars) - Bars chart
 - [scatter](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#scatter) - Scatter chart
+- [area](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#area) - Area chart
 - [labels](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#labels) - Labels component
 - [axisTop](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisTop) - Top-oriented axis component
 - [axisRight](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#axisRight) - Right-oriented axis component

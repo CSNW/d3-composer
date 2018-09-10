@@ -3,7 +3,7 @@
 exports[`it should layout grid layers 1`] = `
 <g
   data-area="title"
-  data-layer="area-title"
+  data-layer="area-title-0"
   transform="translate(0, 0)"
 />
 `;
@@ -11,7 +11,7 @@ exports[`it should layout grid layers 1`] = `
 exports[`it should layout grid layers 2`] = `
 <g
   data-area="y_axis"
-  data-layer="area-y_axis"
+  data-layer="area-y_axis-0"
   transform="translate(0, 25)"
 />
 `;
@@ -19,7 +19,7 @@ exports[`it should layout grid layers 2`] = `
 exports[`it should layout grid layers 3`] = `
 <g
   data-area="x_axis"
-  data-layer="area-x_axis"
+  data-layer="area-x_axis-0"
   transform="translate(25, 75)"
 />
 `;
@@ -44,17 +44,17 @@ exports[`it should layout grid layers 6`] = `
 <g>
   <g
     data-area="title"
-    data-layer="area-title"
+    data-layer="area-title-0"
     transform="translate(0, 0)"
   />
   <g
     data-area="y_axis"
-    data-layer="area-y_axis"
+    data-layer="area-y_axis-0"
     transform="translate(0, 25)"
   />
   <g
     data-area="x_axis"
-    data-layer="area-x_axis"
+    data-layer="area-x_axis-0"
     transform="translate(25, 75)"
   />
   <g
