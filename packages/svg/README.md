@@ -41,7 +41,7 @@ const responsive = chart(
 ); 
 ```
 
-<a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>[, <i>grid</i>])
+<a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>, <i>grid</i>)
 
 Create layer functions that are laid out for each area of the grid.
 
@@ -57,11 +57,11 @@ const chart_a = layers.chart('a');
 const chart_b = layers.chart('b');
 ```
 
-<a href="#layer" name="layer">#</a> <b>layer</b>(<i>selection</i>[, <i>id</i>])
+<a href="#layer" name="layer">#</a> <b>layer</b>(<i>selection</i>, <i>id</i>)
 
 Create or select an existing `g` layer for the given id.
 
-<a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>[, <i>props</i>])
+<a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>, <i>props</i>)
 
 A lines chart for drawing x,y lines
 
@@ -98,7 +98,7 @@ lines(selection, { transition: d3.transition().duration(1000) })
 lines(selection, { interpolate: d3.interpolatePath })
 ```
 
-<a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>[, <i>props</i>])
+<a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>, <i>props</i>)
 
 A flexible bars chart component that can be used to create ordinal, histogram, horizontal, and stacked bars charts.
 
@@ -135,7 +135,7 @@ bars(selection, { class: d => d.class });
 bars(selection, { transition: d3.transition().duration(1000) })
 ```
 
-<a href="#scatter" name="scatter">#</a> <b>scatter</b>(<i>selection</i>[, <i>props</i>])
+<a href="#scatter" name="scatter">#</a> <b>scatter</b>(<i>selection</i>, <i>props</i>)
 
 Scatter chart for placing `path` at x,y positions.
 
@@ -155,7 +155,7 @@ Options:
 - `[seriesClass]` - Class string or function for series group
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
-<a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>[, <i>props</i>])
+<a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>, <i>props</i>)
 
 Labels chart for placing `text` labels at x,y positions.
 
@@ -178,12 +178,13 @@ Options:
 - `[seriesClass]` - Class string or function for series group
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
-<a href="#axisTop" name="axisTop">#</a> <b>axisTop</b>(<i>selection</i>[, <i>props</i>])
+<a href="#axisTop" name="axisTop">#</a> <b>axisTop</b>(<i>selection</i>, <i>props</i>)
 
-A top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis)
+A top-oriented axis component that wraps [d3-axis](https://github.com/d3/d3-axis).
 
 Options (see [d3-axis](https://github.com/d3/d3-axis) for details):
 
+- `[xScale]`
 - `[style]` - Style string, object, or function for axis
 - `[domainStyle]` - Style string, object, or function for axis domain path
 - `[tickStyle]` - Style string, object, or function for axis ticks
@@ -193,19 +194,28 @@ Options (see [d3-axis](https://github.com/d3/d3-axis) for details):
 - `[ticks]` - tick count or interval. To set _specifier_, use `tickArguments` 
 - `[tickArguments]`, `[tickValues]`, `[tickFormat]`, `[tickSize]`, `[tickSizeInner]`, `[tickSizeOuter]`, `[tickPadding]`
 
-<a href="#axisRight" name="axisRight">#</a> <b>axisRight</b>(<i>selection</i>[, <i>props</i>])
+<a href="#axisRight" name="axisRight">#</a> <b>axisRight</b>(<i>selection</i>, <i>props</i>)
 
-Right-oriented axis (see [#axisTop](axisTop) for options)
+Right-oriented axis.
 
-<a href="#axisBottom" name="axisBottom">#</a> <b>axisBottom</b>(<i>selection</i>[, <i>props</i>])
+- `[yScale]`
+- (see [#axisTop](axisTop) for remaining options)
 
-Bottom-oriented axis (see [#axisTop](axisTop) for options)
+<a href="#axisBottom" name="axisBottom">#</a> <b>axisBottom</b>(<i>selection</i>, <i>props</i>)
 
-<a href="#axisLeft" name="axisLeft">#</a> <b>axisLeft</b>(<i>selection</i>[, <i>props</i>])
+Bottom-oriented axis.
 
-Left-oriented axis (see [#axisTop](axisTop) for options)
+- `[xScale]`
+- (see [#axisTop](axisTop) for remaining options)
 
-<a href="#text" name="text">#</a> <b>text</b>(<i>selection</i>[, <i>props</i>])
+<a href="#axisLeft" name="axisLeft">#</a> <b>axisLeft</b>(<i>selection</i>, <i>props</i>)
+
+Left-oriented axis.
+
+- `[yScale]`
+- (see [#axisTop](axisTop) for remaining options)
+
+<a href="#text" name="text">#</a> <b>text</b>(<i>selection</i>, <i>props</i>)
 
 A text component for adding and laying out text.
 
@@ -221,7 +231,7 @@ Options:
 - `[rotation]` - Rotate text by given angle (e.g. `90deg`)
 - `[transform]` - Manually transform text
 
-<a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>[, <i>props</i>])
+<a href="#legend" name="legend">#</a> <b>legend</b>(<i>selection</i>, <i>props</i>)
 
 A legend component with paths and labels
 
@@ -240,7 +250,7 @@ Options:
 - `[labelStyle]` - Style string, object, or function for item label
 - `[labelClass]` - Class string or function for item label
 
-<a href="#gridlines" name="gridlines">#</a> <b>gridlines</b>(<i>selection</i>[, <i>props</i>])
+<a href="#gridlines" name="gridlines">#</a> <b>gridlines</b>(<i>selection</i>, <i>props</i>)
 
 Gridlines component
 
@@ -252,7 +262,7 @@ Options:
 - `[class]` - Class string or function for line
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
-<a href="#symbolLine" name="symbolLine">#</a> <b>symbolLine<b>
+<a href="#symbolLine" name="symbolLine">#</a> <b>symbolLine</b>
 
 Symbol type for line symbol.
 
@@ -271,6 +281,6 @@ Size helper for determining selection size.
 
 Series layers helper for adding/removing layers for series data.
 
-<a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</a>(<i>selection<i>, <i>path</i>[, <i>interpolate</i>])
+<a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</b>(<i>selection<i>, <i>path</i>[, <i>interpolate</i>])
 
 Interpolate `d` for path with `attrTween`, if `interpolate` is provided, otherwise set `d` attr. `path` should be a `d` path string or function. `interpolate` is an interpolate function taking `(previous d, next d)`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path).

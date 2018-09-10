@@ -1,7 +1,7 @@
 import { childNodes } from './utils';
 
 export default function chart(selection, props) {
-  const { width, height, responsive } = props;
+  const { width = 400, height = 300, responsive = false } = props;
 
   let svg;
   if (selection.node().tagName === 'svg') {
