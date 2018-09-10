@@ -1,7 +1,7 @@
 {
   "name": "@d3-composer/packages",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "workspaces": [
     "packages/*"
   ],
@@ -10,11 +10,11 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",
-    "d3": "^5.7.0",
-    "jest": "^23.5.0",
-    "rollup": "^0.65.2",
-    "rollup-plugin-filesize": "^4.0.1",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-terser": "^2.0.2"
+    "d3": "^5",
+    "jest": "^23",
+    "rollup": "^0.65",
+    "rollup-plugin-filesize": "^4",
+    "rollup-plugin-node-resolve": "^3",
+    "rollup-plugin-terser": "^2"
   }
 }
