@@ -72,4 +72,6 @@ export default function text(selection, props) {
     .attr('class', className)
     .attr('style', toStyle(style))
     .text(text);
+
+  return selection;
 }

@@ -27,6 +27,8 @@ export function axisTop(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis);
+
+  return selection;
 }
 
 export function axisRight(selection, props) {
@@ -47,6 +49,8 @@ export function axisRight(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis);
+
+  return selection;
 }
 
 export function axisBottom(selection, props) {
@@ -67,6 +71,8 @@ export function axisBottom(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis);
+
+  return selection;
 }
 
 export function axisLeft(selection, props) {
@@ -89,6 +95,8 @@ export function axisLeft(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis);
+
+  return selection;
 }
 
 function prepare(axis, props) {

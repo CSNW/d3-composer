@@ -51,4 +51,6 @@ export default function gridlines(selection, props) {
     .transition(transition)
     .attr('y1', y)
     .attr('y2', y);
+
+  return selection;
 }

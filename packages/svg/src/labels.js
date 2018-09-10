@@ -42,4 +42,6 @@ export default function labels(selection, props) {
     .attr('class', className)
     .attr('transform', transform || null)
     .text(text);
+
+  return selection;
 }

@@ -31,4 +31,6 @@ export default function scatter(selection, props) {
     .transition(transition)
     .attr('transform', translate)
     .call(interpolatePath, path, interpolate);
+
+  return selection;
 }

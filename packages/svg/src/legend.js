@@ -63,4 +63,6 @@ export default function legend(selection, props) {
     .attr('style', toStyle(labelStyle))
     .attr('class', labelClass)
     .text(text);
+
+  return selection;
 }
