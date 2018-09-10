@@ -20,7 +20,7 @@ const config = {
     extend: true,
     banner
   },
-  external: ['@d3-composer/utils', 'd3-axis', 'd3-shape'],
+  external: ['@d3-composer/utils', 'd3-axis', 'd3-selection', 'd3-shape'],
   plugins: [resolve(), filesize()]
 };
 

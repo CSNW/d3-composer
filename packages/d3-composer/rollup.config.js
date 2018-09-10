@@ -12,14 +12,29 @@ const config = {
     format: 'umd',
     file: 'dist/d3-composer.js',
     name: 'd3c',
+    globals: {
+      'd3-array': 'd3',
+      'd3-axis': 'd3',
+      'd3-selection': 'd3',
+      'd3-shape': 'd3'
+    },
     extend: true,
     banner
   },
+  external: ['d3-array', 'd3-axis', 'd3-selection', 'd3-shape'],
   plugins: [resolve(), filesize()]
 };
 
 export default [
   config,
+  {
+    ...config,
+    output: {
+      ...config.output,
+      format: 'es',
+      file: 'dist/d3-composer.es.js'
+    }
+  },
   {
     ...config,
     output: {

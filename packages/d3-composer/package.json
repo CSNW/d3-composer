@@ -1,6 +1,6 @@
 {
   "name": "d3-composer",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "grid and chart components for composing data visualizations with d3",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -22,15 +22,21 @@
   ],
   "main": "dist/d3-composer.js",
   "unpkg": "dist/d3-composer.min.js",
-  "module": "src/index.js",
+  "module": "dist/d3-composer.es.js",
   "scripts": {
     "test": "exit 0",
     "build": "rollup -c"
   },
   "dependencies": {
-    "@d3-composer/utils": "^0.3.0",
-    "@d3-composer/grid": "^0.3.0",
-    "@d3-composer/svg": "^0.3.0"
+    "d3-array": "^1",
+    "d3-axis": "^1",
+    "d3-selection": "^1",
+    "d3-shape": "^1"
+  },
+  "devDependencies": {
+    "@d3-composer/utils": "^0.3.1",
+    "@d3-composer/grid": "^0.3.1",
+    "@d3-composer/svg": "^0.3.1"
   },
   "files": ["dist", "src"]
 }
