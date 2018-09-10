@@ -1,16 +1,14 @@
 import { xy, toStyle } from '@d3-composer/utils';
-import {
-  seriesLayers,
-  interpolatePath,
-  translateXY,
-  translateXY0
-} from './utils';
+import { seriesLayers, interpolatePath, translateXY } from './utils';
 
 export default function scatter(selection, props) {
   const { path, style, class: className, transition, interpolate } = props;
   const { x, y, key, yScale } = xy(props);
-  const translate = translateXY({ x, y });
-  const translate0 = translateXY0({ x, yScale });
+  const translate = translateXY(x, y);
+  const translate0 = translateXY(
+    x,
+    d => (d && d.y0 != null ? yScale(d.y0) : yScale(0))
+  );
 
   const layers = seriesLayers(selection, props);
   const paths = layers.selectAll('path').data(d => d.values, key);

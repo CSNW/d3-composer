@@ -4,8 +4,9 @@ import {
   axisBottom as d3_axisBottom,
   axisLeft as d3_axisLeft
 } from 'd3-axis';
-import { Area, toStyle } from '@d3-composer/utils';
+import { toStyle } from '@d3-composer/utils';
 import layer from './layer';
+import { size } from './utils';
 
 export function axisTop(selection, props) {
   const {
@@ -19,10 +20,10 @@ export function axisTop(selection, props) {
     transition
   } = props;
   const axis = prepare(d3_axisTop(scale || xScale), props);
-  const area = Area.get(selection.node());
+  const { height } = size(selection);
 
   layer(selection, 'axis-transform')
-    .attr('transform', `translate(0, ${area.height})`)
+    .attr('transform', `translate(0, ${height || 0})`)
     .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)
@@ -87,10 +88,10 @@ export function axisLeft(selection, props) {
     transition
   } = props;
   const axis = prepare(d3_axisLeft(scale || yScale), props);
-  const area = Area.get(selection.node());
+  const { width } = size(selection);
 
   layer(selection, 'axis-transform')
-    .attr('transform', `translate(${area.width}, 0)`)
+    .attr('transform', `translate(${width || 0}, 0)`)
     .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)

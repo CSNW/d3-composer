@@ -1,5 +1,5 @@
 import { xy, toStyle } from '@d3-composer/utils';
-import { seriesLayers, translateXY, translateXY0 } from './utils';
+import { seriesLayers, translateXY } from './utils';
 
 export default function labels(selection, props) {
   const {
@@ -12,8 +12,11 @@ export default function labels(selection, props) {
     baseline = 'hanging'
   } = props;
   const { x, y, key, yScale } = xy(props);
-  const translate = translateXY({ x, y });
-  const translate0 = translateXY0({ x, yScale });
+  const translate = translateXY(x, y);
+  const translate0 = translateXY(
+    x,
+    d => (d && d.y0 != null ? yScale(d.y0) : yScale(0))
+  );
 
   const layers = seriesLayers(selection, props);
   const groups = layers.selectAll('g').data(d => d.values, key);

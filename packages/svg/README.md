@@ -304,3 +304,14 @@ Series layers helper for adding/removing layers for series data.
 <a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</b>(<i>selection<i>, <i>path</i>[, <i>interpolate</i>])
 
 Interpolate `d` for path with `attrTween`, if `interpolate` is provided, otherwise set `d` attr. `path` should be a `d` path string or function. `interpolate` is an interpolate function taking `(previous d, next d)`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path).
+
+<a href="#translateXY" name="translateXY">#</a> <b>translateXY</b>(<i>x<i>, <i>y<i>)
+
+Create translate function for given x and y accessors
+
+```js
+const { x, y } = xy(props);
+const translate = translateXY(x, y);
+
+selection.attr('transform', translate);
+```

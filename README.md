@@ -109,6 +109,7 @@ linesChart(svg, { /* ... */ });
 - [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
 - [seriesLayers](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#seriesLayers) - Helpers for series layers
 - [interpolatePath](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#interpolatePath) - Interpolate path `d`
+- [translateXY](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#translateXY) - Translate helper for x,y
 
 ### @d3-composer/utils
 
@@ -119,6 +120,8 @@ linesChart(svg, { /* ... */ });
 - [toSeries](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toSeries) - convert to series
 - [seriesExtent](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#seriesExtent) - determine series extent
 - [toStyle](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toStyle) - convert to style string
+- [Size](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Size-local) - size local
+- [toMargin](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toMargin) - convert to margin array
 - [Area](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Area-local) - area local
 
 ## Development

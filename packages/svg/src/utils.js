@@ -1,5 +1,17 @@
-import { Area, Series, series, toStyle } from '@d3-composer/utils';
+import { Size, Series, series, toStyle } from '@d3-composer/utils';
 
+const size_id = Size.toString();
+
+/**
+ * Determine node size for given selection
+ *
+ * 1. Check viewBox (if svg)
+ * 2. Check attributes (if svg)
+ * 3. Check Size local
+ * 4. Check bbox
+ *
+ * @param {d3.selection} selection
+ */
 export function size(selection) {
   const node = selection.node();
 
@@ -7,17 +19,27 @@ export function size(selection) {
     const viewBox = node.getAttribute('viewBox');
     if (viewBox) {
       const [_1, _2, width, height] = viewBox.split(' ');
-      return { width, height };
+      return { width: Number(width), height: Number(height) };
     }
 
     const width = node.getAttribute('width');
     const height = node.getAttribute('height');
 
-    return { width, height };
+    if (width != null && height != null) {
+      return { width: Number(width), height: Number(height) };
+    }
   }
 
-  const area = Area.get(node);
-  return area || { width: 0, height: 0 };
+  if (size_id in node) {
+    return node[size_id];
+  }
+
+  try {
+    const bbox = node.getBBox();
+    return { width: bbox.width, height: bbox.height };
+  } catch (err) {
+    return { width: NaN, height: NaN };
+  }
 }
 
 export function seriesLayers(selection, props) {
@@ -57,19 +79,10 @@ export function interpolatePath(selection, path, interpolate) {
   }
 }
 
-export function translateXY({ x: _x, y: _y }) {
+export function translateXY(_x, _y) {
   return function(d, i, j) {
     const x = _x.call(this, d, i, j);
     const y = _y.call(this, d, i, j);
-
-    return `translate(${x}, ${y})`;
-  };
-}
-
-export function translateXY0({ x: _x, yScale }) {
-  return function(d, i, j) {
-    const x = _x.call(this, d, i, j);
-    const y = yScale(d && d.y0 != null ? d.y0 : 0);
 
     return `translate(${x}, ${y})`;
   };

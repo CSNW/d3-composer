@@ -55,6 +55,21 @@ const style = toStyle({ fill: 'blue', stroke: 'red' });
 // style = 'fill: blue; stroke: red;'
 ```
 
+<a href="#Size-local" name="Size-local">#</a> <b>Size</b>
+
+`d3.local` used for retrieving size for node.
+
+<a href="#toMargin" name="toMargin">#</a> <b>toMargin</b>(<i>margin</i>)
+
+Convert number or object to margin array `[top, right, bottom, left]`.
+
+```js
+toMargin() // [0, 0, 0, 0]
+toMargin(10) // [10, 10, 10, 10]
+toMargin({ top: 10 }) // [10, 0, 0, 0]
+toMargin([0, 0, 10, 0]) // [0, 0, 10, 0]
+```
+
 <a href="#Area-local" name="Area-local">#</a> <b>Area</b>
 
 `d3.local` used for retrieving grid area for node.
