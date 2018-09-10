@@ -38,5 +38,5 @@
     "@d3-composer/grid": "^0.3.2",
     "@d3-composer/svg": "^0.3.2"
   },
-  "files": ["dist", "src"]
+  "files": ["dist"]
 }
