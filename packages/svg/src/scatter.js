@@ -24,7 +24,7 @@ export default function scatter(selection, props) {
     .append('path')
     .attr('transform', translate0)
     .merge(paths)
-    .attr('style', toStyle(style))
+    .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
     .attr('class', className)
     .transition(transition)
     .attr('transform', translate)

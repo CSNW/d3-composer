@@ -54,7 +54,7 @@ export default function bars(selection, props) {
     .attr('width', width)
     .merge(bars)
     .attr('class', className)
-    .attr('style', toStyle(style))
+    .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
     .transition(transition)
     .attr('x', x0)
     .attr('y', y)

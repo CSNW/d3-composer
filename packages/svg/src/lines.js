@@ -29,7 +29,7 @@ export default function lines(selection, props = {}) {
     .property(Series, d => d)
     .attr('d', d => y0_line(d.values))
     .merge(lines)
-    .attr('style', toStyle(style))
+    .attr('style', toStyle(style, 'fill: none;'))
     .attr('class', className)
     .transition(transition)
     .call(interpolatePath, d => line(d.values), interpolate);

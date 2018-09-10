@@ -62,7 +62,7 @@ export default function area(selection, props) {
     .property(Series, d => d)
     .attr('d', d => y0_area(d.values))
     .merge(areas)
-    .attr('style', toStyle(style))
+    .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
     .attr('class', className)
     .transition(transition)
     .call(interpolatePath, d => area(d.values), interpolate);
