@@ -39,7 +39,7 @@ function linesChart(selection, props) {
     "y_axis_title y_axis chart legend" auto 
     ". . x_axis ." 40
     / 20 40 auto 100`,
-    size(selection)
+    { ...size(selection), margin: 20 }
   );
 
   xScale = xScale.range([0, grid.chart.width]);
@@ -98,7 +98,7 @@ function linesChart(selection, props) {
       transition
     });
 
-    legend(layers.legend(), {
+    legend(layers.legend({ margin: [0, 0, 0, 20] }), {
       data: ['A', 'B', 'C'],
       path: symbol()
         .size(50)
@@ -116,7 +116,7 @@ function barsChart(selection, props) {
     "x_axis ." 20
     "chart y_axis" auto 
     / auto 40`,
-    size(selection)
+    { ...size(selection), margin: 20 }
   );
 
   xScale = xScale.range([0, grid.chart.width]);

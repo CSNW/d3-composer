@@ -31,4 +31,8 @@ Create grid calculation from `grid-template` specification. `spec` should follow
 - Helpers like `repeat` and `minmax` are not currently supported
 - Fixed values should not include a unit (e.g. `20` instead of `20px`)
 
-`width` and `height` are required options and row/column gaps and outer margins are planned.
+Options:
+
+- `width`
+- `height`
+- `[margin]` - margin number, object, or array for outer margins

@@ -1,13 +1,20 @@
+import { toMargin } from '@d3-composer/utils';
+
 const cache = new Map();
 const PARSE_ROW = /\"(.*?)\"\s+(\S+)/g;
 
-export default function template(spec, size) {
+export default function template(spec, options) {
+  let { width, height, margin } = options;
+  margin = toMargin(margin);
+  width -= margin[1] + margin[3];
+  height -= margin[0] + margin[2];
+
   const parsed = cache.has(spec) ? cache.get(spec) : parseTemplate(spec);
   cache.set(spec, parsed);
 
   const { areas, rows, columns } = parsed;
-  const x_positions = solve(columns, size.width);
-  const y_positions = solve(rows, size.height);
+  const x_positions = solve(columns, width, margin[3]);
+  const y_positions = solve(rows, height, margin[0]);
 
   return layout(areas, x_positions, y_positions);
 }
@@ -88,7 +95,7 @@ function parseColumns(spec) {
   return columns;
 }
 
-export function solve(lengths, size) {
+export function solve(lengths, size, offset = 0) {
   // First pass, collect all scalar and percentage measurements
   let available = size;
   let fractional = 0;
@@ -139,7 +146,7 @@ export function solve(lengths, size) {
 
       return memo;
     },
-    [0]
+    [offset]
   );
 }
 

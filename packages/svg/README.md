@@ -43,7 +43,7 @@ const responsive = chart(
 
 <a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>, <i>grid</i>, <i>callback</i>)
 
-Create layer functions that are laid out for each area of the grid.
+Create layer functions that are laid out for each area of the grid. Callback should have the form `(layers) => void`, where `layers` contains a layer function for each area of the grid. Each layer function has the form `([id], [options]) => selection`. By default `id` is set to the area name, but when adding multiple layers for a single area, it's recommended to explicitly set `id`. Options can include the layer `margin`, inset from the grid area bounds.
 
 ```js
 import { template } from '@d3-composer/grid';
@@ -54,7 +54,8 @@ const grid = template(`"title" 50 "chart" auto / auto`);
 layout(selection, grid, layers => {
   const title_layer = layers.title();
   const chart_a_layer = layers.chart('a');
-  const chart_b_layer = layers.chart('b');
+  const chart_b_layer = layers.chart('b', { margin: [0, 0, 10 0] });
+  const x_axis_layer = layers.x_axis({ margin: [10, 0, 0, 0] })
 });
 ```
 
