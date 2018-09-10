@@ -52,7 +52,7 @@ export default function legend(selection, props) {
     .append('path')
     .merge(layers.select('path'))
     .attr('transform', `translate(${width / 2}, ${height / 2})`)
-    .attr('style', toStyle(pathStyle))
+    .attr('style', toStyle(pathStyle, 'fill: currentColor; stroke: none;'))
     .attr('class', pathClass)
     .attr('d', path);
   entering
@@ -60,7 +60,7 @@ export default function legend(selection, props) {
     .merge(layers.select('text'))
     .attr('dominant-baseline', 'central')
     .attr('transform', `translate(${width}, ${height / 2})`)
-    .attr('style', toStyle(labelStyle))
+    .attr('style', toStyle(labelStyle, 'fill: currentColor; stroke: none;'))
     .attr('class', labelClass)
     .text(text);
 
