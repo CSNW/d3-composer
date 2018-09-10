@@ -14,6 +14,7 @@ import {
   lines,
   bars,
   scatter,
+  area,
   labels,
   gridlines,
   text,
@@ -62,6 +63,13 @@ function linesChart(selection, props) {
   axisLeft(layers.y_axis(), { yScale });
   axisBottom(layers.x_axis(), { xScale });
 
+  area(layers.chart('area'), {
+    data,
+    xScale,
+    yScale,
+    style: { fill: 'blue', opacity: 0.05 },
+    transition
+  });
   lines(layers.chart('lines'), {
     data,
     xScale,

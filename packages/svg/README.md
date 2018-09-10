@@ -155,6 +155,25 @@ Options:
 - `[seriesClass]` - Class string or function for series group
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
 
+<a href="#area" name="area">#</a> <b>area</b>(<i>selection</i>, <i>props</i>)
+
+Area chart for drawing {x,y}, {x,y0,y1}, or {x0,x1,y0,y1} series data.
+
+Options:
+
+- `data` - {x,y} series data
+- `xScale` - [d3-scale](https://github.com/d3/d3-scale) for x-value
+- `yScale` - d3-scale for y-value
+- `[x0Value]` - accessor for x0-value (default = `d => d.x0 or d.x`)
+- `[x1Value]` - accessor for x1-value (default = `d => d.x1 or d.x`)
+- `[y0Value]` - accessor for y0-value (default = `d => d.y0 or 0`)
+- `[y1Value]` - accessor for y1-value (default = `d => d.y1 or d.y`)
+- `[curve]` - See [d3-shape](https://github.com/d3/d3-shape#curves)
+- `[style]` - Style string, object, or function for line
+- `[class]` - Class string or function for line
+- `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
+- `[interpolate]` - An interpolation function for `update` and `exit`, such as [d3-interpolate-path](https://github.com/pbeshai/d3-interpolate-path)
+
 <a href="#labels" name="labels">#</a> <b>labels</b>(<i>selection</i>, <i>props</i>)
 
 Labels chart for placing `text` labels at x,y positions.
