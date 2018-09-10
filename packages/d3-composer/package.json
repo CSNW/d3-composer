@@ -25,7 +25,7 @@
   "module": "dist/d3-composer.es.js",
   "scripts": {
     "test": "exit 0",
-    "build": "rollup -c"
+    "build": "rollup -c && node scripts/copy"
   },
   "dependencies": {
     "d3-array": "^1",

@@ -1,4 +1,5 @@
 dist
+packages/d3-composer/README.md
 
 node_modules
 .vscode

@@ -28,7 +28,7 @@ __Grid system__
 d3-composer uses a `grid-template` approach (see: [A Complete Guide to Grid](https://css-tricks.com/snippets/css/complete-guide-grid/#article-header-id-15) for details) for laying out selections for chart components.
 
 ```js
-import { template } from '@d3-composer/grid';
+import { template } from 'd3-composer';
 
 const grid = template(`
   "title title" 50
@@ -47,12 +47,15 @@ const grid = template(`
 // }
 ```
 
+## Usage
+
+For npm / yarn, `npm install d3-composer` or `yarn add d3-composer`. Otherwise, you can use unpkg to download the latest release: `<script src="https://unpkg.com/d3-composer"></script>` and reference d3-composer with the `d3c` global.
+
 ## Example
 
 ```js
 import { select } from 'd3';
-import { template } from '@d3-composer/grid';
-import { chart, layout, lines, axis, text, size } from '@d3-composer/svg';
+import { template, chart, layout, lines, axis, text, size } from 'd3-composer';
 
 function linesChart(selection, props = {}) {
   const { data = [], xScale, yScale  } = props;
