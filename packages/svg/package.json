@@ -35,5 +35,5 @@
   "devDependencies": {
     "@d3-composer/grid": "^0.3.0"
   },
-  "files": ["dist", "src", "!src/__tests__", "!src/__helpers__", "README.md"]
+  "files": ["dist", "src", "!src/__tests__", "!src/__helpers__"]
 }

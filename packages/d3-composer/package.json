@@ -1,7 +1,7 @@
 {
-  "name": "@d3-composer/utils",
+  "name": "d3-composer",
   "version": "0.3.0",
-  "description": "Utilities for xy, series, and other common visualization tasks, part of d3-composer",
+  "description": "grid and chart components for composing data visualizations with d3",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
   "repository": "https://github.com/CSNW/d3-composer.git",
@@ -12,23 +12,25 @@
     "url": "https://github.com/CSNW/d3-composer/issues"
   },
   "homepage": "https://github.com/CSNW/d3-composer",
-  "keywords": [
+  "keyword": [
     "d3",
     "d3-composer",
-    "utils",
-    "xy",
-    "series"
+    "svg",
+    "chart",
+    "visualization",
+    "grid"
   ],
-  "main": "dist/d3-composer-utils.js",
-  "unpkg": "dist/d3-composer-utils.min.js",
+  "main": "dist/d3-composer.js",
+  "unpkg": "dist/d3-composer.min.js",
   "module": "src/index.js",
   "scripts": {
     "test": "exit 0",
     "build": "rollup -c"
   },
   "dependencies": {
-    "d3-array": "^1",
-    "d3-selection": "^1"
+    "@d3-composer/utils": "^0.3.0",
+    "@d3-composer/grid": "^0.3.0",
+    "@d3-composer/svg": "^0.3.0"
   },
-  "files": ["dist", "src", "!src/__tests__"]
+  "files": ["dist", "src"]
 }

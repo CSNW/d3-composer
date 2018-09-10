@@ -10,15 +10,11 @@ const config = {
   input: 'src/index.js',
   output: {
     format: 'umd',
-    file: 'dist/d3-composer-grid.js',
+    file: 'dist/d3-composer.js',
     name: 'd3c',
-    globals: {
-      '@d3-composer/utils': 'd3c'
-    },
     extend: true,
     banner
   },
-  external: ['@d3-composer/utils'],
   plugins: [resolve(), filesize()]
 };
 
@@ -28,7 +24,7 @@ export default [
     ...config,
     output: {
       ...config.output,
-      file: 'dist/d3-composer-grid.min.js'
+      file: 'dist/d3-composer.min.js'
     },
     plugins: [...config.plugins, terser({ output: { preamble: banner } })]
   }
