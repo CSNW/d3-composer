@@ -17,7 +17,7 @@ export function toStyle(value, defaults) {
         memo.fixed.push(`${key}: ${value[key]};`);
       } else {
         memo.dynamic.push(function(d, i, j) {
-          return `${key}: ${value[key].call(this, d, i, j)};`);
+          return `${key}: ${value[key].call(this, d, i, j)};`;
         });
       }
 
