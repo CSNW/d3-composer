@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/grid",
-  "version": "0.1.0",
+  "version": "0.2.0-beta",
   "description": "CSS grid layout for SVG and Canvas",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
