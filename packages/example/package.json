@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/example",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Example for d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "d3": "^5",
-    "d3-composer": "^0.3.1"
+    "d3-composer": "^0.3.2"
   },
   "devDependencies": {
     "serve": "^10.0.0"
