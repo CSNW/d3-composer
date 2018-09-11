@@ -65,12 +65,7 @@ Create or select an existing `g` layer for the given id.
 
 <a href="#lines" name="lines">#</a> <b>lines</b>(<i>selection</i>, <i>props</i>)
 
-<a href="https://beta.observablehq.com/@timhall/d3-composer-lines" style="display: inline-block; width: 100px;">
-  
-  __Example__
-  ![line](https://static.observableusercontent.com/thumbnail/8624549de7c9e90fb1dcc9ae7e5d1837b2de8d4f1e7ba2644574a40a04b35092.jpg)
-
-</a>
+[Live Example](https://beta.observablehq.com/@timhall/d3-composer-lines)
 
 A lines chart for drawing x,y lines
 
