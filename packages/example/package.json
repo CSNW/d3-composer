@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "d3": "^5",
-    "d3-composer": "^0.3.3"
+    "d3-composer": "^0.3.4"
   },
   "devDependencies": {
     "serve": "^10.0.0"
   },
-  "version": "0.3.3"
+  "version": "0.3.4"
 }
