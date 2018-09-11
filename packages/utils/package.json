@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/utils",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Utilities for xy, series, and other common visualization tasks, part of d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -30,7 +30,11 @@
     "d3-array": "^1",
     "d3-selection": "^1"
   },
-  "files": ["dist", "src", "!src/__tests__"],
+  "files": [
+    "dist",
+    "src",
+    "!src/__tests__"
+  ],
   "publishConfig": {
     "access": "public"
   }
