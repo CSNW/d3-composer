@@ -8,7 +8,7 @@ const defaultY0 = d => (d && d.y0 != null ? d.y0 : 0);
 const defaultY1 = d => (d && d.y1 != null ? d.y1 : d.y);
 
 export default function area(selection, props) {
-  const {
+  let {
     data,
     xScale,
     yScale,
@@ -20,7 +20,8 @@ export default function area(selection, props) {
     class: className,
     transition,
     curve,
-    interpolate
+    interpolate,
+    defined
   } = props;
   const { seriesKey } = series(props);
 
@@ -37,16 +38,27 @@ export default function area(selection, props) {
     return yScale(y1Value.call(this, d, i, j));
   }
 
+  defined =
+    defined ||
+    function(d, i, j) {
+      return (
+        y0Value.call(this, d, i, j) != null &&
+        y1Value.call(this, d, i, j) != null
+      );
+    };
+
   const y0_area = d3_area()
     .x0(x0)
     .x1(x1)
     .y0(() => yScale(0))
-    .y1(() => yScale(0));
+    .y1(() => yScale(0))
+    .defined(defined);
   const area = d3_area()
     .x0(x0)
     .x1(x1)
     .y0(y0)
-    .y1(y1);
+    .y1(y1)
+    .defined(defined);
   if (curve) area.curve(curve);
 
   const areas = selection.selectAll('path').data(data, seriesKey);

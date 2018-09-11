@@ -75,6 +75,7 @@ Options:
 - `[xValue]` - accessor for x-value (default = `d => d.x`)
 - `[yValue]` - accessor for y-value (default = `d => d.y`)
 - `[curve]` - See [d3-shape](https://github.com/d3/d3-shape#curves)
+- `[defined]` - Check if point is defined, breaking line if not (default = `y-value != null`)
 - `[style]` - Style string, object, or function for line
 - `[class]` - Class string or function for line
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
@@ -171,6 +172,7 @@ Options:
 - `[y0Value]` - accessor for y0-value (default = `d => d.y0 or 0`)
 - `[y1Value]` - accessor for y1-value (default = `d => d.y1 or d.y`)
 - `[curve]` - See [d3-shape](https://github.com/d3/d3-shape#curves)
+- `[defined]` - Check if point is defined, breaking line if not (default = `y0-value != null and y1-value != null`)
 - `[style]` - Style string, object, or function for line
 - `[class]` - Class string or function for line
 - `[transition]` - An instance of `d3.transition()` (see [d3-transition](https://github.com/d3/d3-transition#selection_transition))
