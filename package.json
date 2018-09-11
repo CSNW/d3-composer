@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "lerna run build",
-    "publish": "yarn build && lerna publish"
+    "publish": "yarn build && yarn test && lerna publish"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

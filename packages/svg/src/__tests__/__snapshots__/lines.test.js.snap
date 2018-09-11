@@ -4,6 +4,7 @@ exports[`should render simple line 1`] = `
 <g>
   <path
     d="M0,100L100,0"
+    fill="none"
   />
 </g>
 `;
@@ -13,11 +14,13 @@ exports[`should use style and class 1`] = `
   <path
     class="a"
     d="M0,100L100,0"
+    fill="none"
     style="stroke: blue;"
   />
   <path
     class="b"
     d="M0,0L100,100"
+    fill="none"
     style="stroke: red;"
   />
 </g>

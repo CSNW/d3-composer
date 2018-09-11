@@ -7,24 +7,28 @@ exports[`should render simple bars 1`] = `
   >
     <rect
       height="25"
+      style="fill: currentColor; stroke: none;"
       width="25"
       x="0"
       y="75"
     />
     <rect
       height="50"
+      style="fill: currentColor; stroke: none;"
       width="25"
       x="25"
       y="50"
     />
     <rect
       height="75"
+      style="fill: currentColor; stroke: none;"
       width="25"
       x="50"
       y="25"
     />
     <rect
       height="100"
+      style="fill: currentColor; stroke: none;"
       width="25"
       x="75"
       y="0"
