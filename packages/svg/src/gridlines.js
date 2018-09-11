@@ -17,10 +17,11 @@ export default function gridlines(selection, props) {
     transition
   } = props;
 
-  const x = d => xScale(d);
-  const y = d => yScale(d);
   const [x1, x2] = xScale.range();
   const [y1, y2] = yScale.range();
+
+  const translateX = d => `translate(${xScale(d) + 0.5}, 0)`;
+  const translateY = d => `translate(0, ${yScale(d) + 0.5})`;
 
   const x_lines = layer(selection, 'x')
     .selectAll('line')
@@ -30,16 +31,16 @@ export default function gridlines(selection, props) {
   x_lines
     .enter()
     .append('line')
-    .attr('x1', x)
-    .attr('x2', x)
+    .attr('transform', translateX)
     .merge(x_lines)
+    .attr('x1', 0)
+    .attr('x2', 0)
     .attr('y1', y1)
     .attr('y2', y2)
     .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
-    .attr('x1', x)
-    .attr('x2', x);
+    .attr('transform', translateX);
 
   const y_lines = layer(selection, 'y')
     .selectAll('line')
@@ -49,16 +50,16 @@ export default function gridlines(selection, props) {
   y_lines
     .enter()
     .append('line')
-    .attr('y1', y)
-    .attr('y2', y)
+    .attr('transform', translateY)
     .merge(y_lines)
     .attr('x1', x1)
     .attr('x2', x2)
+    .attr('y1', 0)
+    .attr('y2', 0)
     .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
-    .attr('y1', y)
-    .attr('y2', y);
+    .attr('transform', translateY);
 
   return selection;
 }
