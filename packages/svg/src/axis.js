@@ -24,10 +24,10 @@ export function axisTop(selection, props) {
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(0, ${height || 0})`)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)
-    .call(axis);
+    .call(axis)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
 
   return selection;
 }
@@ -46,10 +46,10 @@ export function axisRight(selection, props) {
   const axis = prepare(d3_axisRight(scale || yScale), props);
 
   selection
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)
-    .call(axis);
+    .call(axis)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
 
   return selection;
 }
@@ -68,10 +68,10 @@ export function axisBottom(selection, props) {
   const axis = prepare(d3_axisBottom(scale || xScale), props);
 
   selection
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)
-    .call(axis);
+    .call(axis)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
 
   return selection;
 }
@@ -92,10 +92,10 @@ export function axisLeft(selection, props) {
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(${width || 0}, 0)`)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle)
     .attr('class', className)
     .transition(transition)
-    .call(axis);
+    .call(axis)
+    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
 
   return selection;
 }
@@ -130,8 +130,11 @@ function prepare(axis, props) {
 }
 
 function styleAxis(selection, style, domainStyle, tickStyle, textStyle) {
+  // Get underlying selection from transition
+  selection = selection.selection ? selection.selection() : selection;
+
   selection.attr('style', toStyle(style));
   selection.select('.domain').attr('style', toStyle(domainStyle));
-  selection.select('.tick line').attr('style', toStyle(tickStyle));
-  selection.select('.tick text').attr('style', toStyle(textStyle));
+  selection.selectAll('.tick line').attr('style', toStyle(tickStyle));
+  selection.selectAll('.tick text').attr('style', toStyle(textStyle));
 }

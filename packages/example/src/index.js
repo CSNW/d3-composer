@@ -62,7 +62,11 @@ function linesChart(selection, props) {
     });
 
     axisLeft(layers.y_axis(), { yScale });
-    axisBottom(layers.x_axis(), { xScale });
+    axisBottom(layers.x_axis(), {
+      xScale,
+      domainStyle: 'stroke: #ccc;',
+      tickStyle: 'stroke: #ccc;'
+    });
 
     area(layers.chart('area'), {
       data,
