@@ -20,6 +20,8 @@ function linesChart(selection, props) {
 }
 ```
 
+- [Lines](https://beta.observablehq.com/@timhall/d3-composer-lines)
+
 ## API
 
 <a href="#chart" name="chart">#</a> <b>chart</b>(<i>selection</i>[, <i>options</i>])
