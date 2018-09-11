@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/example",
-  "version": "0.3.2",
+  "private": true,
   "description": "Example for d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",

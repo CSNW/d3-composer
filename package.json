@@ -1,12 +1,13 @@
 {
   "name": "@d3-composer/packages",
   "private": true,
-  "version": "0.3.2",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "lerna run build",
+    "publish": "yarn build && lerna version"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

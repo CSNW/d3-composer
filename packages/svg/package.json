@@ -35,5 +35,8 @@
   "devDependencies": {
     "@d3-composer/grid": "^0.3.2"
   },
-  "files": ["dist", "src", "!src/__tests__", "!src/__helpers__"]
+  "files": ["dist", "src", "!src/__tests__", "!src/__helpers__"],
+  "publishConfig": {
+    "access": "public"
+  }
 }

@@ -30,5 +30,8 @@
   "dependencies": {
     "@d3-composer/utils": "^0.3.2"
   },
-  "files": ["dist", "src", "!src/__tests__"]
+  "files": ["dist", "src", "!src/__tests__"],
+  "publishConfig": {
+    "access": "public"
+  }
 }
