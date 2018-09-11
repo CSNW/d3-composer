@@ -86,6 +86,16 @@ const svg = chart(
 linesChart(svg, { /* ... */ });
 ```
 
+## Examples
+
+<a href="https://beta.observablehq.com/@timhall/d3-composer-lines" style="float: left; width: 100px;">
+  
+  __Lines__
+  ![line](https://static.observableusercontent.com/thumbnail/8624549de7c9e90fb1dcc9ae7e5d1837b2de8d4f1e7ba2644574a40a04b35092.jpg)
+
+</a>
+<hr style="clear: both">
+
 ## API
 
 ### @d3-composer/grid
