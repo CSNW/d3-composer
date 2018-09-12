@@ -7,7 +7,7 @@ export function passthrough(d) {
 export function array(value) {
   return typeof value === 'function'
     ? function(d, i, j) {
-        return value.call(this, d, i, j);
+        return [value.call(this, d, i, j)];
       }
     : [value];
 }

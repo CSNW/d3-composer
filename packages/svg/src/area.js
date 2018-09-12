@@ -22,8 +22,7 @@ export default function area(selection, props) {
 
   const area = d3_area()
     .y0(y0)
-    .y1(y1)
-    .defined(defined);
+    .y1(y1);
   if (x) area.x(x);
   if (x0 && x1) area.x0(x0).x1(x1);
   if (curve) area.curve(curve);
