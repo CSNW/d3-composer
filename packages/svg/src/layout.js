@@ -39,6 +39,7 @@ export default function layout(selection, grid, callback) {
     .data(added, function(d) {
       return d || this.dataset.layer;
     })
+    .order()
     .exit()
     .remove();
 
