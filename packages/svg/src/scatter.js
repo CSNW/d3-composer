@@ -13,7 +13,7 @@ export default function scatter(selection, props) {
     transition,
     interpolate
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
   const translate = translateXY(x, y);
 
   const paths = selection.selectAll('path').data(data, key);

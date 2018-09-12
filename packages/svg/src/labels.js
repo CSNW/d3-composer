@@ -15,7 +15,7 @@ export default function labels(selection, props) {
     anchor = 'start',
     baseline = 'hanging'
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
   const translate = translateXY(x, y);
 
   const groups = selection.selectAll('g').data(data, key);

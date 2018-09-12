@@ -10,7 +10,7 @@ export default function series(selection, props) {
     style,
     class: className
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const layers = selection
     .selectAll(childNodes)

@@ -15,7 +15,7 @@ export default function line(selection, props = {}) {
     interpolate,
     defined
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const line = d3_line()
     .x(x)

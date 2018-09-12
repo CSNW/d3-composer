@@ -12,7 +12,7 @@ export default function bars(selection, props) {
     class: className,
     transition
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   function width(d, i, j) {
     return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));

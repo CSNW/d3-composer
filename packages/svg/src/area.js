@@ -18,7 +18,7 @@ export default function area(selection, props) {
     interpolate,
     defined
   } = props;
-  data = data || passthrough; // TEMP
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const area = d3_area()
     .y0(y0)
