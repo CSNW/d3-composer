@@ -1,4 +1,4 @@
-import { Size, Series, series, toStyle } from '@d3-composer/utils';
+import { Size } from '@d3-composer/utils';
 
 const size_id = Size.toString();
 
@@ -40,26 +40,6 @@ export function size(selection) {
   } catch (err) {
     return { width: NaN, height: NaN };
   }
-}
-
-export function seriesLayers(selection, props) {
-  const { seriesClass, seriesStyle } = props;
-  const { data, seriesKey } = series(props);
-
-  const layers = selection
-    .selectAll(childNodes)
-    .filter('[data-series]')
-    .data(data, seriesKey);
-  layers.exit().remove();
-
-  return layers
-    .enter()
-    .append('g')
-    .attr('data-series', seriesKey)
-    .property(Series, d => d)
-    .merge(layers)
-    .attr('class', seriesClass)
-    .attr('style', toStyle(seriesStyle));
 }
 
 export function childNodes() {

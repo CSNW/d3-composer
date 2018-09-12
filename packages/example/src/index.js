@@ -11,7 +11,7 @@ import {
   template,
   chart,
   layout,
-  lines,
+  line,
   bars,
   scatter,
   area,
@@ -75,7 +75,7 @@ function linesChart(selection, props) {
       style: { fill: 'blue', opacity: 0.05 },
       transition
     });
-    lines(layers.chart('lines'), {
+    line(layers.chart('line'), {
       data,
       xScale,
       yScale,

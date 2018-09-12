@@ -1,15 +1,12 @@
 import { passthrough, array, toStyle } from '@d3-composer/utils';
-import { area as d3_area } from 'd3-shape';
+import { line as d3_line } from 'd3-shape';
 import { interpolatePath } from './utils';
 
-export default function area(selection, props) {
+export default function line(selection, props = {}) {
   let {
     data, // = passthrough,
     x,
-    x0,
-    x1,
-    y0,
-    y1,
+    y,
     key,
     style,
     class: className,
@@ -20,14 +17,11 @@ export default function area(selection, props) {
   } = props;
   data = data || passthrough; // TEMP
 
-  const area = d3_area()
-    .y0(y0)
-    .y1(y1)
-    .defined(defined);
-  if (x) area.x(x);
-  if (x0 && x1) area.x0(x0).x1(x1);
-  if (curve) area.curve(curve);
-  if (defined) area.defined(defined);
+  const line = d3_line()
+    .x(x)
+    .y(y);
+  if (curve) line.curve(curve);
+  if (defined) line.defined(defined);
 
   const path = selection.selectAll('path').data(array(data), key);
 
@@ -36,17 +30,19 @@ export default function area(selection, props) {
     .transition(transition)
     .attr('opacity', 0)
     .remove();
+
   path
     .enter()
     .append('path')
-    .attr('d', area)
+    .attr('d', line)
     .attr('opacity', 0)
     .merge(path)
-    .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
+    .attr('fill', 'none')
+    .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
     .attr('opacity', 1)
-    .call(interpolatePath, area, interpolate);
+    .call(interpolatePath, line, interpolate);
 
   return selection;
 }

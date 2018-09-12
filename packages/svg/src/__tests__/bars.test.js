@@ -8,6 +8,18 @@ const fixture = svg();
 beforeAll(fixture.setup);
 afterAll(fixture.teardown);
 
+const xScale = scaleBand()
+  .domain(['A', 'B', 'C', 'D'])
+  .range([0, 100]);
+const x0 = d => xScale(d.x);
+const x1 = d => xScale(d.x) + xScale.bandwidth();
+
+const yScale = scaleLinear()
+  .domain([0, 40])
+  .range([100, 0]);
+const y0 = d => yScale(0);
+const y1 = d => yScale(d.y);
+
 test('should render simple bars', async () => {
   const transition = d3_transition().duration(0);
   const selection = bars(fixture(), {
@@ -17,12 +29,10 @@ test('should render simple bars', async () => {
       { x: 'C', y: 30 },
       { x: 'D', y: 40 }
     ],
-    xScale: scaleBand()
-      .domain(['A', 'B', 'C', 'D'])
-      .range([0, 100]),
-    yScale: scaleLinear()
-      .domain([0, 40])
-      .range([100, 0]),
+    x0,
+    x1,
+    y0,
+    y1,
     transition
   });
 
@@ -40,17 +50,15 @@ test('should use style and class', async () => {
       { x: 'C', y: 30 },
       { x: 'D', y: 40 }
     ],
-    xScale: scaleBand()
-      .domain(['A', 'B', 'C', 'D'])
-      .range([0, 100]),
-    yScale: scaleLinear()
-      .domain([0, 40])
-      .range([100, 0]),
+    x0,
+    x1,
+    y0,
+    y1,
     transition,
 
-    seriesStyle: () => ({ fill: 'blue' }),
-    seriesClass: (_, i) => `series-${i}`,
-    style: (_, i) => ({ stroke: i === 1 ? 'red' : 'white' }),
+    style: {
+      stroke: (_, i) => (i === 1 ? 'red' : 'white')
+    },
     class: (_, i) => (i === 2 ? 'is-highlighted' : null)
   });
 

@@ -58,7 +58,7 @@ export default function text(selection, props) {
       y = height;
     }
 
-    transform = `translate(${x}, ${y})rotate(${rotation || 0})`;
+    transform = `translate(${x}, ${y}) rotate(${rotation || 0})`;
   }
 
   const instance = selection.selectAll('text').data([null]);

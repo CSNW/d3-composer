@@ -1,8 +1,12 @@
-import { xy, toStyle } from '@d3-composer/utils';
-import { seriesLayers, translateXY } from './utils';
+import { passthrough, toStyle } from '@d3-composer/utils';
+import { translateXY } from './utils';
 
 export default function labels(selection, props) {
-  const {
+  let {
+    data, // = passthrough,
+    x,
+    y,
+    key,
     text,
     style,
     class: className,
@@ -11,31 +15,28 @@ export default function labels(selection, props) {
     anchor = 'start',
     baseline = 'hanging'
   } = props;
-  const { x, y, key, yScale } = xy(props);
+  data = data || passthrough; // TEMP
   const translate = translateXY(x, y);
-  const translate0 = translateXY(
-    x,
-    d => (d && d.y0 != null ? yScale(d.y0) : yScale(0))
-  );
 
-  const layers = seriesLayers(selection, props);
-  const groups = layers.selectAll('g').data(d => d.values, key);
+  const groups = selection.selectAll('g').data(data, key);
 
   groups
     .exit()
     .transition(transition)
-    .attr('transform', translate0)
+    .attr('opacity', 0)
     .remove();
 
   const entering = groups
     .enter()
     .append('g')
-    .attr('transform', translate0);
+    .attr('transform', translate)
+    .attr('opacity', 0);
 
   entering
     .merge(groups)
     .transition(transition)
-    .attr('transform', translate);
+    .attr('transform', translate)
+    .attr('opacity', 1);
   entering
     .append('text')
     .merge(groups.select('text'))

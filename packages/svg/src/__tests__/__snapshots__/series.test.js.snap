@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`series should create layers for series data 1`] = `
+<g
+  data-series="0"
+/>
+`;
+
+exports[`series should remove layers for series data 1`] = `
+<g>
+  <g
+    data-series="a"
+  />
+  <g
+    data-series="d"
+  />
+  <g
+    data-series="c"
+  />
+</g>
+`;
+
+exports[`series should set series style and class 1`] = `
+<g>
+  <g
+    data-series="a"
+  />
+  <g
+    data-series="b"
+  />
+  <g
+    data-series="c"
+  />
+</g>
+`;

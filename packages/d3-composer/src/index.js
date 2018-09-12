@@ -1,21 +1,20 @@
 export {
-  series,
-  Series,
-  isSeries,
-  toSeries,
+  passthrough,
+  array,
   seriesExtent,
-  xy,
   toStyle,
-  Size,
   toMargin,
-  Area
+  Size,
+  Area,
+  Series
 } from '@d3-composer/utils';
 export { template } from '@d3-composer/grid';
 export {
   chart,
   layout,
   layer,
-  lines,
+  series,
+  line,
   bars,
   scatter,
   area,
@@ -29,7 +28,6 @@ export {
   gridlines,
   symbolLine,
   size,
-  seriesLayers,
   interpolatePath,
   translateXY
 } from '@d3-composer/svg';
