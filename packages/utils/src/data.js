@@ -12,6 +12,10 @@ export function array(value) {
     : [value];
 }
 
+export function fn(value) {
+  return typeof value === 'function' ? value : () => value;
+}
+
 export function seriesExtent(data, values, value) {
   return data.reduce(
     ([min, max], series, index) => {

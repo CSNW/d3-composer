@@ -135,10 +135,10 @@ function barsChart(selection, props) {
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
-  const x0 = d => xScale(d.x);
-  const x1 = d => xScale(d.x) + xScale.bandwidth();
-  const y0 = d => yScale(0);
-  const y1 = d => yScale(d.y);
+  const x = d => xScale(d.x);
+  const width = xScale.bandwidth();
+  const y0 = yScale(0);
+  const y = d => yScale(d.y);
 
   layout(selection, grid, layers => {
     text(layers.title(), { text: 'Bars', justify: 'center', align: 'center' });
@@ -147,10 +147,10 @@ function barsChart(selection, props) {
 
     bars(series(layers.chart(), { data, style: { color: 'green' } }), {
       data: series => series.values,
-      x0,
-      x1,
+      x,
+      width,
       y0,
-      y1,
+      y,
       transition
     });
   });

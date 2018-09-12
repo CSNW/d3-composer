@@ -1,12 +1,16 @@
-import { passthrough, toStyle } from '@d3-composer/utils';
+import { passthrough, fn, toStyle } from '@d3-composer/utils';
 
 export default function bars(selection, props) {
   let {
     data, // = passthrough,
+    x,
     x0,
     x1,
+    y,
     y0,
     y1,
+    width,
+    height,
     key,
     style,
     class: className,
@@ -14,12 +18,19 @@ export default function bars(selection, props) {
   } = props;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
-  function width(d, i, j) {
-    return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));
-  }
-  function height(d, i, j) {
-    return Math.abs(y1.call(this, d, i, j) - y0.call(this, d, i, j));
-  }
+  x = x != null ? x : x0;
+  y = y != null ? y : y1;
+
+  width =
+    width ||
+    function(d, i, j) {
+      return Math.abs(fn(x1).call(this, d, i, j) - fn(x).call(this, d, i, j));
+    };
+  height =
+    height ||
+    function(d, i, j) {
+      return Math.abs(fn(y).call(this, d, i, j) - fn(y0).call(this, d, i, j));
+    };
 
   const bars = selection.selectAll('rect').data(data, key);
 
@@ -31,8 +42,8 @@ export default function bars(selection, props) {
   bars
     .enter()
     .append('rect')
-    .attr('x', x0)
-    .attr('y', y1)
+    .attr('x', x)
+    .attr('y', y)
     .attr('height', height)
     .attr('width', width)
     .attr('opacity', 0)
@@ -40,8 +51,8 @@ export default function bars(selection, props) {
     .attr('class', className)
     .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
     .transition(transition)
-    .attr('x', x0)
-    .attr('y', y1)
+    .attr('x', x)
+    .attr('y', y)
     .attr('height', height)
     .attr('width', width)
     .attr('opacity', 1);
