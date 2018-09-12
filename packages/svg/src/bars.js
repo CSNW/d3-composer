@@ -48,7 +48,7 @@ export default function bars(selection, props) {
     .attr('width', width)
     .attr('opacity', 0)
     .merge(bars)
-    .attr('fill', 'currentStyle')
+    .attr('fill', 'currentColor')
     .attr('stroke', 'none')
     .attr('style', toStyle(style))
     .attr('class', className)
