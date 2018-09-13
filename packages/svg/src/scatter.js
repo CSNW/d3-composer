@@ -18,17 +18,12 @@ export default function scatter(selection, props) {
 
   const paths = selection.selectAll('path').data(data, key);
 
-  paths
-    .exit()
-    .transition(transition)
-    .attr('opacity', 0)
-    .remove();
+  paths.exit().remove();
 
   paths
     .enter()
     .append('path')
     .attr('transform', translate)
-    .attr('opacity', 0)
     .merge(paths)
     .attr('fill', 'currentColor')
     .attr('stroke', 'none')
@@ -36,7 +31,6 @@ export default function scatter(selection, props) {
     .attr('class', className)
     .transition(transition)
     .attr('transform', translate)
-    .attr('opacity', 1)
     .call(interpolatePath, path, interpolate);
 
   return selection;

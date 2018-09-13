@@ -5,7 +5,6 @@ exports[`should render simple line 1`] = `
   <path
     d="M0,100L100,0"
     fill="none"
-    opacity="1"
   />
 </g>
 `;
@@ -16,14 +15,9 @@ exports[`should use style and class 1`] = `
   data-series="0"
 >
   <path
+    d="M0,100L100,0"
     fill="none"
-    opacity="1"
     style="stroke: blue;"
-  />
-  <path
-    fill="none"
-    opacity="1"
-    style="stroke: red;"
   />
 </g>
 `;

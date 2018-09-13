@@ -33,20 +33,17 @@ export default function area(selection, props) {
   path
     .exit()
     .transition(transition)
-    .attr('opacity', 0)
     .remove();
   path
     .enter()
     .append('path')
     .attr('d', area)
-    .attr('opacity', 0)
     .merge(path)
     .attr('fill', 'currentColor')
     .attr('stroke', 'none')
     .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
-    .attr('opacity', 1)
     .call(interpolatePath, area, interpolate);
 
   return selection;

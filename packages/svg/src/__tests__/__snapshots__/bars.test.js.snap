@@ -3,33 +3,33 @@
 exports[`should render simple bars 1`] = `
 <g>
   <rect
+    fill="currentColor"
     height="25"
-    opacity="1"
-    style="fill: currentColor; stroke: none;"
+    stroke="none"
     width="25"
     x="0"
     y="75"
   />
   <rect
+    fill="currentColor"
     height="50"
-    opacity="1"
-    style="fill: currentColor; stroke: none;"
+    stroke="none"
     width="25"
     x="25"
     y="50"
   />
   <rect
+    fill="currentColor"
     height="75"
-    opacity="1"
-    style="fill: currentColor; stroke: none;"
+    stroke="none"
     width="25"
     x="50"
     y="25"
   />
   <rect
+    fill="currentColor"
     height="100"
-    opacity="1"
-    style="fill: currentColor; stroke: none;"
+    stroke="none"
     width="25"
     x="75"
     y="0"
@@ -40,16 +40,18 @@ exports[`should render simple bars 1`] = `
 exports[`should use style and class 1`] = `
 <g>
   <rect
+    fill="currentColor"
     height="25"
-    opacity="1"
+    stroke="none"
     style="stroke: white;"
     width="25"
     x="0"
     y="75"
   />
   <rect
+    fill="currentColor"
     height="50"
-    opacity="1"
+    stroke="none"
     style="stroke: red;"
     width="25"
     x="25"
@@ -57,16 +59,18 @@ exports[`should use style and class 1`] = `
   />
   <rect
     class="is-highlighted"
+    fill="currentColor"
     height="75"
-    opacity="1"
+    stroke="none"
     style="stroke: white;"
     width="25"
     x="50"
     y="25"
   />
   <rect
+    fill="currentColor"
     height="100"
-    opacity="1"
+    stroke="none"
     style="stroke: white;"
     width="25"
     x="75"

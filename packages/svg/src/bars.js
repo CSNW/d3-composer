@@ -34,11 +34,7 @@ export default function bars(selection, props) {
 
   const bars = selection.selectAll('rect').data(data, key);
 
-  bars
-    .exit()
-    .transition(transition)
-    .attr('opacity', 0)
-    .remove();
+  bars.exit().remove();
   bars
     .enter()
     .append('rect')
@@ -46,7 +42,6 @@ export default function bars(selection, props) {
     .attr('y', y)
     .attr('height', height)
     .attr('width', width)
-    .attr('opacity', 0)
     .merge(bars)
     .attr('fill', 'currentColor')
     .attr('stroke', 'none')
@@ -56,8 +51,7 @@ export default function bars(selection, props) {
     .attr('x', x)
     .attr('y', y)
     .attr('height', height)
-    .attr('width', width)
-    .attr('opacity', 1);
+    .attr('width', width);
 
   return selection;
 }

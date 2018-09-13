@@ -20,23 +20,17 @@ export default function labels(selection, props) {
 
   const groups = selection.selectAll('g').data(data, key);
 
-  groups
-    .exit()
-    .transition(transition)
-    .attr('opacity', 0)
-    .remove();
+  groups.exit().remove();
 
   const entering = groups
     .enter()
     .append('g')
-    .attr('transform', translate)
-    .attr('opacity', 0);
+    .attr('transform', translate);
 
   entering
     .merge(groups)
     .transition(transition)
-    .attr('transform', translate)
-    .attr('opacity', 1);
+    .attr('transform', translate);
   entering
     .append('text')
     .merge(groups.select('text'))

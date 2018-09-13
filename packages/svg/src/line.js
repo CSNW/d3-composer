@@ -25,23 +25,17 @@ export default function line(selection, props = {}) {
 
   const path = selection.selectAll('path').data(array(data), key);
 
-  path
-    .exit()
-    .transition(transition)
-    .attr('opacity', 0)
-    .remove();
+  path.exit().remove();
 
   path
     .enter()
     .append('path')
     .attr('d', line)
-    .attr('opacity', 0)
     .merge(path)
     .attr('fill', 'none')
     .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
-    .attr('opacity', 1)
     .call(interpolatePath, line, interpolate);
 
   return selection;
