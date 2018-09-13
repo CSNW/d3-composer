@@ -1,62 +1,54 @@
-import { xy, toStyle } from '@d3-composer/utils';
-import { seriesLayers } from './utils';
+import { passthrough, fn, toStyle } from '@d3-composer/utils';
 
 export default function bars(selection, props) {
-  const { style, class: className, transition } = props;
-  const { x, y, key, xScale, yScale } = xy(props);
+  let {
+    data, // = passthrough,
+    x,
+    x0,
+    x1,
+    y,
+    y0,
+    y1,
+    width,
+    height,
+    key,
+    style,
+    class: className,
+    transition
+  } = props;
+  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
-  const x0 =
-    props.x0 ||
+  x = x != null ? x : x0;
+  y = y != null ? y : y1;
+
+  width =
+    width ||
     function(d, i, j) {
-      return d && d.x0 != null ? xScale(d.x0) : x.call(this, d, i, j);
+      return Math.abs(fn(x1).call(this, d, i, j) - fn(x).call(this, d, i, j));
     };
-  const x1 =
-    props.x1 ||
+  height =
+    height ||
     function(d, i, j) {
-      return d && d.x1 != null
-        ? xScale(d.x1)
-        : x0.call(this, d, i, j) + xScale.bandwidth();
+      return Math.abs(fn(y).call(this, d, i, j) - fn(y0).call(this, d, i, j));
     };
 
-  const y0 =
-    props.y0 ||
-    function(d) {
-      return d && d.y0 != null ? yScale(d.y0) : yScale(0);
-    };
-  const y1 =
-    props.y1 ||
-    function(d, i, j) {
-      return d && d.y1 != null ? yScale(d.y1) : y.call(this, d, i, j);
-    };
+  const bars = selection.selectAll('rect').data(data, key);
 
-  function width(d, i, j) {
-    return Math.abs(x1.call(this, d, i, j) - x0.call(this, d, i, j));
-  }
-  function height(d, i, j) {
-    return Math.abs(y1.call(this, d, i, j) - y0.call(this, d, i, j));
-  }
-
-  const layers = seriesLayers(selection, props);
-  const bars = layers.selectAll('rect').data(d => d.values, key);
-
-  bars
-    .exit()
-    .transition(transition)
-    .attr('y', y0)
-    .attr('height', 0)
-    .remove();
+  bars.exit().remove();
   bars
     .enter()
     .append('rect')
-    .attr('x', x0)
-    .attr('y', y0)
-    .attr('height', 0)
+    .attr('x', x)
+    .attr('y', y)
+    .attr('height', height)
     .attr('width', width)
     .merge(bars)
+    .attr('fill', 'currentColor')
+    .attr('stroke', 'none')
+    .attr('style', toStyle(style))
     .attr('class', className)
-    .attr('style', toStyle(style, 'fill: currentColor; stroke: none;'))
     .transition(transition)
-    .attr('x', x0)
+    .attr('x', x)
     .attr('y', y)
     .attr('height', height)
     .attr('width', width);

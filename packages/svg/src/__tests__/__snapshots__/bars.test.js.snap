@@ -2,77 +2,79 @@
 
 exports[`should render simple bars 1`] = `
 <g>
-  <g
-    data-series="0"
-  >
-    <rect
-      height="25"
-      style="fill: currentColor; stroke: none;"
-      width="25"
-      x="0"
-      y="75"
-    />
-    <rect
-      height="50"
-      style="fill: currentColor; stroke: none;"
-      width="25"
-      x="25"
-      y="50"
-    />
-    <rect
-      height="75"
-      style="fill: currentColor; stroke: none;"
-      width="25"
-      x="50"
-      y="25"
-    />
-    <rect
-      height="100"
-      style="fill: currentColor; stroke: none;"
-      width="25"
-      x="75"
-      y="0"
-    />
-  </g>
+  <rect
+    fill="currentColor"
+    height="25"
+    stroke="none"
+    width="25"
+    x="0"
+    y="75"
+  />
+  <rect
+    fill="currentColor"
+    height="50"
+    stroke="none"
+    width="25"
+    x="25"
+    y="50"
+  />
+  <rect
+    fill="currentColor"
+    height="75"
+    stroke="none"
+    width="25"
+    x="50"
+    y="25"
+  />
+  <rect
+    fill="currentColor"
+    height="100"
+    stroke="none"
+    width="25"
+    x="75"
+    y="0"
+  />
 </g>
 `;
 
 exports[`should use style and class 1`] = `
 <g>
-  <g
-    class="series-0"
-    data-series="0"
-    style="fill: blue;"
-  >
-    <rect
-      height="25"
-      style="stroke: white;"
-      width="25"
-      x="0"
-      y="75"
-    />
-    <rect
-      height="50"
-      style="stroke: red;"
-      width="25"
-      x="25"
-      y="50"
-    />
-    <rect
-      class="is-highlighted"
-      height="75"
-      style="stroke: white;"
-      width="25"
-      x="50"
-      y="25"
-    />
-    <rect
-      height="100"
-      style="stroke: white;"
-      width="25"
-      x="75"
-      y="0"
-    />
-  </g>
+  <rect
+    fill="currentColor"
+    height="25"
+    stroke="none"
+    style="stroke: white;"
+    width="25"
+    x="0"
+    y="75"
+  />
+  <rect
+    fill="currentColor"
+    height="50"
+    stroke="none"
+    style="stroke: red;"
+    width="25"
+    x="25"
+    y="50"
+  />
+  <rect
+    class="is-highlighted"
+    fill="currentColor"
+    height="75"
+    stroke="none"
+    style="stroke: white;"
+    width="25"
+    x="50"
+    y="25"
+  />
+  <rect
+    fill="currentColor"
+    height="100"
+    stroke="none"
+    style="stroke: white;"
+    width="25"
+    x="75"
+    y="0"
+  />
 </g>
 `;

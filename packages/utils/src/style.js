@@ -1,6 +1,6 @@
-export function toStyle(value, defaults) {
+export function toStyle(value) {
   if (!value) {
-    return defaults ? toStyle(defaults) : null;
+    return null;
   }
   if (typeof value === 'function') {
     return function() {

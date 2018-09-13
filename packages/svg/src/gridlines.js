@@ -3,9 +3,6 @@ import layer from './layer';
 
 const index = (_, i) => i;
 
-// TODO Not currently pixel-perfect with d3.axis
-// Look into how that does tick lines (or maybe just use it here)
-
 export default function gridlines(selection, props) {
   const {
     xGrid = true,

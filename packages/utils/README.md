@@ -2,62 +2,37 @@
 
 ## API
 
-<a href="#xy" name="xy">#</a> <b>xy</b>(<i>options</i>)
+<a href="#passthrough" name="passthrough">#</a> <b>passthrough</b>(<i>d</i>)
 
-Prepare `data`, `x`, and `y` values for XY data.
+Helper for passing through data from selection by default (`d => d || []`)
 
-Options:
-
-- `data` - single series (e.g. `[{ x: 0, y: 10 }]`) or multi-series (e.g. `[{ values: [{ x: 0, y: 10 }] }])
-- `xScale`
-- `yScale`
-- `[xValue]` - `(d, i) => x-value`
-- `[yValue]` - `(d, i) => y-value`
-- `[key]` - `(d, i) => key`
-
-<a href="#series" name="series">#</a> <b>series</b>(<i>options</i>)
-
-Prepare `data` and `seriesKey` for series data.
-
-Options:
-
-- `data` - single series (e.g. `[...]`) or multi-series (e.g. `[{ values: [...] }, ...])`)
-- `[seriesKey]` - `(series, i) => key`
-
-<a href="#series-local" name="series-local">#</a> <b>Series</b>
-
-`d3.local` used for retrieving series for node.
-
-```js
-import { Series } from '@d3-composer/utils';
-
-const series = Series.get(node);
-```
-
-<a href="#isSeries" name="isSeries">#</a> <b>isSeries</b>(<i>value</i>)
-
-Check if value is series data (has a `values` array)
-
-<a href="#toSeries" name="toSeries">#</a> <b>toSeries</b>(<i>data</i>)
-
-Convert data to series form (if needed)
-
-<a href="#seriesExtent" name="seriesExtent">#</a> <b>seriesExtent</b>(<i>data</i>)
+<a href="#toArray" name="toArray">#</a> <b>toArray</b>(<i>value</i>)
+<a href="#seriesKey" name="seriesKey">#</a> <b>seriesKey</b>(<i>d</i>, <i>i</i>)
+<a href="#seriesExtent" name="seriesExtent">#</a> <b>seriesExtent</b>(<i>data</i>, <i>values</i>, <i>value</i>)
 
 Calculate `[min, max]` for series data.
 
-<a href="#toStyle" name="toStyle">#</a> <b>toStyle</b>(<i>value</i>)
+```js
+const data = [
+  { values: [{ x: 100 }] },
+  { values: [{ x: 0 }] }
+];
+
+const [min, max] = seriesExtent(data, series => series.values, d => d.x);
+// min = 0, max = 100
+```
+
+<a href="#toStyle" name="toStyle">#</a> <b>toStyle</b>(<i>style</i>)
 
 Convert string, object, or function to style string
 
 ```js
 const style = toStyle({ fill: 'blue', stroke: 'red' });
 // style = 'fill: blue; stroke: red;'
+
+const dynamic = toStyle({ fill: d => d.fill, stroke: 'none' });
+// dynamic ~= d => `fill: ${d.fill}; stroke: none;`
 ```
-
-<a href="#Size-local" name="Size-local">#</a> <b>Size</b>
-
-`d3.local` used for retrieving size for node.
 
 <a href="#toMargin" name="toMargin">#</a> <b>toMargin</b>(<i>margin</i>)
 
@@ -70,6 +45,14 @@ toMargin({ top: 10 }) // [10, 0, 0, 0]
 toMargin([0, 0, 10, 0]) // [0, 0, 10, 0]
 ```
 
+<a href="#Size-local" name="Size-local">#</a> <b>Size</b>
+
+`d3.local` used for retrieving defined size for node (e.g. from grid area).
+
 <a href="#Area-local" name="Area-local">#</a> <b>Area</b>
 
-`d3.local` used for retrieving grid area for node.
+`d3.local` use for retrieving grid area for node.
+
+<a href="#Series-local" name="Series-local">#</a> <b>Series</b>
+
+`d3.local` used for retrieving series for node.

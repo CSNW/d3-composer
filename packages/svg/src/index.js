@@ -1,7 +1,8 @@
 export { default as chart } from './chart';
 export { default as layout } from './layout';
 export { default as layer } from './layer';
-export { default as lines } from './lines';
+export { default as series } from './series';
+export { default as line } from './line';
 export { default as bars } from './bars';
 export { default as scatter } from './scatter';
 export { default as area } from './area';
@@ -11,4 +12,4 @@ export { default as text } from './text';
 export { default as legend } from './legend';
 export { default as gridlines } from './gridlines';
 export { symbolLine } from './symbols';
-export { size, seriesLayers, interpolatePath, translateXY } from './utils';
+export { size, interpolatePath, translateXY } from './utils';

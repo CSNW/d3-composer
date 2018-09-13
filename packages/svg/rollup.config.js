@@ -15,6 +15,7 @@ const config = {
     globals: {
       '@d3-composer/utils': 'd3c',
       'd3-axis': 'd3',
+      'd3-selection': 'd3',
       'd3-shape': 'd3'
     },
     extend: true,

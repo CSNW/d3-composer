@@ -1,15 +1,15 @@
 import { svg } from '../__helpers__/svg';
-import { seriesLayers } from '../utils';
+import series from '../series';
 
 const fixture = svg();
 
 beforeAll(fixture.setup);
 afterAll(fixture.teardown);
 
-describe('seriesLayers', () => {
+describe('series', () => {
   test('should create layers for series data', () => {
-    const selection = seriesLayers(fixture(), {
-      data: [{ values: [] }, { key: 'a', values: [] }]
+    const selection = series(fixture(), {
+      data: [[], { key: 'a', values: [] }]
     });
 
     expect(selection.node()).toMatchSnapshot();
@@ -17,14 +17,14 @@ describe('seriesLayers', () => {
 
   test('should remove layers for series data', () => {
     const selection = fixture();
-    seriesLayers(selection, {
+    series(selection, {
       data: [
         { key: 'a', values: [] },
         { key: 'b', values: [] },
         { key: 'c', values: [] }
       ]
     });
-    seriesLayers(selection, {
+    series(selection, {
       data: [
         { key: 'a', values: [] },
         { key: 'd', values: [] },
@@ -39,7 +39,7 @@ describe('seriesLayers', () => {
     const colors = ['blue', 'green', 'yellow'];
 
     const selection = fixture();
-    seriesLayers(selection, {
+    series(selection, {
       data: [
         { key: 'a', class: 'series-0', values: [] },
         { key: 'b', class: 'series-1', values: [] },

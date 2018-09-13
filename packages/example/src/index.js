@@ -11,7 +11,8 @@ import {
   template,
   chart,
   layout,
-  lines,
+  series,
+  line,
   bars,
   scatter,
   area,
@@ -45,6 +46,12 @@ function linesChart(selection, props) {
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
+  const values = series => series.values;
+  const x = d => xScale(d.x);
+  const y = d => yScale(d.y);
+  const y0 = yScale(0);
+  const y1 = d => yScale(d.y);
+
   layout(selection, grid, layers => {
     text(layers.title(), { text: 'Lines', justify: 'center', align: 'center' });
     text(layers.y_axis_title(), {
@@ -68,34 +75,35 @@ function linesChart(selection, props) {
       tickStyle: 'stroke: #ccc;'
     });
 
-    area(layers.chart('area'), {
-      data,
-      xScale,
-      yScale,
+    area(series(layers.chart('area'), { data }), {
+      data: values,
+      x,
+      y0,
+      y1,
       style: { fill: 'blue', opacity: 0.05 },
       transition
     });
-    lines(layers.chart('lines'), {
-      data,
-      xScale,
-      yScale,
-      style: { stroke: 'blue', fill: 'none' },
+    line(series(layers.chart('line'), { data }), {
+      data: values,
+      x,
+      y,
+      style: { stroke: 'blue' },
       transition
     });
-    scatter(layers.chart('scatter'), {
-      data,
-      xScale,
-      yScale,
+    scatter(series(layers.chart('scatter'), { data }), {
+      data: values,
+      x,
+      y,
       path: symbol()
         .size(50)
         .type(symbolCircle),
       style: { stroke: 'blue', fill: 'rgba(255, 255, 255, 0.5)' },
       transition
     });
-    labels(layers.chart('labels'), {
-      data,
-      xScale,
-      yScale,
+    labels(series(layers.chart('labels'), { data }), {
+      data: values,
+      x,
+      y,
       text: d => d.y,
       anchor: 'middle',
       baseline: 'baseline',
@@ -127,16 +135,22 @@ function barsChart(selection, props) {
   xScale = xScale.range([0, grid.chart.width]);
   yScale = yScale.range([grid.chart.height, 0]);
 
+  const x = d => xScale(d.x);
+  const width = xScale.bandwidth();
+  const y0 = yScale(0);
+  const y = d => yScale(d.y);
+
   layout(selection, grid, layers => {
     text(layers.title(), { text: 'Bars', justify: 'center', align: 'center' });
     axisTop(layers.x_axis(), { xScale });
     axisRight(layers.y_axis(), { yScale });
 
-    bars(layers.chart(), {
-      data,
-      xScale,
-      yScale,
-      seriesStyle: { color: 'green' },
+    bars(series(layers.chart(), { data, style: { color: 'green' } }), {
+      data: series => series.values,
+      x,
+      width,
+      y0,
+      y,
       transition
     });
   });
