@@ -8,18 +8,18 @@ import { toStyle } from '@d3-composer/utils';
 import layer from './layer';
 import { size } from './utils';
 
-export function axisTop(selection, props) {
+export function axisTop(selection, options) {
   const {
     scale,
     xScale,
     style,
     domainStyle,
     tickStyle,
-    textStyle,
+    labelStyle,
     class: className,
     transition
-  } = props;
-  const axis = prepare(d3_axisTop(scale || xScale), props);
+  } = options;
+  const axis = prepare(d3_axisTop(scale || xScale), options);
   const { height } = size(selection);
 
   layer(selection, 'axis-transform')
@@ -27,67 +27,67 @@ export function axisTop(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
+    .call(styleAxis, style, domainStyle, tickStyle, labelStyle);
 
   return selection;
 }
 
-export function axisRight(selection, props) {
+export function axisRight(selection, options) {
   const {
     scale,
     yScale,
     style,
     domainStyle,
     tickStyle,
-    textStyle,
+    labelStyle,
     class: className,
     transition
-  } = props;
-  const axis = prepare(d3_axisRight(scale || yScale), props);
+  } = options;
+  const axis = prepare(d3_axisRight(scale || yScale), options);
 
   selection
     .attr('class', className)
     .transition(transition)
     .call(axis)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
+    .call(styleAxis, style, domainStyle, tickStyle, labelStyle);
 
   return selection;
 }
 
-export function axisBottom(selection, props) {
+export function axisBottom(selection, options) {
   const {
     scale,
     xScale,
     style,
     domainStyle,
     tickStyle,
-    textStyle,
+    labelStyle,
     class: className,
     transition
-  } = props;
-  const axis = prepare(d3_axisBottom(scale || xScale), props);
+  } = options;
+  const axis = prepare(d3_axisBottom(scale || xScale), options);
 
   selection
     .attr('class', className)
     .transition(transition)
     .call(axis)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
+    .call(styleAxis, style, domainStyle, tickStyle, labelStyle);
 
   return selection;
 }
 
-export function axisLeft(selection, props) {
+export function axisLeft(selection, options) {
   const {
     scale,
     yScale,
     style,
     domainStyle,
     tickStyle,
-    textStyle,
+    labelStyle,
     class: className,
     transition
-  } = props;
-  const axis = prepare(d3_axisLeft(scale || yScale), props);
+  } = options;
+  const axis = prepare(d3_axisLeft(scale || yScale), options);
   const { width } = size(selection);
 
   layer(selection, 'axis-transform')
@@ -95,12 +95,12 @@ export function axisLeft(selection, props) {
     .attr('class', className)
     .transition(transition)
     .call(axis)
-    .call(styleAxis, style, domainStyle, tickStyle, textStyle);
+    .call(styleAxis, style, domainStyle, tickStyle, labelStyle);
 
   return selection;
 }
 
-function prepare(axis, props) {
+function prepare(axis, options) {
   const {
     ticks,
     tickArguments,
@@ -110,7 +110,7 @@ function prepare(axis, props) {
     tickSizeInner,
     tickSizeOuter,
     tickPadding
-  } = props;
+  } = options;
 
   if (ticks) axis.ticks(ticks);
   if (tickArguments) axis.tickArguments(tickArguments);
@@ -129,12 +129,12 @@ function prepare(axis, props) {
   };
 }
 
-function styleAxis(selection, style, domainStyle, tickStyle, textStyle) {
+function styleAxis(selection, style, domainStyle, tickStyle, labelStyle) {
   // Get underlying selection from transition
   selection = selection.selection ? selection.selection() : selection;
 
   selection.attr('style', toStyle(style));
   selection.select('.domain').attr('style', toStyle(domainStyle));
   selection.selectAll('.tick line').attr('style', toStyle(tickStyle));
-  selection.selectAll('.tick text').attr('style', toStyle(textStyle));
+  selection.selectAll('.tick text').attr('style', toStyle(labelStyle));
 }

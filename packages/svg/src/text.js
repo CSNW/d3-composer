@@ -1,7 +1,7 @@
 import { size } from './utils';
 import { toStyle } from '@d3-composer/utils';
 
-export default function text(selection, props) {
+export default function text(selection, options) {
   // anchor = origin-x = 'start' | 'middle' | 'end'
   //   (https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/text-anchor)
   // baseline = origin-y = 'hanging' | 'middle' | 'baseline'
@@ -21,7 +21,7 @@ export default function text(selection, props) {
     style,
     rotation,
     transform
-  } = props;
+  } = options;
 
   anchor =
     anchor != null

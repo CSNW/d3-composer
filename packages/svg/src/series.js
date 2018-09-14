@@ -3,13 +3,13 @@ import { childNodes } from './utils';
 
 const seriesKey = (d, i) => (d && d.key != null ? d.key : i);
 
-export default function series(selection, props) {
+export default function series(selection, options) {
   let {
     data, // = passthrough,
     key = seriesKey,
     style,
     class: className
-  } = props;
+  } = options;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const layers = selection

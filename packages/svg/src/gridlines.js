@@ -3,7 +3,7 @@ import layer from './layer';
 
 const index = (_, i) => i;
 
-export default function gridlines(selection, props) {
+export default function gridlines(selection, options) {
   const {
     xGrid = true,
     yGrid = true,
@@ -12,7 +12,7 @@ export default function gridlines(selection, props) {
     style,
     class: className,
     transition
-  } = props;
+  } = options;
 
   const [x1, x2] = xScale.range();
   const [y1, y2] = yScale.range();

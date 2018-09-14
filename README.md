@@ -7,12 +7,12 @@ __Functional chart components__
 A functional chart component approach is used throughout d3-composer and allows complex charts to be composed out of simple, reusable chart components. These match closely to built-in d3 components and can be used with the standard approach of `selection.call(...)`.
 
 ```js
-function lines(selection, props) {
+function lines(selection, options) {
   // ...
 }
 
-function composed(selection, props) {
-  lines(selection, props);
+function composed(selection, options) {
+  lines(selection, options);
   // ...
 }
 
@@ -55,10 +55,10 @@ For npm / yarn, `npm install d3-composer` or `yarn add d3-composer`. Otherwise, 
 
 ```js
 import { select } from 'd3';
-import { template, chart, layout, lines, axis, text, size } from 'd3-composer';
+import { template, chart, layout, series, line, axis, text, size } from 'd3-composer';
 
-function linesChart(selection, props = {}) {
-  const { data = [], xScale, yScale  } = props;
+function lines(selection, options = {}) {
+  const { data = [], xScale, yScale  } = options;
 
   const grid = template(`
     "title title" 50
@@ -73,7 +73,16 @@ function linesChart(selection, props = {}) {
   layout(selection, grid, layers => {
     axis(layers.x_axis(), { scale: xScale });
     axis(layers.y_axis(), { scale: yScale });
-    lines(layers.chart(), { data, xScale, yScale });
+    
+    line(
+      series(layers.chart(), { data }),
+      {
+        data: series => series.values,
+        x: d => xScale(d.x),
+        y: d => yScale(d.y)
+      }
+    );
+    
     text(layers.title(), { text: 'Line Chart' });
   });
 }
@@ -83,14 +92,14 @@ const svg = chart(
   { width: 600, height: 400, responsive: true }
 );
 
-linesChart(svg, { /* ... */ });
+lines(svg, { /* ... */ });
 ```
 
 ## Examples
 
 Live examples on observablehq:
 
-- [Lines](https://beta.observablehq.com/@timhall/d3-composer-lines)
+- [Line](https://beta.observablehq.com/@timhall/d3-composer-line)
 
 ## API
 
@@ -103,7 +112,8 @@ Live examples on observablehq:
 - [chart](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#chart) - SVG chart wrapper with sizing and responsive options
 - [layout](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#layout) - Create `g` layers from grid
 - [layer](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#layer) - Create named `g` layer
-- [lines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#lines) - Lines chart
+- [series](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#series) - Create series layers
+- [line](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#line) - Line chart
 - [bars](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#bars) - Bars chart
 - [scatter](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#scatter) - Scatter chart
 - [area](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#area) - Area chart
@@ -115,23 +125,22 @@ Live examples on observablehq:
 - [text](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#text) - Text component
 - [legend](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#legend) - Legend component
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
+- [symbolLine](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#symbolLine) - Line symbol
 - [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
-- [seriesLayers](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#seriesLayers) - Helpers for series layers
 - [interpolatePath](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#interpolatePath) - Interpolate path `d`
 - [translateXY](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#translateXY) - Translate helper for x,y
 
 ### @d3-composer/utils
 
-- [xy](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#xy) - xy helper
-- [series](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#series) - series helper
-- [Series](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Series-local) - series local
-- [isSeries](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#isSeries) - check if series
-- [toSeries](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toSeries) - convert to series
-- [seriesExtent](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#seriesExtent) - determine series extent
 - [toStyle](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toStyle) - convert to style string
-- [Size](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Size-local) - size local
 - [toMargin](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#toMargin) - convert to margin array
+- [passthrough](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#passthrough) - create data passthrough
+- [array](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#array) - wrap given value as array
+- [fn](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#fn) - ensure given value is a function
+- [seriesExtent](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#seriesExtent) - determine extent of series data
+- [Size](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Size-local) - size local
 - [Area](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Area-local) - area local
+- [Series](https://github.com/CSNW/d3-composer/blob/master/packages/utils/README.md#Series-local) - series local
 
 ## Development
 

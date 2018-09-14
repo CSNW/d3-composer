@@ -36,3 +36,35 @@ Options:
 - `width`
 - `height`
 - `[margin]` - margin number, object, or array for outer margins
+
+```js
+// chart with 50-unit high title
+const grid = template(`
+  "title" 50
+  "chart" auto
+  / auto
+`, { width, height })
+
+// chart with y-axis (25-unit width) and y-axis title (25-unit width)
+const grid = template(`
+  "y_title y_axis chart" auto
+  / 25 25 auto
+`, { width, height })
+
+// chart with outer margins ([top, right, bottom, left])
+const grid = template(
+  `"chart" auto / auto`,
+  { width, height, margin: [20, 40, 20, 40] }
+);
+
+// | title    (title)  (title) | 50
+// | y_axis | chart  | legend  | auto
+// | .      | x_axis | .       | 25
+//   25       auto     100
+const grid = template(`
+  "title  title  title " 50
+  "y_axis chart  legend" auto
+  ".      x_axis .     " 25
+  / 25    auto   100
+`, { width, height });
+```

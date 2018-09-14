@@ -2,7 +2,7 @@ import { passthrough, array, toStyle } from '@d3-composer/utils';
 import { area as d3_area } from 'd3-shape';
 import { interpolatePath } from './utils';
 
-export default function area(selection, props) {
+export default function area(selection, options) {
   let {
     data, // = passthrough,
     x,
@@ -17,7 +17,7 @@ export default function area(selection, props) {
     curve,
     interpolate,
     defined
-  } = props;
+  } = options;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const area = d3_area()

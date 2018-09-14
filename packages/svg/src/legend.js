@@ -1,7 +1,7 @@
 import { symbol, symbolCircle } from 'd3-shape';
 import { toStyle } from '@d3-composer/utils';
 
-export default function legend(selection, props) {
+export default function legend(selection, options) {
   let {
     path,
     size,
@@ -12,10 +12,8 @@ export default function legend(selection, props) {
     groupStyle,
     groupClass,
     pathStyle,
-    pathClass,
-    labelStyle,
-    labelClass
-  } = props;
+    labelStyle
+  } = options;
 
   // TODO Accept size, width, or height as functions
   if (!height && !size) {
@@ -55,7 +53,6 @@ export default function legend(selection, props) {
     .attr('fill', 'currentColor')
     .attr('stroke', 'none')
     .attr('style', toStyle(pathStyle))
-    .attr('class', pathClass)
     .attr('d', path);
   entering
     .append('text')
@@ -65,7 +62,6 @@ export default function legend(selection, props) {
     .attr('fill', 'currentColor')
     .attr('stroke', 'none')
     .attr('style', toStyle(labelStyle))
-    .attr('class', labelClass)
     .text(text);
 
   return selection;

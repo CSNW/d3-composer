@@ -1,7 +1,7 @@
 import { childNodes } from './utils';
 
-export default function chart(selection, props) {
-  const { width = 400, height = 300, responsive = false } = props;
+export default function chart(selection, options = {}) {
+  const { width = 400, height = 300, responsive = false } = options;
 
   let svg;
   if (selection.node().tagName === 'svg') {
@@ -23,8 +23,8 @@ export default function chart(selection, props) {
     .attr('height', responsive ? null : height);
 }
 
-function svgLayer(selection, props) {
-  const { responsive } = props;
+function svgLayer(selection, options) {
+  const { responsive } = options;
 
   const style = responsive ? 'position: absolute; top: 0; left: 0;' : null;
 

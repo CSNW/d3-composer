@@ -2,7 +2,7 @@ import { passthrough, array, toStyle } from '@d3-composer/utils';
 import { line as d3_line } from 'd3-shape';
 import { interpolatePath } from './utils';
 
-export default function line(selection, props = {}) {
+export default function line(selection, options = {}) {
   let {
     data, // = passthrough,
     x,
@@ -14,7 +14,7 @@ export default function line(selection, props = {}) {
     curve,
     interpolate,
     defined
-  } = props;
+  } = options;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const line = d3_line()

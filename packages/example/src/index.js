@@ -31,8 +31,8 @@ import {
 draw();
 select('#update').on('click', () => draw());
 
-function linesChart(selection, props) {
-  let { data, xScale, yScale, transition } = props;
+function linesChart(selection, options) {
+  let { data, xScale, yScale, transition } = options;
 
   const grid = template(
     `
@@ -120,8 +120,8 @@ function linesChart(selection, props) {
   });
 }
 
-function barsChart(selection, props) {
-  let { data, xScale, yScale, transition } = props;
+function barsChart(selection, options) {
+  let { data, xScale, yScale, transition } = options;
 
   const grid = template(
     `

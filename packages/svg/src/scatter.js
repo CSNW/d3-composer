@@ -1,7 +1,7 @@
 import { passthrough, toStyle } from '@d3-composer/utils';
 import { interpolatePath, translateXY } from './utils';
 
-export default function scatter(selection, props) {
+export default function scatter(selection, options) {
   let {
     data, // = passthrough,
     x,
@@ -12,7 +12,7 @@ export default function scatter(selection, props) {
     class: className,
     transition,
     interpolate
-  } = props;
+  } = options;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
   const translate = translateXY(x, y);
 

@@ -1,7 +1,7 @@
 import { passthrough, toStyle } from '@d3-composer/utils';
 import { translateXY } from './utils';
 
-export default function labels(selection, props) {
+export default function labels(selection, options) {
   let {
     data, // = passthrough,
     x,
@@ -14,7 +14,7 @@ export default function labels(selection, props) {
     transform,
     anchor = 'start',
     baseline = 'hanging'
-  } = props;
+  } = options;
   data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
   const translate = translateXY(x, y);
 
