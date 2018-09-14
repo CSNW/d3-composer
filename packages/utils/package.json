@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/utils",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "Utilities for xy, series, and other common visualization tasks, part of d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
