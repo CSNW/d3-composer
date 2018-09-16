@@ -5,6 +5,7 @@
     "packages/*"
   ],
   "scripts": {
+    "pretest": "yarn build",
     "test": "jest",
     "build": "lerna run build --ignore @d3-composer/example",
     "publish": "yarn build && yarn test && lerna version"
