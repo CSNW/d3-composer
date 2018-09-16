@@ -1,4 +1,5 @@
-import { Area, Size, toMargin } from '@d3-composer/utils';
+import { Area, Size } from '@d3-composer/utils';
+import { applyMargin } from '@d3-composer/grid';
 import layer from './layer';
 import { childNodes } from './utils';
 
@@ -18,7 +19,7 @@ export default function layout(selection, grid, callback) {
       }
 
       id = id || `area-${name}-${index[name]++}`;
-      const layer_area = adjustArea(area, options.margin);
+      const layer_area = applyMargin(area, options.margin);
 
       added.push(id);
 
@@ -44,27 +45,4 @@ export default function layout(selection, grid, callback) {
     .remove();
 
   return selection;
-}
-
-function adjustArea(area, margin) {
-  if (!margin) return area;
-
-  let { x, y, width, height } = area;
-  margin = toMargin(margin);
-
-  x += margin[3];
-  y += margin[0];
-  width -= margin[1] + margin[3];
-  height -= margin[0] + margin[2];
-
-  return {
-    x,
-    y,
-    width,
-    height,
-    left: x,
-    right: x + width,
-    top: y,
-    bottom: y + height
-  };
 }
