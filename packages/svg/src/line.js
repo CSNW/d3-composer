@@ -33,6 +33,7 @@ export default function line(selection, options = {}) {
     .attr('d', line)
     .merge(path)
     .attr('fill', 'none')
+    .attr('stroke', 'currentColor')
     .attr('style', toStyle(style))
     .attr('class', className)
     .transition(transition)
