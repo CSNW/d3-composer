@@ -101,13 +101,7 @@ export function solve(lengths, size, offset = 0) {
   let fractional = 0;
 
   const first_pass = lengths.map(length => {
-    if (length.units === 'auto') {
-      // For css grid, fr + auto would shrink auto to content
-      // doesn't work well for this case -> auto = 1fr
-      fractional += 1;
-
-      return { value: 1, units: 'fr' };
-    } else if (length.units === 'fr') {
+    if (length.units === 'fr') {
       fractional += length.value;
 
       return length;
@@ -176,10 +170,13 @@ export function layout(areas, x_positions, y_positions) {
 }
 
 export function toLength(value) {
-  // units = 'auto' | 'fr' | 'percentage' | 'scalar'
+  // units = 'fr' | 'percentage' | 'scalar'
 
   if (value === 'auto') {
-    return { value, units: 'auto' };
+    // For css grid, fr + auto would shrink auto to content
+    // doesn't work well for this case
+    // -> treat auto = 1fr
+    return { value: 1, units: 'fr' };
   }
   if (value.endsWith('fr')) {
     return { value: Number(value.slice(0, -2)), units: 'fr' };

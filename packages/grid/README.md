@@ -30,6 +30,7 @@ Create grid calculation from `grid-template` specification. `spec` should follow
 
 - Helpers like `repeat` and `minmax` are not currently supported
 - Fixed values should not include a unit (e.g. `20` instead of `20px`)
+- "auto" does not behave according to CSS Grid spec and is instead treated like 1fr in all cases
 
 Options:
 
