@@ -1,5 +1,5 @@
 import { toMargin } from '@d3-composer/utils';
-import { parseTemplate, parseRows, parseColumns, parseAreas } from './parse';
+import { parseTemplate, parseTracks, parseAreas } from './parse';
 import solve from './solve';
 
 const cache = new Map();
@@ -14,8 +14,8 @@ export default function template(spec, options) {
   // spec: object = { rows, columns, [areas] } templates
   let rows, columns, areas;
   if (typeof spec === 'object') {
-    rows = parseRows(spec.rows);
-    columns = parseColumns(spec.columns);
+    rows = parseTracks(spec.rows);
+    columns = parseTracks(spec.columns);
     areas = spec.areas ? parseAreas(spec.areas) : {};
   } else {
     const parsed = cache.has(spec) ? cache.get(spec) : parseTemplate(spec);

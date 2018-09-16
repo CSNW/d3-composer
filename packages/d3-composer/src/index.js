@@ -8,7 +8,7 @@ export {
   Area,
   Series
 } from '@d3-composer/utils';
-export { template } from '@d3-composer/grid';
+export { template, applyMargin } from '@d3-composer/grid';
 export {
   chart,
   layout,

@@ -7,8 +7,8 @@ export default function layout(selection, grid, callback) {
   const index = {};
   const added = [];
 
-  Object.keys(grid).forEach(name => {
-    const area = grid[name];
+  Object.keys(grid.areas).forEach(name => {
+    const area = grid.areas[name];
     index[name] = 0;
 
     layers[name] = (id, options = {}) => {

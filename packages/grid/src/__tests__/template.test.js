@@ -21,3 +21,12 @@ test('should handle row and column spans', () => {
 
   expect(template(spec, { width: 600, height: 400 })).toMatchSnapshot();
 });
+
+test('should handle rows and columns', () => {
+  const spec = {
+    rows: '50 auto 50',
+    columns: '50 auto'
+  };
+
+  expect(template(spec, { width: 600, height: 400 })).toMatchSnapshot();
+});

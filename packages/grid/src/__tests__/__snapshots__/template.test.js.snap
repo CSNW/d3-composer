@@ -309,3 +309,95 @@ Object {
   ],
 }
 `;
+
+exports[`should handle rows and columns 1`] = `
+Object {
+  "areas": Object {},
+  "columns": Array [
+    Array [
+      0,
+      50,
+    ],
+    Array [
+      50,
+      600,
+    ],
+  ],
+  "items": Array [
+    Object {
+      "bottom": 50,
+      "height": 50,
+      "left": 0,
+      "right": 50,
+      "top": 0,
+      "width": 50,
+      "x": 0,
+      "y": 0,
+    },
+    Object {
+      "bottom": 50,
+      "height": 50,
+      "left": 50,
+      "right": 600,
+      "top": 0,
+      "width": 550,
+      "x": 50,
+      "y": 0,
+    },
+    Object {
+      "bottom": 350,
+      "height": 300,
+      "left": 0,
+      "right": 50,
+      "top": 50,
+      "width": 50,
+      "x": 0,
+      "y": 50,
+    },
+    Object {
+      "bottom": 350,
+      "height": 300,
+      "left": 50,
+      "right": 600,
+      "top": 50,
+      "width": 550,
+      "x": 50,
+      "y": 50,
+    },
+    Object {
+      "bottom": 400,
+      "height": 50,
+      "left": 0,
+      "right": 50,
+      "top": 350,
+      "width": 50,
+      "x": 0,
+      "y": 350,
+    },
+    Object {
+      "bottom": 400,
+      "height": 50,
+      "left": 50,
+      "right": 600,
+      "top": 350,
+      "width": 550,
+      "x": 50,
+      "y": 350,
+    },
+  ],
+  "rows": Array [
+    Array [
+      0,
+      50,
+    ],
+    Array [
+      50,
+      350,
+    ],
+    Array [
+      350,
+      400,
+    ],
+  ],
+}
+`;
