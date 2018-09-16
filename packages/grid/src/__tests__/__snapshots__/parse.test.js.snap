@@ -1,0 +1,229 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should parse areas 1`] = `
+Object {
+  "a": Object {
+    "bottom": 0,
+    "left": 0,
+    "right": 2,
+    "top": 0,
+  },
+  "b": Object {
+    "bottom": 2,
+    "left": 0,
+    "right": 0,
+    "top": 1,
+  },
+  "c": Object {
+    "bottom": 1,
+    "left": 1,
+    "right": 1,
+    "top": 1,
+  },
+  "d": Object {
+    "bottom": 1,
+    "left": 2,
+    "right": 2,
+    "top": 1,
+  },
+  "e": Object {
+    "bottom": 2,
+    "left": 2,
+    "right": 2,
+    "top": 2,
+  },
+}
+`;
+
+exports[`should parse areas 2`] = `
+Object {
+  "a": Object {
+    "bottom": 0,
+    "left": 0,
+    "right": 2,
+    "top": 0,
+  },
+  "b": Object {
+    "bottom": 2,
+    "left": 0,
+    "right": 0,
+    "top": 1,
+  },
+  "c": Object {
+    "bottom": 1,
+    "left": 1,
+    "right": 1,
+    "top": 1,
+  },
+  "d": Object {
+    "bottom": 1,
+    "left": 2,
+    "right": 2,
+    "top": 1,
+  },
+  "e": Object {
+    "bottom": 2,
+    "left": 2,
+    "right": 2,
+    "top": 2,
+  },
+}
+`;
+
+exports[`should parse template 1`] = `
+Object {
+  "areas": Object {
+    "a": Object {
+      "bottom": 0,
+      "left": 0,
+      "right": 2,
+      "top": 0,
+    },
+    "b": Object {
+      "bottom": 2,
+      "left": 0,
+      "right": 0,
+      "top": 1,
+    },
+    "c": Object {
+      "bottom": 1,
+      "left": 1,
+      "right": 1,
+      "top": 1,
+    },
+    "d": Object {
+      "bottom": 1,
+      "left": 2,
+      "right": 2,
+      "top": 1,
+    },
+    "e": Object {
+      "bottom": 2,
+      "left": 2,
+      "right": 2,
+      "top": 2,
+    },
+  },
+  "columns": Array [
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+  ],
+  "rows": Array [
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+  ],
+}
+`;
+
+exports[`should parse template 2`] = `
+Object {
+  "areas": Object {},
+  "columns": Array [
+    Object {
+      "units": "scalar",
+      "value": 25,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+    Object {
+      "units": "percentage",
+      "value": 0.25,
+    },
+  ],
+  "rows": Array [
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+    Object {
+      "units": "scalar",
+      "value": 50,
+    },
+  ],
+}
+`;
+
+exports[`should parse tracks 1`] = `
+Array [
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+]
+`;
+
+exports[`should parse tracks 2`] = `
+Array [
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "scalar",
+    "value": 20,
+  },
+  Object {
+    "units": "percentage",
+    "value": 0.305,
+  },
+]
+`;
+
+exports[`should parse tracks 3`] = `
+Array [
+  Object {
+    "units": "scalar",
+    "value": 1,
+  },
+  Object {
+    "units": "percentage",
+    "value": 0.02,
+  },
+  Object {
+    "units": "fr",
+    "value": 3,
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+]
+`;

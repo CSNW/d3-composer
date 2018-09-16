@@ -1,4 +1,4 @@
-import template from '../grid';
+import template from '../template';
 
 test('should create grid from spec and size', () => {
   const spec = `

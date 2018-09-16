@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should solve 1`] = `
+Array [
+  Array [
+    20,
+    40,
+  ],
+  Array [
+    60,
+    80,
+  ],
+  Array [
+    100,
+    120,
+  ],
+  Array [
+    140,
+    180,
+  ],
+]
+`;
