@@ -65,7 +65,7 @@ function parseAreas(spec) {
       if (name === '.') return;
 
       const next_row = spec[row + 1];
-      const next_column = row_spec[column + 1];
+      const next_column = columns[column + 1];
 
       if (!areas[name]) {
         areas[name] = { top: row };
@@ -150,20 +150,25 @@ export function solve(lengths, size, offset = 0) {
   );
 }
 
-export function layout(areas, x, y) {
+export function layout(areas, x_positions, y_positions) {
   const result = {};
   for (const name of Object.keys(areas)) {
     const area = areas[name];
 
+    const top = y_positions[area.top];
+    const right = x_positions[area.right];
+    const bottom = y_positions[area.bottom];
+    const left = x_positions[area.left];
+
     result[name] = {
-      x: x[area.left],
-      y: y[area.top],
-      width: x[area.right] - x[area.left],
-      height: y[area.bottom] - y[area.top],
-      top: y[area.top],
-      right: x[area.right],
-      bottom: y[area.bottom],
-      left: x[area.left]
+      x: left,
+      y: top,
+      width: right - left,
+      height: bottom - top,
+      top,
+      right,
+      bottom,
+      left
     };
   }
 
