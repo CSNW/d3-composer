@@ -3,8 +3,8 @@ import { area as d3_area } from 'd3-shape';
 import { interpolatePath } from './utils';
 
 export default function area(selection, options) {
-  let {
-    data, // = passthrough,
+  const {
+    data = passthrough,
     x,
     x0,
     x1,
@@ -18,7 +18,6 @@ export default function area(selection, options) {
     interpolate,
     defined
   } = options;
-  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const area = d3_area()
     .y0(y0)

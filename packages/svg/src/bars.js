@@ -2,7 +2,7 @@ import { passthrough, fn, toStyle } from '@d3-composer/utils';
 
 export default function bars(selection, options) {
   let {
-    data, // = passthrough,
+    data = passthrough,
     x,
     x0,
     x1,
@@ -16,7 +16,6 @@ export default function bars(selection, options) {
     class: className,
     transition
   } = options;
-  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   x = x != null ? x : x0;
   y = y != null ? y : y1;

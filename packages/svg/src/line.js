@@ -3,8 +3,8 @@ import { line as d3_line } from 'd3-shape';
 import { interpolatePath } from './utils';
 
 export default function line(selection, options = {}) {
-  let {
-    data, // = passthrough,
+  const {
+    data = passthrough,
     x,
     y,
     key,
@@ -15,7 +15,6 @@ export default function line(selection, options = {}) {
     interpolate,
     defined
   } = options;
-  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const line = d3_line()
     .x(x)

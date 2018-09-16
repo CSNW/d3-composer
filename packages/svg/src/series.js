@@ -4,13 +4,12 @@ import { childNodes } from './utils';
 const seriesKey = (d, i) => (d && d.key != null ? d.key : i);
 
 export default function series(selection, options) {
-  let {
-    data, // = passthrough,
+  const {
+    data = passthrough,
     key = seriesKey,
     style,
     class: className
   } = options;
-  data = data || passthrough; // TEMP (https://github.com/rollup/rollup/issues/2445)
 
   const layers = selection
     .selectAll(childNodes)
