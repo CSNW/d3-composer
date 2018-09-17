@@ -100,6 +100,7 @@ lines(svg, { /* ... */ });
 Live examples on observablehq:
 
 - [Line](https://beta.observablehq.com/@timhall/d3-composer-line)
+- [Text](https://beta.observablehq.com/@timhall/d3-composer-text)
 
 ## API
 
