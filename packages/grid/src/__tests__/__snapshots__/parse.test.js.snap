@@ -70,6 +70,32 @@ Object {
 }
 `;
 
+exports[`should parse minmax in tracks 1`] = `
+Array [
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "MINMAX",
+    "values": Array [
+      Object {
+        "units": "scalar",
+        "value": 20,
+      },
+      Object {
+        "units": "fr",
+        "value": 1,
+      },
+    ],
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+]
+`;
+
 exports[`should parse template 1`] = `
 Object {
   "areas": Object {

@@ -6,6 +6,10 @@ test('should parse tracks', () => {
   expect(parseTracks(' 1  2%  3fr  auto ')).toMatchSnapshot();
 });
 
+test('should parse minmax in tracks', () => {
+  expect(parseTracks(`1fr minmax(   20,1fr) 1fr`)).toMatchSnapshot();
+});
+
 test('should parse areas', () => {
   expect(
     parseAreas(`

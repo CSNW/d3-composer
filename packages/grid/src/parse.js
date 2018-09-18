@@ -1,4 +1,5 @@
 const PARSE_ROW = /\"(.*?)\"\s*([\w\d]+)/g;
+const PARSE_MINMAX = /minmax\(([\w\d\s]+),([\w\d\s]+)\)/g;
 
 export function parseTemplate(spec) {
   const formatted = spec
@@ -36,6 +37,18 @@ export function parseTemplate(spec) {
 }
 
 export function parseTracks(spec) {
+  let minmax_match;
+  while ((minmax_match = PARSE_MINMAX.exec(spec))) {
+    const [result, min, max] = minmax_match;
+
+    // To handle potential nesting in repeat()
+    // replace in spec with value that can be parsed by toLength
+    const { index: start } = minmax_match;
+    const end = start + result.length;
+    const replacement = `MINMAX:${trim(min)}-${trim(max)}`;
+    spec = spec.substr(0, start) + replacement + spec.substr(end);
+  }
+
   const tracks = spec
     .split(' ')
     .filter(Boolean)
@@ -80,6 +93,12 @@ export function parseAreas(spec) {
 export function toLength(value) {
   // units = 'fr' | 'percentage' | 'scalar'
 
+  if (value.indexOf('MINMAX') === 0) {
+    const [_, range] = value.split(':');
+    const [min, max] = range.split('-');
+
+    return { values: [toLength(min), toLength(max)], units: 'MINMAX' };
+  }
   if (value === 'auto') {
     // For css grid, fr + auto would shrink auto to content
     // doesn't work well for this case
