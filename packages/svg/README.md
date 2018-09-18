@@ -53,7 +53,7 @@ const responsive = chart(
 
 <a href="#layout" name="layout">#</a> <b>layout</b>(<i>selection</i>, <i>grid</i>, <i>callback</i>)
 
-Create layer functions that are laid out for each area of the grid. Callback should have the form `(layers) => void`, where `layers` contains a layer function for each area of the grid. Each layer function has the form `([id], [options]) => selection`. By default `id` is set to the area name, but when adding multiple layers for a single area, it's recommended to explicitly set `id`. Options can include the layer `margin`, inset from the grid area bounds.
+Create layer functions that are laid out for each area of the grid. Callback should have the form `(layers) => void`, where `layers` is a layer function for creating grid items by index and contains a layer function for each area of the grid. Each layer function has the form `([id], [options]) => selection`. By default `id` is set to the area name, but when adding multiple layers for a single area, it's recommended to explicitly set `id`. Options can include the layer `margin`, inset from the grid area bounds, `style`, and `class`.
 
 ```js
 import { template } from '@d3-composer/grid';
@@ -62,10 +62,16 @@ import { layout } from '@d3-composer/svg';
 const grid = template(`"title" 50 "chart" auto / auto`);
 
 layout(selection, grid, layers => {
+  // Layout by area name
   const title_layer = layers.title();
   const chart_a_layer = layers.chart('a');
   const chart_b_layer = layers.chart('b', { margin: [0, 0, 10 0] });
   const x_axis_layer = layers.x_axis({ margin: [10, 0, 0, 0] })
+
+  // Layout by location (left-to-right, top-to-bottom)
+  const x = layers();
+  const y = layers('y');
+  const z = layers({ margin: 20 });
 });
 ```
 

@@ -1,30 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`it should layout grid layers 1`] = `
+exports[`it should layout grid areas 1`] = `
 <g
   data-area="title"
-  data-layer="area-title-0"
+  data-layer="area-title"
   transform="translate(0, 0)"
 />
 `;
 
-exports[`it should layout grid layers 2`] = `
+exports[`it should layout grid areas 2`] = `
 <g
   data-area="y_axis"
-  data-layer="area-y_axis-0"
+  data-layer="area-y_axis"
   transform="translate(0, 25)"
 />
 `;
 
-exports[`it should layout grid layers 3`] = `
+exports[`it should layout grid areas 3`] = `
 <g
   data-area="x_axis"
-  data-layer="area-x_axis-0"
+  data-layer="area-x_axis"
   transform="translate(25, 75)"
 />
 `;
 
-exports[`it should layout grid layers 4`] = `
+exports[`it should layout grid areas 4`] = `
 <g
   data-area="chart"
   data-layer="lines"
@@ -32,7 +32,7 @@ exports[`it should layout grid layers 4`] = `
 />
 `;
 
-exports[`it should layout grid layers 5`] = `
+exports[`it should layout grid areas 5`] = `
 <g
   data-area="chart"
   data-layer="bars"
@@ -40,21 +40,21 @@ exports[`it should layout grid layers 5`] = `
 />
 `;
 
-exports[`it should layout grid layers 6`] = `
+exports[`it should layout grid areas 6`] = `
 <g>
   <g
     data-area="title"
-    data-layer="area-title-0"
+    data-layer="area-title"
     transform="translate(0, 0)"
   />
   <g
     data-area="y_axis"
-    data-layer="area-y_axis-0"
+    data-layer="area-y_axis"
     transform="translate(0, 25)"
   />
   <g
     data-area="x_axis"
-    data-layer="area-x_axis-0"
+    data-layer="area-x_axis"
     transform="translate(25, 75)"
   />
   <g
@@ -66,6 +66,76 @@ exports[`it should layout grid layers 6`] = `
     data-area="chart"
     data-layer="bars"
     transform="translate(25, 25)"
+  />
+</g>
+`;
+
+exports[`should layout grid items 1`] = `
+<g
+  data-item="0"
+  data-layer="item-0"
+  transform="translate(0, 0)"
+/>
+`;
+
+exports[`should layout grid items 2`] = `
+<g
+  data-item="1"
+  data-layer="item-1"
+  transform="translate(0, 50)"
+/>
+`;
+
+exports[`should layout grid items 3`] = `
+<g
+  data-item="0"
+  data-layer="item-0-1"
+  transform="translate(0, 0)"
+/>
+`;
+
+exports[`should layout grid items 4`] = `
+<g
+  data-item="1"
+  data-layer="item-1-1"
+  transform="translate(0, 50)"
+/>
+`;
+
+exports[`should layout grid items 5`] = `
+<g
+  data-item="0"
+  data-layer="item-0-2"
+  transform="translate(0, 0)"
+/>
+`;
+
+exports[`should layout grid items 6`] = `
+<g>
+  <g
+    data-item="0"
+    data-layer="item-0"
+    transform="translate(0, 0)"
+  />
+  <g
+    data-item="1"
+    data-layer="item-1"
+    transform="translate(0, 50)"
+  />
+  <g
+    data-item="0"
+    data-layer="item-0-1"
+    transform="translate(0, 0)"
+  />
+  <g
+    data-item="1"
+    data-layer="item-1-1"
+    transform="translate(0, 50)"
+  />
+  <g
+    data-item="0"
+    data-layer="item-0-2"
+    transform="translate(0, 0)"
   />
 </g>
 `;

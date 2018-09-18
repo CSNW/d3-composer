@@ -15,7 +15,7 @@ export function parseTemplate(spec) {
   let areas_spec = '';
   let rows = [];
   let match;
-  while ((match = PARSE_ROW.exec(spec))) {
+  while ((match = PARSE_ROW.exec(areas_rows_spec))) {
     const [_, area, row] = match;
 
     areas_spec += `"${area}"`;
