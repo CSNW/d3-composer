@@ -5,10 +5,11 @@ import solve from './solve';
 const cache = new Map();
 
 export default function template(spec, options) {
-  let { width, height, row_gap, column_gap, padding } = options;
+  let { width, height, gap, row_gap, column_gap, padding } = options;
   padding = toMargin(padding);
   width -= padding[1] + padding[3];
   height -= padding[0] + padding[2];
+  if (gap) row_gap = column_gap = gap;
 
   // spec: string = template
   // spec: object = { rows, columns, [areas] } templates
