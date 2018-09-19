@@ -20,3 +20,66 @@ Array [
   ],
 ]
 `;
+
+exports[`should solve minmax 1`] = `
+Array [
+  Array [
+    0,
+    50,
+  ],
+  Array [
+    50,
+    150,
+  ],
+  Array [
+    150,
+    200,
+  ],
+  Array [
+    200,
+    250,
+  ],
+]
+`;
+
+exports[`should solve minmax, constrained 1`] = `
+Array [
+  Array [
+    0,
+    100,
+  ],
+  Array [
+    100,
+    175,
+  ],
+  Array [
+    175,
+    250,
+  ],
+  Array [
+    250,
+    250,
+  ],
+]
+`;
+
+exports[`should solve minmax, inflexible 1`] = `
+Array [
+  Array [
+    0,
+    100,
+  ],
+  Array [
+    100,
+    150,
+  ],
+  Array [
+    150,
+    225,
+  ],
+  Array [
+    225,
+    300,
+  ],
+]
+`;

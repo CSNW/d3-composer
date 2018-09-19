@@ -97,7 +97,7 @@ export function toLength(value) {
     const [_, range] = value.split(':');
     const [min, max] = range.split('-');
 
-    return { values: [toLength(min), toLength(max)], units: 'MINMAX' };
+    return [toLength(min), toLength(max)];
   }
   if (value === 'auto') {
     // For css grid, fr + auto would shrink auto to content

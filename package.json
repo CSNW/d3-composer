@@ -5,10 +5,9 @@
     "packages/*"
   ],
   "scripts": {
-    "pretest": "yarn build",
     "test": "jest",
     "build": "lerna run build --ignore @d3-composer/example",
-    "publish": "yarn test && lerna version"
+    "publish": "yarn build && yarn test && lerna version"
   },
   "devDependencies": {
     "babel-preset-env": "^1.7.0",

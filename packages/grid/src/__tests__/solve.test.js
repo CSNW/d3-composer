@@ -15,3 +15,45 @@ test('should solve', () => {
     )
   ).toMatchSnapshot();
 });
+
+test('should solve minmax', () => {
+  expect(
+    solve(
+      [
+        { value: 50, units: 'scalar' },
+        [{ value: 50, units: 'scalar' }, { value: 2, units: 'fr' }],
+        { value: 50, units: 'scalar' },
+        { value: 1, units: 'fr' }
+      ],
+      250
+    )
+  ).toMatchSnapshot();
+});
+
+test('should solve minmax, constrained', () => {
+  expect(
+    solve(
+      [
+        { value: 100, units: 'scalar' },
+        [{ value: 50, units: 'scalar' }, { value: 200, units: 'scalar' }],
+        [{ value: 50, units: 'scalar' }, { value: 100, units: 'scalar' }],
+        { value: 1, units: 'fr' }
+      ],
+      250
+    )
+  ).toMatchSnapshot();
+});
+
+test('should solve minmax, inflexible', () => {
+  expect(
+    solve(
+      [
+        { value: 100, units: 'scalar' },
+        [{ value: 50, units: 'scalar' }, { value: 1, units: 'fr' }],
+        [{ value: 50, units: 'scalar' }, { value: 75, units: 'scalar' }],
+        { value: 1, units: 'fr' }
+      ],
+      250
+    )
+  ).toMatchSnapshot();
+});
