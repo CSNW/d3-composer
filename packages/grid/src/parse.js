@@ -1,5 +1,6 @@
 const PARSE_ROW = /\"(.*?)\"\s*([\w\d]+)/g;
 const PARSE_MINMAX = /minmax\(([\w\d\s]+),([\w\d\s]+)\)/g;
+const PARSE_REPEAT = /repeat\((\d+),([^\)]+)\)/g;
 
 export function parseTemplate(spec) {
   const formatted = spec
@@ -46,6 +47,19 @@ export function parseTracks(spec) {
     const { index: start } = minmax_match;
     const end = start + result.length;
     const replacement = `MINMAX:${trim(min)}-${trim(max)}`;
+    spec = spec.substr(0, start) + replacement + spec.substr(end);
+  }
+
+  let repeat_match;
+  while ((repeat_match = PARSE_REPEAT.exec(spec))) {
+    const [result, count, value] = repeat_match;
+    const { index: start } = repeat_match;
+    const end = start + result.length;
+
+    const replacement = Array(parseInt(count, 10) + 1)
+      .join(`${value} `)
+      .trim();
+
     spec = spec.substr(0, start) + replacement + spec.substr(end);
   }
 

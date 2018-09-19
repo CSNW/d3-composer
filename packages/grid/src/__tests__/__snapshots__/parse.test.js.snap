@@ -93,6 +93,76 @@ Array [
 ]
 `;
 
+exports[`should parse repeat and minmax in tracks 1`] = `
+Array [
+  Array [
+    Object {
+      "units": "scalar",
+      "value": 20,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+  ],
+  Array [
+    Object {
+      "units": "scalar",
+      "value": 20,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+  ],
+  Array [
+    Object {
+      "units": "scalar",
+      "value": 20,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+  ],
+  Array [
+    Object {
+      "units": "scalar",
+      "value": 20,
+    },
+    Object {
+      "units": "fr",
+      "value": 1,
+    },
+  ],
+]
+`;
+
+exports[`should parse repeat in tracks 1`] = `
+Array [
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+  Object {
+    "units": "fr",
+    "value": 0.5,
+  },
+  Object {
+    "units": "fr",
+    "value": 0.5,
+  },
+  Object {
+    "units": "fr",
+    "value": 0.5,
+  },
+  Object {
+    "units": "fr",
+    "value": 1,
+  },
+]
+`;
+
 exports[`should parse template 1`] = `
 Object {
   "areas": Object {
