@@ -49,13 +49,13 @@ Create grid calculation from `grid-template` specification. `spec` should follow
 
 - `width` - Overall width
 - `height` - Overall height
+- `[gap]` - Gap between each row and column
 - `[row_gap]` - Gap between each row (unitless value, e.g. `20`)
 - `[column_gap]` - Gap between each column (unitless value, e.g. `30`)
 - `[padding]` - Number, object, or array of padding from outer width/height and grid items
 
 Notes:
 
-- Helpers like `repeat` and `minmax` are not currently supported
 - Fixed values should not include a unit (e.g. `20` instead of `20px`)
 - "auto" does not behave according to CSS Grid spec and is instead treated like 1fr in all cases
 
@@ -91,9 +91,16 @@ const grid = template(`
 `, { width, height });
 
 // Grid template with row and column sizing
-const grid = template({ rows: '50 auto 25', columns: '25 auto 100' }, { width, height });
+const grid = template(
+  { rows: '50 auto 25', columns: '25 auto 100' },
+  { width, height }
+);
 
 // equivalent to:
 
 const grid = template(`50 auto 25 / 25 auto 100`, { width, height });
+
+// repeat and minmax are supported
+
+const grid = template(`repeat(4, 1fr) / minmax(100, 0.5fr) 1fr`, { width, height });
 ```
