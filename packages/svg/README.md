@@ -102,7 +102,7 @@ line(
 );
 ```
 
-<a href="#line" name="line">#</a> <b>lines</b>(<i>selection</i>, <i>options</i>)
+<a href="#line" name="line">#</a> <b>line</b>(<i>selection</i>, <i>options</i>)
 
 [Live Example](https://beta.observablehq.com/@timhall/d3-composer-line)
 
@@ -122,22 +122,22 @@ Options:
 
 ```js
 // x,y
-lines(selection, { data, x: d => xScale(d.year), y: d => yScale(d.result) })
+line(selection, { data, x: d => xScale(d.year), y: d => yScale(d.result) })
 
 // curve
-lines(selection, { curve: d3.curveCardinal() });
+line(selection, { curve: d3.curveCardinal() });
 
 // style
-lines(selection, { style: { stroke: d => d.color } });
+line(selection, { style: { stroke: d => d.color } });
 
 // class
-lines(selection, { class: d => d.class });
+line(selection, { class: d => d.class });
 
 // transition
-lines(selection, { transition: d3.transition().duration(1000) })
+line(selection, { transition: d3.transition().duration(1000) })
 
 // interpolate
-lines(selection, { interpolate: d3.interpolatePath })
+line(selection, { interpolate: d3.interpolatePath })
 ```
 
 <a href="#bars" name="bars">#</a> <b>bars</b>(<i>selection</i>, <i>options</i>)
