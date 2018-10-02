@@ -33,7 +33,7 @@ export default function gridlines(selection, options) {
         xScale.ticks,
         xTicks ? [xTicks] : xTickArguments || []
       );
-  const y_data = !xGrid
+  const y_data = !yGrid
     ? []
     : yTickValues ||
       yScale.ticks.apply(
