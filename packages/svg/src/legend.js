@@ -39,6 +39,8 @@ export default function legend(selection, options) {
     .selectAll('g')
     .data(data, (d, i) => (d && d.key != null ? d.key : i));
 
+  layers.exit().remove();
+
   const entering = layers.enter().append('g');
 
   entering
