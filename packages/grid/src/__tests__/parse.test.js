@@ -26,7 +26,10 @@ test('should parse areas', () => {
       " b . e "
     `)
   ).toMatchSnapshot();
+
   expect(parseAreas('"a a a""b c d"  "b . e"')).toMatchSnapshot();
+
+  expect(parseAreas(`"a d""b .""c ."`)).toMatchSnapshot();
 });
 
 test('should parse template', () => {

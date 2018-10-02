@@ -70,6 +70,35 @@ Object {
 }
 `;
 
+exports[`should parse areas 3`] = `
+Object {
+  "a": Object {
+    "bottom": 0,
+    "left": 0,
+    "right": 0,
+    "top": 0,
+  },
+  "b": Object {
+    "bottom": 1,
+    "left": 0,
+    "right": 0,
+    "top": 1,
+  },
+  "c": Object {
+    "bottom": 2,
+    "left": 0,
+    "right": 0,
+    "top": 2,
+  },
+  "d": Object {
+    "bottom": 0,
+    "left": 1,
+    "right": 1,
+    "top": 0,
+  },
+}
+`;
+
 exports[`should parse minmax in tracks 1`] = `
 Array [
   Object {

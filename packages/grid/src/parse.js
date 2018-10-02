@@ -77,13 +77,13 @@ export function parseAreas(spec) {
   spec
     .split('"')
     .filter((_, i) => i % 2 !== 0)
-    .forEach((row_spec, row) => {
+    .forEach((row_spec, row, rows) => {
       const columns = row_spec.split(' ').filter(Boolean);
 
       columns.forEach((name, column) => {
         if (name === '.') return;
 
-        const next_row = spec[row + 1];
+        const next_row = rows[row + 1];
         const next_column = columns[column + 1];
 
         if (!areas[name]) {
