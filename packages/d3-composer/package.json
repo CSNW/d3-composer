@@ -1,6 +1,6 @@
 {
   "name": "d3-composer",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "grid and chart components for composing data visualizations with d3",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@d3-composer/grid": "^0.6.2",
-    "@d3-composer/svg": "^0.6.2",
+    "@d3-composer/svg": "^0.6.3",
     "@d3-composer/utils": "^0.6.0"
   },
   "files": [
