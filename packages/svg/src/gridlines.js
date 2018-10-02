@@ -9,6 +9,12 @@ export default function gridlines(selection, options) {
     yGrid = true,
     xScale,
     yScale,
+    xTicks,
+    xTickArguments,
+    xTickValues,
+    yTicks,
+    yTickArguments,
+    yTickValues,
     style,
     class: className,
     transition
@@ -20,9 +26,24 @@ export default function gridlines(selection, options) {
   const translateX = d => `translate(${xScale(d) + 0.5}, 0)`;
   const translateY = d => `translate(0, ${yScale(d) + 0.5})`;
 
+  const x_data = !xGrid
+    ? []
+    : xTickValues ||
+      xScale.ticks.apply(
+        xScale.ticks,
+        xTicks ? [xTicks] : xTickArguments || []
+      );
+  const y_data = !xGrid
+    ? []
+    : yTickValues ||
+      yScale.ticks.apply(
+        yScale.ticks,
+        yTicks ? [yTicks] : yTickArguments || []
+      );
+
   const x_lines = layer(selection, 'x')
     .selectAll('line')
-    .data(xGrid ? xScale.ticks() : [], index);
+    .data(x_data, index);
 
   x_lines.exit().remove();
   x_lines
@@ -41,7 +62,7 @@ export default function gridlines(selection, options) {
 
   const y_lines = layer(selection, 'y')
     .selectAll('line')
-    .data(yGrid ? yScale.ticks() : [], index);
+    .data(y_data, index);
 
   y_lines.exit().remove();
   y_lines
