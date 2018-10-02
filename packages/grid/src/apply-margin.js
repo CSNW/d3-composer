@@ -4,10 +4,10 @@ export default function applyMargin(area, margin) {
   margin = toMargin(margin);
 
   let { top, right, bottom, left } = area;
-  top -= margin[0];
-  right -= margin[1] + margin[3];
-  bottom -= margin[0] + margin[2];
-  left -= margin[3];
+  top += margin[0];
+  right -= margin[1];
+  bottom -= margin[2];
+  left += margin[3];
 
   return {
     x: left,
