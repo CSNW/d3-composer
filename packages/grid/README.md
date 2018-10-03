@@ -12,8 +12,6 @@ const grid = template(`
   / 50 auto
 `, { width: 600, height: 400 });
 
-// For size = { width: 600, height: 400 }:
-//
 // grid = {
 //   areas: {
 //     title: {
