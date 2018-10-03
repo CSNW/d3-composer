@@ -4,7 +4,8 @@ export function toStyle(value) {
   }
   if (typeof value === 'function') {
     return function() {
-      return toStyle(value.apply(this, arguments));
+      const style = toStyle(value.apply(this, arguments));
+      return typeof style === 'function' ? style.apply(this, arguments) : style;
     };
   }
   if (typeof value === 'string') {
