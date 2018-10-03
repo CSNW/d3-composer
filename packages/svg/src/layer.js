@@ -1,3 +1,4 @@
+import { Size } from '@d3-composer/utils';
 import { childNodes } from './utils';
 
 export default function layer(selection, id, options = {}) {
@@ -7,9 +8,13 @@ export default function layer(selection, id, options = {}) {
     .filter(`[data-layer="${id}"]`)
     .data([null]);
 
+  // Forward size from selection to layer
+  const size = selection.property(Size);
+
   return instance
     .enter()
     .append(element)
     .attr('data-layer', id)
-    .merge(instance);
+    .merge(instance)
+    .property(Size, size);
 }
