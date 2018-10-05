@@ -1,6 +1,6 @@
 {
   "name": "@d3-composer/svg",
-  "version": "0.6.5",
+  "version": "0.6.6",
   "description": "svg components for d3-composer",
   "author": "Tim Hall <tim.hall.engr@gmail.com>",
   "license": "MIT",
@@ -27,13 +27,13 @@
     "build": "rollup -c"
   },
   "dependencies": {
-    "@d3-composer/utils": "^0.6.0",
+    "@d3-composer/utils": "^0.6.6",
     "d3-axis": "^1",
     "d3-selection": "^1",
     "d3-shape": "^1"
   },
   "devDependencies": {
-    "@d3-composer/grid": "^0.6.5"
+    "@d3-composer/grid": "^0.6.6"
   },
   "files": [
     "dist",
