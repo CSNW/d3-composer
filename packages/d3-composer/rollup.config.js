@@ -41,6 +41,7 @@ export default [
     ...config,
     output: {
       ...config.output,
+      format: 'umd',
       file: 'dist/d3-composer.min.js'
     },
     plugins: [
