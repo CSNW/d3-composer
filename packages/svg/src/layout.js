@@ -68,7 +68,10 @@ export default function layout(selection, grid, callback) {
     .selectAll(childNodes)
     .filter('[data-layer]')
     .data(added, function(d) {
-      return d || this.dataset.layer;
+      return (
+        d ||
+        (this.dataset ? this.dataset.layer : this.getAttribute('data-layer'))
+      );
     })
     .order()
     .exit()

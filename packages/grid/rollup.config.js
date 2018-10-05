@@ -1,5 +1,6 @@
 import resolve from 'rollup-plugin-node-resolve';
 import filesize from 'rollup-plugin-filesize';
+import buble from 'rollup-plugin-buble';
 import { terser } from 'rollup-plugin-terser';
 import pkg from './package.json';
 
@@ -19,7 +20,7 @@ const config = {
     banner
   },
   external: ['@d3-composer/utils'],
-  plugins: [resolve(), filesize()]
+  plugins: [resolve(), filesize(), buble()]
 };
 
 export default [
@@ -30,6 +31,10 @@ export default [
       ...config.output,
       file: 'dist/d3-composer-grid.min.js'
     },
-    plugins: [...config.plugins, terser({ output: { preamble: banner } })]
+    plugins: [
+      ...config.plugins,
+      buble(),
+      terser({ output: { preamble: banner } })
+    ]
   }
 ];

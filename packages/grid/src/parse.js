@@ -119,10 +119,10 @@ export function toLength(value) {
     // -> treat auto = 1fr
     return { value: 1, units: 'fr' };
   }
-  if (value.endsWith('fr')) {
+  if (endsWith(value, 'fr')) {
     return { value: Number(value.slice(0, -2)), units: 'fr' };
   }
-  if (value.endsWith('%')) {
+  if (endsWith(value, '%')) {
     return { value: Number(value.slice(0, -1)) / 100, units: 'percentage' };
   }
 
@@ -135,4 +135,13 @@ export function toLength(value) {
 
 function trim(value) {
   return value.trim();
+}
+
+function endsWith(value, check) {
+  if (!value || !check) return false;
+
+  const index = value.indexOf(check);
+  if (index < 0) return false;
+
+  return index === value.length - check.length;
 }

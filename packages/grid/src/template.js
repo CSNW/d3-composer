@@ -53,7 +53,7 @@ export function layout(rows, columns, areas, x, y) {
     }
   }
 
-  for (const name of Object.keys(areas)) {
+  Object.keys(areas).forEach(name => {
     const area = areas[name];
 
     const top = y[area.top][0];
@@ -71,7 +71,7 @@ export function layout(rows, columns, areas, x, y) {
       bottom,
       left
     };
-  }
+  });
 
   return result;
 }
