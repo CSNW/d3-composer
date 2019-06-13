@@ -55,7 +55,7 @@ For npm / yarn, `npm install d3-composer` or `yarn add d3-composer`. Otherwise, 
 
 ```js
 import { select } from 'd3';
-import { template, chart, layout, series, line, axis, text, size } from 'd3-composer';
+import { template, chart, layout, series, line, axisLeft, axisBottom, text, size } from 'd3-composer';
 
 function lines(selection, options = {}) {
   const { data = [], xScale, yScale  } = options;
@@ -67,12 +67,12 @@ function lines(selection, options = {}) {
     / 50 auto
   `, size(selection));
 
-  xScale.range([0, grid.chart.width]);
-  yScale.range([grid.chart.height, 0]);
+  xScale.range([0, grid.areas.chart.width]);
+  yScale.range([grid.areas.chart.height, 0]);
 
   layout(selection, grid, layers => {
-    axis(layers.x_axis(), { scale: xScale });
-    axis(layers.y_axis(), { scale: yScale });
+    axisLeft(layers.x_axis(), { scale: xScale });
+    axisBottom(layers.y_axis(), { scale: yScale });
     
     line(
       series(layers.chart(), { data }),
