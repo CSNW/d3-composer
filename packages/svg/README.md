@@ -339,9 +339,9 @@ import { symbolLine } from '@d3-composer/svg';
 symbol().size(50).type(symbolLine);
 ```
 
-<a href="#size" name="size">#</a> <b>size</b>(<i>selection</i>)
+<a href="#measure" name="measure">#</a> <b>measure</b>(<i>selection</i>)
 
-Size helper for determining selection size.
+Helper for measure the size of a selection.
 
 <a href="#interpolatePath" name="interpolatePath">#</a> <b>interpolatePath</b>(<i>selection</i>, <i>path</i>[, <i>interpolate</i>])
 

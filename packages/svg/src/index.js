@@ -13,4 +13,4 @@ export { default as text } from './text';
 export { default as legend } from './legend';
 export { default as gridlines } from './gridlines';
 export { symbolLine } from './symbols';
-export { size, interpolatePath, translateXY } from './utils';
+export { measure, interpolatePath, translateXY } from './utils';

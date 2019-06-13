@@ -1,6 +1,6 @@
 import { select } from 'd3-selection';
 import { passthrough, fn, toStyle, Size } from '@d3-composer/utils';
-import { assign, byIndex, size as measure } from './utils';
+import { assign, byIndex, measure } from './utils';
 
 export default function stack(selection, options = {}) {
   const {

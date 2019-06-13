@@ -1,5 +1,5 @@
-import { size } from './utils';
 import { toStyle } from '@d3-composer/utils';
+import { measure } from './utils';
 
 export default function text(selection, options) {
   // anchor = origin-x = 'start' | 'middle' | 'end'
@@ -27,22 +27,22 @@ export default function text(selection, options) {
     anchor != null
       ? anchor
       : justify === 'center'
-        ? 'middle'
-        : justify === 'end'
-          ? 'end'
-          : 'start';
+      ? 'middle'
+      : justify === 'end'
+      ? 'end'
+      : 'start';
 
   baseline =
     baseline != null
       ? baseline
       : align === 'center'
-        ? 'middle'
-        : align === 'end'
-          ? 'baseline'
-          : 'hanging';
+      ? 'middle'
+      : align === 'end'
+      ? 'baseline'
+      : 'hanging';
 
   if (!transform && (justify !== 'start' || align !== 'start' || rotation)) {
-    const { width, height } = size(selection);
+    const { width, height } = measure(selection);
     let x = 0;
     let y = 0;
 

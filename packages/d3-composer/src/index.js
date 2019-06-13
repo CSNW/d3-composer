@@ -30,7 +30,7 @@ export {
   legend,
   gridlines,
   symbolLine,
-  size,
+  measure,
   interpolatePath,
   translateXY
 } from '@d3-composer/svg';

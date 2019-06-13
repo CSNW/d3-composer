@@ -55,7 +55,7 @@ For npm / yarn, `npm install d3-composer` or `yarn add d3-composer`. Otherwise, 
 
 ```js
 import { select } from 'd3';
-import { template, chart, layout, series, line, axisLeft, axisBottom, text, size } from 'd3-composer';
+import { template, chart, layout, series, line, axisLeft, axisBottom, text, measure } from 'd3-composer';
 
 function lines(selection, options = {}) {
   const { data = [], xScale, yScale  } = options;
@@ -65,7 +65,7 @@ function lines(selection, options = {}) {
     "y_axis chart" auto
     ". x_axis" 50
     / 50 auto
-  `, size(selection));
+  `, measure(selection));
 
   xScale.range([0, grid.areas.chart.width]);
   yScale.range([grid.areas.chart.height, 0]);
@@ -130,7 +130,7 @@ Live examples on observablehq:
 - [legend](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#legend) - Legend component
 - [gridlines](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#gridlines) - Gridlines component
 - [symbolLine](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#symbolLine) - Line symbol
-- [size](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#size) - Size helper
+- [measure](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#measure) - Measurement helper
 - [interpolatePath](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#interpolatePath) - Interpolate path `d`
 - [translateXY](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#translateXY) - Translate helper for x,y
 

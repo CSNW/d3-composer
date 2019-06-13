@@ -24,7 +24,7 @@ import {
   axisBottom,
   axisTop,
   axisRight,
-  size,
+  measure,
   symbolLine
 } from 'd3-composer';
 
@@ -40,7 +40,7 @@ function linesChart(selection, options) {
     "y_axis_title y_axis chart legend" auto 
     ". . x_axis ." 40
     / 20 40 auto 100`,
-    { ...size(selection), padding: 20 }
+    { ...measure(selection), padding: 20 }
   );
 
   xScale = xScale.range([0, grid.areas.chart.width]);
@@ -129,7 +129,7 @@ function barsChart(selection, options) {
     "x_axis ." 20
     "chart y_axis" auto 
     / auto 40`,
-    { ...size(selection), padding: 20, column_gap: 20 }
+    { ...measure(selection), padding: 20, column_gap: 20 }
   );
 
   xScale = xScale.range([0, grid.areas.chart.width]);

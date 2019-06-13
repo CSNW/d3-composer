@@ -12,7 +12,7 @@ const size_id = Size.toString();
  *
  * @param {d3.selection} selection
  */
-export function size(selection) {
+export function measure(selection) {
   const node = selection.node();
 
   if (node.tagName === 'svg') {

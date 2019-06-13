@@ -6,7 +6,7 @@ import {
 } from 'd3-axis';
 import { toStyle } from '@d3-composer/utils';
 import layer from './layer';
-import { size } from './utils';
+import { measure } from './utils';
 
 export function axisTop(selection, options) {
   const {
@@ -20,7 +20,7 @@ export function axisTop(selection, options) {
     transition
   } = options;
   const axis = prepare(d3_axisTop(scale || xScale), options);
-  const { height } = size(selection);
+  const { height } = measure(selection);
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(0, ${height || 0})`)
@@ -88,7 +88,7 @@ export function axisLeft(selection, options) {
     transition
   } = options;
   const axis = prepare(d3_axisLeft(scale || yScale), options);
-  const { width } = size(selection);
+  const { width } = measure(selection);
 
   layer(selection, 'axis-transform')
     .attr('transform', `translate(${width || 0}, 0)`)
