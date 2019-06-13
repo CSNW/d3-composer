@@ -7,7 +7,7 @@
   "scripts": {
     "test": "jest",
     "build": "lerna run build --ignore @d3-composer/example",
-    "publish": "yarn build && yarn test && lerna version"
+    "version": "yarn build && yarn test"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
