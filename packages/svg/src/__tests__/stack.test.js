@@ -30,4 +30,18 @@ describe('stack', () => {
 
     expect(selection.node()).toMatchSnapshot();
   });
+
+  test('should stack grid', () => {
+    const selection = fixture();
+    stack(
+      stack(selection, {
+        data: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+        direction: 'vertical',
+        size: 10
+      }),
+      { direction: 'horizontal', size: 10 }
+    );
+
+    expect(selection.node()).toMatchSnapshot();
+  });
 });

@@ -1,7 +1,8 @@
+import { select } from 'd3-selection';
 import { passthrough, fn, toStyle, Size } from '@d3-composer/utils';
 import { assign, byIndex, size as measure } from './utils';
 
-export default function stack(selection, options) {
+export default function stack(selection, options = {}) {
   const {
     data = passthrough,
     key = byIndex,
@@ -10,33 +11,34 @@ export default function stack(selection, options) {
     class: className,
     style
   } = options;
-  const size = fn(_size);
+  const getSize = fn(_size);
   const { width, height } = measure(selection);
 
   const items = selection.selectAll('g').data(data, key);
 
   items.exit().remove();
 
-  const sizes = [];
   let offset = 0;
-
   return items
     .enter()
     .append('g')
     .merge(items)
-    .property(Size, function(d, i, j) {
-      sizes[i] = size.call(this, d, i, j) || 0;
+    .each(function(d, i, j) {
+      const size = getSize.call(this, d, i, j) || 0;
+      const dimensions =
+        direction === 'vertical'
+          ? { width, height: size }
+          : { width: size, height };
 
-      return direction === 'vertical'
-        ? { width, height: sizes[i] }
-        : { width: sizes[i], height };
-    })
-    .attr('transform', (_d, i) => {
+      if (i === 0) offset = 0;
+
       const x = direction === 'vertical' ? 0 : offset;
       const y = direction === 'vertical' ? offset : 0;
-      offset += sizes[i];
+      offset += size;
 
-      return `translate(${x}, ${y})`;
+      select(this)
+        .property(Size, dimensions)
+        .attr('transform', `translate(${x}, ${y})`);
     })
     .attr('style', toStyle(style))
     .attr('class', className);
