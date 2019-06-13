@@ -114,6 +114,9 @@ Live examples on observablehq:
 - [layout](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#layout) - Create `g` layers from grid
 - [layer](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#layer) - Create named `g` layer
 - [series](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#series) - Create series layers
+- [stack](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#stack) - Create stacked layers
+- [vstack](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#vstack) - Create vertically stacked layers
+- [hstack](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#hstack) - Create horizontally stacked layers
 - [line](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#line) - Line chart
 - [bars](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#bars) - Bars chart
 - [scatter](https://github.com/CSNW/d3-composer/blob/master/packages/svg/README.md#scatter) - Scatter chart

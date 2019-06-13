@@ -2,6 +2,7 @@ export { default as chart } from './chart';
 export { default as layout } from './layout';
 export { default as layer } from './layer';
 export { default as series } from './series';
+export { default as stack, vstack, hstack } from './stack';
 export { default as line } from './line';
 export { default as bars } from './bars';
 export { default as scatter } from './scatter';

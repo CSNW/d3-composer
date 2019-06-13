@@ -102,6 +102,27 @@ line(
 );
 ```
 
+<a href="#stack" name="stack">#</a> <b>stack</b>(<i>selection</i>, <i>options</i>)
+
+Create a stacked set of layers
+
+Options:
+
+- `data` - Array of layer data
+- `direction` - `'vertical'` or `'horizontal'` stack direction
+- `size` - Size value or function for layers
+- `[key]`
+- `[style]` - Style string, object, or function for layers
+- `[class]` - Class string or function for layers
+
+<a href="#vstack" name="vstack">#</a> <b>vstack</b>(<i>selection</i>, <i>options</i>)
+
+Stack helper with `direction = 'vertical'`
+
+<a href="#hstack" name="hstack">#</a> <b>hstack</b>(<i>selection</i>, <i>options</i>)
+
+Stack helper with `direction = 'horizontal'`
+
 <a href="#line" name="line">#</a> <b>line</b>(<i>selection</i>, <i>options</i>)
 
 [Live Example](https://beta.observablehq.com/@timhall/d3-composer-line)

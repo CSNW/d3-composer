@@ -45,8 +45,8 @@ describe('series', () => {
         { key: 'b', class: 'series-1', values: [] },
         { key: 'c', class: 'series-2', values: [] }
       ],
-      seriesStyle: (_, i) => ({ fill: colors[i] }),
-      seriesClass: d => d.class
+      style: (_, i) => ({ fill: colors[i] }),
+      class: d => d.class
     });
 
     expect(selection.node()).toMatchSnapshot();

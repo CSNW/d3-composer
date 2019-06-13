@@ -67,3 +67,19 @@ export function translateXY(_x, _y) {
     return `translate(${x}, ${y})`;
   };
 }
+
+export const assign =
+  Object.assign ||
+  function(target, ...objects) {
+    objects.forEach(object => {
+      Object.keys(object).forEach(key => {
+        target[key] = object[key];
+      });
+    });
+
+    return target;
+  };
+
+export function byIndex(_d, i) {
+  return i;
+}

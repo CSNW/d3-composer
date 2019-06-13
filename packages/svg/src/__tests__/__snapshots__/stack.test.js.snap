@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`stack should create and offset stack layers 1`] = `
+<g>
+  <g
+    transform="translate(0, 0)"
+  />
+  <g
+    transform="translate(0, 10)"
+  />
+  <g
+    transform="translate(0, 30)"
+  />
+  <g
+    transform="translate(0, 60)"
+  />
+</g>
+`;
+
+exports[`stack should set stack style and class 1`] = `
+<g>
+  <g
+    class="stack-0"
+    style="fill: blue;"
+    transform="translate(0, 0)"
+  />
+  <g
+    class="stack-1"
+    style="fill: green;"
+    transform="translate(0, 10)"
+  />
+  <g
+    class="stack-2"
+    style="fill: yellow;"
+    transform="translate(0, 20)"
+  />
+</g>
+`;

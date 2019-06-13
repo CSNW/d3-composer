@@ -23,13 +23,19 @@ exports[`series should remove layers for series data 1`] = `
 exports[`series should set series style and class 1`] = `
 <g>
   <g
+    class="series-0"
     data-series="a"
+    style="fill: blue;"
   />
   <g
+    class="series-1"
     data-series="b"
+    style="fill: green;"
   />
   <g
+    class="series-2"
     data-series="c"
+    style="fill: yellow;"
   />
 </g>
 `;

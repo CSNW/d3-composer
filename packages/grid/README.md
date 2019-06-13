@@ -71,10 +71,10 @@ const grid = template(`
   / 25 25 auto
 `, { width, height })
 
-// chart with outer margins ([top, right, bottom, left])
+// chart with outer padding ([top, right, bottom, left])
 const grid = template(
   `"chart" auto / auto`,
-  { width, height, margin: [20, 40, 20, 40] }
+  { width, height, padding: [20, 40, 20, 40] }
 );
 
 // | title    (title)  (title) | 50
