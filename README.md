@@ -151,5 +151,5 @@ Live examples on observablehq:
 - Install: `yarn` or `yarn install` (d3-composer uses yarn workspaces)
 - Test: `yarn test`
 - Build: `yarn build`
-- Version: `npx lerna version`
-- Publish: `npx lerna publish` 
+- Version: `npx lerna version VERSION`
+- Publish: `npx lerna publish from-package --otp ######` 
