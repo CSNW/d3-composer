@@ -35,7 +35,11 @@ export function measure(selection) {
   }
 
   try {
-    const bbox = node.getBBox();
+    if (node.hasOwnProperty("getBBox")) {
+      const bbox = node.getBBox();
+    } else {
+      const bbox = node.getBoundingClientRect();
+    }
     return { width: bbox.width, height: bbox.height };
   } catch (err) {
     return { width: NaN, height: NaN };
