@@ -11,3 +11,15 @@ export class SVGElement {
     return this.size;
   }
 }
+
+export class HTMLElement {
+  constructor(options = {}) {
+    const { size = default_size } = options;
+
+    this.size = size;
+  }
+
+  getBoundingClientRect() {
+    return this.size;
+  }
+}
