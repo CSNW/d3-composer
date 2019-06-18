@@ -44,4 +44,23 @@ describe('stack', () => {
 
     expect(selection.node()).toMatchSnapshot();
   });
+
+  test('should re-render stacked grid', () => {
+    const selection = fixture.layer();
+    grid(selection);
+    grid(selection);
+
+    expect(selection.node()).toMatchSnapshot();
+  });
 });
+
+function grid(selection) {
+  stack(
+    stack(selection, {
+      data: [[1, 2, 3], [4, 5, 6], [7, 8, 9]],
+      direction: 'vertical',
+      size: 10
+    }),
+    { direction: 'horizontal', size: 10 }
+  );
+}

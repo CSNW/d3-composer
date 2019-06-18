@@ -17,6 +17,50 @@ exports[`stack should create and offset stack layers 1`] = `
 </g>
 `;
 
+exports[`stack should re-render stacked grid 1`] = `
+<g>
+  <g
+    transform="translate(0, 0)"
+  >
+    <g
+      transform="translate(0, 0)"
+    />
+    <g
+      transform="translate(10, 0)"
+    />
+    <g
+      transform="translate(20, 0)"
+    />
+  </g>
+  <g
+    transform="translate(0, 10)"
+  >
+    <g
+      transform="translate(0, 0)"
+    />
+    <g
+      transform="translate(10, 0)"
+    />
+    <g
+      transform="translate(20, 0)"
+    />
+  </g>
+  <g
+    transform="translate(0, 20)"
+  >
+    <g
+      transform="translate(0, 0)"
+    />
+    <g
+      transform="translate(10, 0)"
+    />
+    <g
+      transform="translate(20, 0)"
+    />
+  </g>
+</g>
+`;
+
 exports[`stack should set stack style and class 1`] = `
 <g>
   <g

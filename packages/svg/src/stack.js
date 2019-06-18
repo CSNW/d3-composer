@@ -1,6 +1,6 @@
 import { select } from 'd3-selection';
 import { passthrough, fn, toStyle, Size } from '@d3-composer/utils';
-import { assign, byIndex, measure } from './utils';
+import { assign, byIndex, measure, childNodes } from './utils';
 
 export default function stack(selection, options = {}) {
   const {
@@ -14,7 +14,10 @@ export default function stack(selection, options = {}) {
   const getSize = fn(_size);
   const { width, height } = measure(selection);
 
-  const items = selection.selectAll('g').data(data, key);
+  const items = selection
+    .selectAll(childNodes)
+    .filter('g')
+    .data(data, key);
 
   items.exit().remove();
 
