@@ -35,7 +35,12 @@ export function measure(selection) {
   }
 
   try {
-    const bbox = node.getBBox();
+    let bbox;
+    if (typeof node.getBBox === "function") {
+      bbox = node.getBBox();
+    } else {
+      bbox = node.getBoundingClientRect();
+    }
     return { width: bbox.width, height: bbox.height };
   } catch (err) {
     return { width: NaN, height: NaN };
