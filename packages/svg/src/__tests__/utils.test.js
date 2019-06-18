@@ -1,6 +1,7 @@
-import body from '../__helpers__/body';
-import { measure } from '../utils';
 import { Size } from '@d3-composer/utils';
+import { measure } from '../utils';
+import body from '../__helpers__/body';
+import { SVGElement, HTMLElement } from '../__helpers__/elements';
 
 const fixture = body();
 beforeAll(fixture.setup);
@@ -16,6 +17,18 @@ describe('utils', () => {
     it('should use Size property', () => {
       const g = fixture.layer().property(Size, { width: 200, height: 100 });
       expect(measure(g)).toEqual({ width: 200, height: 100 });
+    });
+
+    it('should use getBBox (if available)', () => {
+      const rect = fixture.layer().append('rect');
+
+      // As of jsdom 11, getBBox is not implemented / defined for SVGElement
+      // -> Mock it via the d3's selection.node()
+      rect.node = jest.fn(() => {
+        return new SVGElement({ size: { width: 100, height: 50 } });
+      });
+
+      expect(measure(rect)).toEqual({ width: 100, height: 50 });
     });
   });
 });
