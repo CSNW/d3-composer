@@ -32,10 +32,13 @@ describe('utils', () => {
     });
 
     it('should use getBoundingClientRect (if available)', () => {
-      // TODO
-      // 1. ...append('div')
-      // 2. Mock div.node with HTMLElement
-      // 3. measure(div)
+      const div = fixture.append('div');
+
+      div.node = jest.fn(() => {
+        return new HTMLElement({ size: { width: 100, height: 50 } });
+      });
+
+      expect(measure(div)).toEqual({ width: 100, height: 50 });
     });
   });
 });

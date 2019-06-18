@@ -35,10 +35,11 @@ export function measure(selection) {
   }
 
   try {
-    if (node.hasOwnProperty("getBBox")) {
-      const bbox = node.getBBox();
+    let bbox;
+    if (typeof node.getBBox === "function") {
+      bbox = node.getBBox();
     } else {
-      const bbox = node.getBoundingClientRect();
+      bbox = node.getBoundingClientRect();
     }
     return { width: bbox.width, height: bbox.height };
   } catch (err) {
