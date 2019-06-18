@@ -1,14 +1,14 @@
-import { svg } from '../__helpers__/svg';
+import body from '../__helpers__/body';
 import series from '../series';
 
-const fixture = svg();
+const fixture = body();
 
 beforeAll(fixture.setup);
 afterAll(fixture.teardown);
 
 describe('series', () => {
   test('should create layers for series data', () => {
-    const selection = series(fixture(), {
+    const selection = series(fixture.layer(), {
       data: [[], { key: 'a', values: [] }]
     });
 
@@ -16,7 +16,7 @@ describe('series', () => {
   });
 
   test('should remove layers for series data', () => {
-    const selection = fixture();
+    const selection = fixture.layer();
     series(selection, {
       data: [
         { key: 'a', values: [] },
@@ -38,7 +38,7 @@ describe('series', () => {
   test('should set series style and class', () => {
     const colors = ['blue', 'green', 'yellow'];
 
-    const selection = fixture();
+    const selection = fixture.layer();
     series(selection, {
       data: [
         { key: 'a', class: 'series-0', values: [] },

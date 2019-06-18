@@ -1,9 +1,9 @@
 import { scaleBand, scaleLinear, transition as d3_transition } from 'd3';
-import { svg } from '../__helpers__/svg';
+import body from '../__helpers__/body';
 import { end } from '../__helpers__/transition';
 import bars from '../bars';
 
-const fixture = svg();
+const fixture = body();
 
 beforeAll(fixture.setup);
 afterAll(fixture.teardown);
@@ -22,7 +22,7 @@ const y1 = d => yScale(d.y);
 
 test('should render simple bars', async () => {
   const transition = d3_transition().duration(0);
-  const selection = bars(fixture(), {
+  const selection = bars(fixture.layer(), {
     data: [
       { x: 'A', y: 10 },
       { x: 'B', y: 20 },
@@ -43,7 +43,7 @@ test('should render simple bars', async () => {
 
 test('should use style and class', async () => {
   const transition = d3_transition().duration(0);
-  const selection = bars(fixture(), {
+  const selection = bars(fixture.layer(), {
     data: [
       { x: 'A', y: 10 },
       { x: 'B', y: 20 },

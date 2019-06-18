@@ -1,10 +1,10 @@
 import { scaleLinear, transition as d3_transition } from 'd3';
-import { svg } from '../__helpers__/svg';
+import body from '../__helpers__/body';
 import { end } from '../__helpers__/transition';
 import series from '../series';
 import line from '../line';
 
-const fixture = svg();
+const fixture = body();
 
 beforeAll(fixture.setup);
 afterAll(fixture.teardown);
@@ -21,7 +21,7 @@ const y = d => yScale(d.y);
 
 test('should render simple line', async () => {
   const transition = d3_transition().duration(0);
-  const selection = line(fixture(), {
+  const selection = line(fixture.layer(), {
     data: [{ x: 0, y: 0 }, { x: 100, y: 100 }],
     x,
     y,
@@ -36,7 +36,7 @@ test('should render simple line', async () => {
 test('should use style and class', async () => {
   const transition = d3_transition().duration(0);
   const selection = line(
-    series(fixture(), {
+    series(fixture.layer(), {
       data: [
         { class: 'a', values: [{ x: 0, y: 0 }, { x: 100, y: 100 }] },
         { class: 'b', values: [{ x: 0, y: 100 }, { x: 100, y: 0 }] }
